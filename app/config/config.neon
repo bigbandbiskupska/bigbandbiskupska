@@ -30,7 +30,6 @@ common:
 		router: @routerFactory::createRouter
 		concerts: App\Model\ConcertModel()
 		members: App\Model\MemberModel()
-		galleries: App\Model\GalleryModel()
 		songs: App\Model\SongModel()
 		videos: App\Model\VideoModel()
 

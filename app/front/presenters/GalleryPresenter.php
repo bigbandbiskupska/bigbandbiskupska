@@ -8,17 +8,6 @@ use App;
 
 class GalleryPresenter extends BasePresenter
 {
-	/**
-	 * @var App\Model\GalleryModel
-	 * @inject
-	 */
-	public $galleries;
-
-	public function actionDefault ()
-	{
-		$this -> template -> galleries = $this -> galleries -> all ();
-	}
-
 	public function actionDetail ( $id )
 	{
 		//if ( ( $gallery = $this -> galleries -> item ( $id ) ) == NULL )
