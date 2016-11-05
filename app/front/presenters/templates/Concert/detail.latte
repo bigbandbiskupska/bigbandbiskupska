@@ -1,0 +1,82 @@
+{block title}Koncert{/block}
+
+{block heading}
+<h1 id="koncert" class="link-target">{$concert->name}</h1>
+{/block}
+
+{block mininav}
+<li>
+    <a href="{link :Front:Concert:default}">Všechny koncerty</a>
+</li>
+{/block}
+
+
+{block content}
+
+
+{snippet concert}
+
+    <div class="row">
+        <div class="event-spec col-md-9">
+            <div class="event-place">
+                <h3>{$concert->location_text}</h3>
+            </div>
+        </div>
+
+        <div class="event-date col-md-2" title="{$concert->date|weekday}, {$concert->date|date: 'j. n. Y H:i'}">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <span class="glyphicon glyphicon-calendar pull-left"></span>
+                    <h4>{$concert->date|date: 'Y'}</h4>
+                </div>
+                
+                <div class="panel-body text-center">
+                    <h3 class="text-nowrap">{$concert->date|date: 'j. n.'}</h3>
+                    <h4>{$concert->date|date: 'H:i'}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="col-md-12 google-image text-center"
+            id="image-detail"
+            data-photo-id="{$concert->photo_id}"
+            data-album-id="{$concert->album_id}"
+            >
+        </div>
+
+        <div
+            class="col-md-12"
+            role="tabpanel" 
+            n:if="isset($concert->description) && !empty($concert->description)">
+            <div class="panel-body event-description">
+                {$concert->description|noescape|texy}
+            </div>
+        </div>
+
+        <div id="map" style="width:100%;height:500px"></div>
+
+        <script>
+        function map() {
+            var mapCanvas = document.getElementById("map");
+            var lattitude = {$concert->lattitude};
+            var longitude = {$concert->longitude};
+            var mapOptions = {
+                center: new google.maps.LatLng(lattitude,longitude),
+                zoom: 15
+            }
+            var marker = new google.maps.Marker({
+                position: { lat: lattitude, lng: longitude },
+                map: map,
+            });
+
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            marker.setMap(map);
+        }
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?callback=map&key=AIzaSyBRTG4FF2gpu__87MJRYYx5G_-bFCxUhaU"></script>
+    </div>
+{/snippet}
+
+{/block}
