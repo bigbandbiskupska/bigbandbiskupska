@@ -22,4 +22,9 @@ class ConcertPresenter extends BasePresenter
         }
     }
 
+    public function actionDetail ( $id ) {
+        if ( ! $this -> template -> concert = $this -> concerts -> item ( $id ) )
+            $this -> presenter -> redirect ( "Concert:default" );
+    }
+
 }
