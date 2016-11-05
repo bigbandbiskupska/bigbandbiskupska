@@ -40,21 +40,21 @@
         {var $firstConcertInTheMonth = $month[0]}
 
         {foreach $month as $concert}
-            <div class="row">
-                <div class="col-md-2 text-center">
-                    {first}
-                        <div class="hidden-xs" style="margin-top: 40%"></div>
-                        <h3>{$concert->date|month}</h3>
-                    {else}
-                        <div style="margin-top: 40%" class="glyphicon glyphicon-unchecked hidden-xs"></div>
-                    {/first}
-                </div>
-                <div class="col-md-10">
-                    <section class="panel-group band-accordion">
+            <a href="{link :Front:Concert:detail $concert -> id}">
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        {first}
+                            <div class="hidden-xs" style="margin-top: 40%"></div>
+                            <h3>{$concert->date|month}</h3>
+                        {else}
+                            <div style="margin-top: 40%" class="glyphicon glyphicon-unchecked hidden-xs"></div>
+                        {/first}
+                    </div>
+                    <div class="col-md-10">
                         {include concert, '_concert' => $concert}
-                    </section>
+                    </div>
                 </div>
-            </div>
+            </a>
         {/foreach}
 
 
@@ -103,29 +103,6 @@
             </div>
         </div>
 
-    </div>
-
-    <div class="panel-collapse collapse clearfix" id="{$_concert->name|webalize}">
-        <div class="panel-body">
-
-            <div
-                class="col-md-12 google-image text-center"
-                data-photo-id="{$_concert->photo_id}"
-                data-album-id="{$_concert->album_id}"
-                >
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div
-                class="col-md-12"
-                role="tabpanel" 
-                n:if="isset($_concert->description) && !empty($_concert->description)">
-                <div class="panel-body event-description">
-                    {$_concert->description|noescape|texy}
-                </div>
-            </div>
-        </div>
     </div>
 
 </article>
