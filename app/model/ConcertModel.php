@@ -15,10 +15,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
     const ALBUM_ID = "6297830325684432193";
 
     private $concerts;
+    private $concert;
 
     public function __construct () {
         $this -> concerts = array (
             (object) [
+                "id" => 1,
+                "lattitude" => 50.0875476,
+                "longitude" => 14.3999416,
                 "date" => DateTime::from( "2016-10-04 18:30:00" ),
                 "name" => "Big Band Biskupská na HAMU",
                 "location_text" => "Sál Bohuslava Martinů, Malostranské náměstí, Praha",
@@ -35,6 +39,9 @@ Koncert se uskuteční v nádherném sále Hudební a taneční fakulty AMU v Pr
 Těšíme se na vás!",
             ],
             (object) [
+                "id" => 2,
+                "lattitude" => 50.0817551,
+                "longitude" => 14.4073673,
                 "date" => DateTime::from( "2016-06-28 16:00:00" ),
                 "name" => "Big Band Biskupská na Střeleckém ostrově",
                 "location_text" => "Střelecký ostrov, Praha 5",
@@ -45,6 +52,9 @@ Těšíme se na vás!",
 Těšíme se na vás!",
             ],
             (object) [
+                "id" => 3,
+                "lattitude" => 50.1447072,
+                "longitude" => 15.1176113,
                 "date" => DateTime::from( "2016-06-24 18:00:00" ),
                 "name" => "Big Band Biskupská v Poděbradech",
                 "location_text" => "Kolonáda, Poděbrady",
@@ -55,6 +65,9 @@ Těšíme se na vás!",
 Těšíme se na vás!",
             ],
             (object) [
+                "id" => 4,
+                "lattitude" => 50.0875726,
+                "longitude" => 14.4189987,
                 "date" => DateTime::from( "2016-06-01 14:00:00" ),
                 "name" => "Maraton ZUŠ",
                 "location_text" => "Staroměstské náměstí, Praha 1",
@@ -69,6 +82,9 @@ Big Band Biskupská pod taktovkou Milana Tolknera koncertuje již od roku 2009 a
 Těšíme se na vás. Na Staromáku to žije!",
             ],
             (object) [
+                "id" => 5,
+                "lattitude" => 50.0875476,
+                "longitude" => 14.3999416,
                 "date" => DateTime::from( "2016-05-26 18:30:00" ),
                 "name" => "Závěrečný koncert ZUŠ Biskupská",
                 "location_text" => "Sál Bohuslava Martinů, Malostranské náměstí, Praha",
@@ -83,6 +99,9 @@ Big Band Biskupská koncertuje již od roku 2009 a za léta své činnosti má z
 Těšíme se na vás. Na Malé straně to žije!",
             ],
             (object) [
+                "id" => 6,
+                "lattitude" => 49.9733874,
+                "longitude" => 14.3899573,
                 "date" => DateTime::from( "2016-05-21 15:00:00" ),
                 "name" => "Koncert na Zbraslavi - Big Band Biskupská",
                 "location_text" => "Bowling Zbraslav U Stromečku, Elišky Přemyslovny 433, 15600 Zbraslav",
@@ -101,6 +120,9 @@ Pivní slavnosti zažívají svůj třetí úspěšný ročník, připravit se m
 Těšíme se na vás. Na Zbraslavi to žije!",
             ],
             (object) [
+                "id" => 7,
+                "lattitude" => 49.2548602,
+                "longitude" => 15.1875094,
                 "date" => DateTime::from( "2016-05-20 19:00:00" ),
                 "name" => "Jazz na hradě v Žirovnici",
                 "location_text" => "Tyršova 456, 394 68 Žirovnice, Česká Republika",
@@ -127,7 +149,12 @@ Těšíme se na vás. V Žirovnici to žije!",
     }
 
     public function item ( $id ) {
-        return isset( $this -> concerts[ $id ] ) ? $this -> concerts[ $id ] : NULL;
+        foreach ( $this -> concerts as $concert ) {
+            if ( $id == $concert -> id ) {
+                return $concert;
+            }
+        }
+        return NULL;
     }
 
     public function limit ( $limit = 10, $offset = 0, $by = array (), $order = array () ) {
