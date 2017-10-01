@@ -9,3 +9,5 @@ composer.lock
 Repertoar_BBB.csv
 extract_repertoar.php
 polls/*
+.DS_Store
+composer.phar
