@@ -17,6 +17,28 @@ class ConcertModel extends BaseModel
     public function __construct () {
         $this -> concerts = array (
             (object) [
+                "id" => 23,
+                "lattitude" => 50.087394,
+                "longitude" => 14.417399,
+                "date" => DateTime::from( "2017-12-17 18:00:00" ),
+                "name" => "Vánoční koncert - Big Band Biskupská",
+                "location_text" => "Městská knihovna v Praze, Mariánské náměstí 98/1, 110 00 Praha",
+                "photo_id" => "6388966290308299618",
+                "album_id" => self::ALBUM_ID,
+                "description" => ""
+            ],
+            (object) [
+                "id" => 22,
+                "lattitude" => 49.9750042,
+                "longitude" => 14.3946925,
+                "date" => DateTime::from( "2017-12-08 18:00:00" ),
+                "name" => "Vánoční koncert na Zbraslavi - Big Band Biskupská",
+                "location_text" => "Černé divadlo Jiřího Srnce, U Lékárny 597, 156 00 Praha-Zbraslav",
+                "photo_id" => "6350741639950639810",
+                "album_id" => self::ALBUM_ID,
+                "description" => "",
+            ],
+            (object) [
                 "id" => 21,
                 "lattitude" => 48.492639,
                 "longitude" => 13.895044,
