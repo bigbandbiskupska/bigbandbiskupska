@@ -23,8 +23,8 @@ class Error4xxPresenter extends \App\FrontModule\Presenters\BasePresenter
                 $_SERVER['REQUEST_METHOD'],
                 $_SERVER['HTTP_HOST'],
                 $_SERVER['REQUEST_URI'],
-                $_SERVER['HTTP_REFERER'],
-                $_SERVER['HTTP_USER_AGENT'],
+                isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'uknown referer',
+                isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'uknown agent',
                 date('Y-n-d H:i:s', $_SERVER['REQUEST_TIME'])),
             Debugger::ERROR );
         $this -> template -> setFile( is_file( $file ) ? $file : __DIR__ . '/templates/Error/4xx.latte'  );
