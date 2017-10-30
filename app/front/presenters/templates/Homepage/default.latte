@@ -43,8 +43,10 @@
 							<p class="lead">
 								{_front.presenters.homepage.default.text.lead.3}
 							</p>
+							<p class="lead">
+								{_front.presenters.homepage.default.text.lead.4}
+							</p>
 						</div>
-
 						<div class="col-sm-6 col-md-4">
 							<h2>{_front.presenters.homepage.default.future-concerts}</h2>
 							{if count($concerts)}
@@ -235,6 +237,28 @@
 								</div>
 							</div>
 
+							<hr class="clearfix" />
+
+
+							<div class="row">
+								<div class="col-md-3 text-center">
+									<a href="{$basePath}/img/homepage/austria.jpg"
+									   title="{_front.presenters.homepage.default.austria}"
+									   class="album-link"
+									   data-gallery
+									>
+										<img src="{$basePath}/img/homepage/thumbnails/austria.jpg"
+											 class="img img-rounded img-resp img300x150"
+											 alt="{_front.presenters.homepage.default.austria}" />
+									</a>
+								</div>
+								<div class="col-md-9">
+								    <h3>{_front.presenters.homepage.default.austria}</h3>
+									<p>
+										{_front.presenters.homepage.default.text.austria.1}
+									</p>
+								</div>
+							</div>
 
 						</div>
 
