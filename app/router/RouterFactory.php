@@ -27,14 +27,14 @@ class RouterFactory
     public function createRouter () {
         $router = new RouteList;
 
-        $router[] = new Route( '[<locale=cs cs|en>/][home]', 'Front:Homepage:default' );
-        $router[] = new Route( '[<locale=cs cs|en>/]kapela', 'Front:Band:default' );
-        $router[] = new Route( '[<locale=cs cs|en>/]kontakt', 'Front:Contact:default' );
-        $router[] = new Route( '[<locale=cs cs|en>/]historie', 'Front:History:default' );
-        $router[] = new Route( '[<locale=cs cs|en>/]repertoar', 'Front:Song:default' );
-        $router[] = new Route( '[<locale=cs cs|en>/]videa', 'Front:Video:default' );
-        $router[] = new Route( '[<locale=cs cs|en>/]koncerty[/<paginator-page=1>]', 'Front:Concert:default' );
-        $router[] = new Route( '[<locale=cs cs|en>/]koncert/<id>[/<slug>]', array(
+        $router[] = new Route( '[<locale cs|en>/][home]', 'Front:Homepage:default' );
+        $router[] = new Route( '[<locale cs|en>/]kapela', 'Front:Band:default' );
+        $router[] = new Route( '[<locale cs|en>/]kontakt', 'Front:Contact:default' );
+        $router[] = new Route( '[<locale cs|en>/]historie', 'Front:History:default' );
+        $router[] = new Route( '[<locale cs|en>/]repertoar', 'Front:Song:default' );
+        $router[] = new Route( '[<locale cs|en>/]videa', 'Front:Video:default' );
+        $router[] = new Route( '[<locale cs|en>/]koncerty[/<paginator-page=1>]', 'Front:Concert:default' );
+        $router[] = new Route( '[<locale cs|en>/]koncert/<id>[/<slug>]', array(
             'module' => 'Front',
             'presenter' => 'Concert',
             'action' => 'detail',

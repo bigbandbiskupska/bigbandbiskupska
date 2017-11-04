@@ -6,6 +6,7 @@ use Kdyby\Translation\Translator;
 use Nette;
 use Nette\Application\ForbiddenRequestException;
 use Nette\Utils\DateTime;
+use Nette\Http\Request;
 use Texy;
 use Texy\Modules\HeadingModule;
 use Tracy;
@@ -30,6 +31,7 @@ class BasePresenter extends Presenter
         parent::startup();
         $this -> template -> productionMode = Tracy\Debugger::$productionMode;
         $this -> template -> isMobile = Browser::isMobile();
+        $this -> template -> locale = $this->translator->getLocale();
     }
 
     protected function createTemplate ( $class = NULL ) {
