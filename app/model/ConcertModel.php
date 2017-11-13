@@ -25,18 +25,22 @@ class ConcertModel extends BaseModel
                 "location_text" => "Městská knihovna v Praze, Mariánské náměstí 98/1, 110 00 Praha",
                 "photo_id" => "6388966290308299618",
                 "album_id" => self::ALBUM_ID,
-                "description" => ""
+                "description" => "Hoďte předvánoční stres za hlavu a stavte se 17. prosince v Městské knihovně na Mariánském náměstí. Přesně v 18 hodin zde odstartuje svůj tradiční vánoční koncert Big Band Biskupská spolu s hosty a sólisty.
+
+Letošní repertoár je nabitý nejen známými vánočními skladbami, orchestrálkami, ale i novými songy v podání Ester Kubátové, nadějné sólistky, která se již ve svých 13 letech zúčastnila soutěže Česko zpívá. Oblíbené písně uslyšíte i od naší stálé zpěvačky Kateřiny Tošnarové, která svým dokonalým francouzským přízvukem zmate i rodilého mluvčího. A na závěr se vám představí host večera – Martin Jánský."
             ],
             (object) [
                 "id" => 22,
                 "lattitude" => 49.9750042,
                 "longitude" => 14.3946925,
-                "date" => DateTime::from( "2017-12-08 20:00:00" ),
+                "date" => DateTime::from( "2017-12-08 19:00:00" ),
                 "name" => "Vánoční koncert na Zbraslavi - Big Band Biskupská",
                 "location_text" => "Černé divadlo Jiřího Srnce, U Lékárny 597, 156 00 Praha-Zbraslav",
                 "photo_id" => "6297830530208318354",
                 "album_id" => self::ALBUM_ID,
-                "description" => "",
+                "description" => "Přesně v pátek 8. prosince v 19:00 odstartuj tradiční vánoční koncert Big Bandu Biskupská doprovázený sólisty. Jako první uslyšíte proslule známé orchestrálky z naleštěných žesťů a pečlivě vyčištěných nástrojů.
+
+Představí se vám sólistka Ester Kubátová, kterou můžete znát z pěveckých soutěží Česko zpívá, Little star či z našich předchozích koncertů. Poté uslyšíte naši stálou zpěvačku Kateřinu Tošnarovou, která zazpívá oblíbené francouzské skladby, ale i novinky, které si připravila právě pro tuto příležitost. V průběhu koncertu naladíme vánoční atmosféru, neochudíme vás o sóla a duety. Celým koncertem nás bude provázet moderátor Aleš Benda. Na závěr si poslechneme české hitovky, které budo třešničkou na dortu a to právě díky podání Františka Zahradníčka, sólisty opery Národního divadla, který účinkuje s předními orchestry, jakými jsou Pražská komorní filharmonie nebo Symfonický orchestr Českého rozhlasu.",
             ],
             (object) [
                 "id" => 21,
