@@ -19,15 +19,30 @@ var errorUrl = {link logError!}
 
 {script}
 $(function() {
-    var ignoredTitles = [ 'Profile Photos' ];
+    var ignoredTitles = [ 'Profile Photos', 'Koncerty' ];
+
+    var baseUrl = "https://api.flickr.com/services/rest/";
+    var API_key = "0341f1f52bbe6222c1388e750d548a62";
+
+    var params = {
+        method: 'flickr.photosets.getList',
+        user_id: '153036765@N08',
+        api_key: API_key,
+        primary_photo_extras: 'url_sq,url_o',
+        per_page: 500,
+        format: 'json',
+        nojsoncallback: '1',
+    };
+
+    var url = baseUrl + '?' + Object.keys(params).map(key => key + '=' + params[key]).join('&');
+
     $.nette.ajax({
-        url: 'https://picasaweb.google.com/data/feed/api/user/bigbandbiskupska?alt=json&imgmax=1080u&thumbsize=200u',
+        url: url,
         timeout: 10000,
-        dataType: 'jsonp',
+        dataType: 'json',
         off: ['spinner']
     }).done(function (result) {
-
-        if ( ! result.feed || ! result.feed.entry || ! result.feed.entry.length )
+        if ( !result.photosets.total || !result.photosets.photoset || !result.photosets.photoset.length )
         {
             // empty (or fail)
             $("#galleries").text("Litujeme, ale nebyly nalezeny žádné galerie.")
@@ -37,13 +52,13 @@ $(function() {
         $("#galleries").html("")
 
         var linksContainer = $('#galleries')
-        for ( var i = 0, cnt = 0; i < result.feed.entry.length; i ++, cnt ++ )
+        for ( var i = 0, cnt = 0; i < result.photosets.photoset.length; i ++, cnt ++ )
         {
             var $node = $(".album-template").clone()
-            var $e = result.feed.entry[i]
-            var $thumbnail = $e.media$group.media$thumbnail[0]
-            var $image = $e.media$group.media$content[0]
-            var title = $e.media$group.media$title.$t
+            var $e = result.photosets.photoset[i]
+            var $thumbnail = { url: $e.primary_photo_extras.url_sq }
+            var $image = 'none'
+            var title = $e.title._content
             title = title.replace ("_public", "").replace("public", "")
 
             if(ignoredTitles.indexOf(title) != -1) {
@@ -51,8 +66,9 @@ $(function() {
                 continue;
             }
 
-            var description = $e.media$group.media$description.$t
-            var id = $e.gphoto$id.$t
+            var description = $e.description._content;
+            var id = $e.id
+            //var published = new Date(parseInt($e.date_create));
 
             $node
                 .removeClass("album-template")
@@ -60,11 +76,13 @@ $(function() {
 
             $node.find(".album-title").text(title)
             $node.find(".album-description").text(description)
-            $node.find(".album-date")
-                .text(new Date($e.published.$t).getFullYear())
+            //$node.find(".album-date")
+            //    .text(published.getFullYear())
             $node.find(".album-link")
                 .prop("href", linkUrl.replace(new RegExp(encodeURI('<insert id value here>')), id))
                 .prop("title", title)
+            $node.find(".panel-body")
+                .css("text-align", "center")
             $node.find(".album-cover")
                 .prop("src", $thumbnail.url)
                 .prop("type", $image.type)
@@ -77,7 +95,7 @@ $(function() {
         }
     }).fail(function () {
         $("#galleries").text("Nelze se připojit k seznamu galerií, opakujte akci později.")
-    })
+    });
 });
 {/script}
 

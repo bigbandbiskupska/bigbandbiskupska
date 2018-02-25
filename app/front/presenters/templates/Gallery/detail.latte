@@ -19,16 +19,32 @@
 
 {block content}
 
+
 {script}
 $(function () {
+    var API_key = "0341f1f52bbe6222c1388e750d548a62";
+    var baseUrl = "https://api.flickr.com/services/rest/";
+    var params = {
+        method: 'flickr.photosets.getPhotos',
+        user_id: '153036765@N08',
+        api_key: API_key,
+        photoset_id: '{$gallery->id|noescape}',
+        extras: 'url_sq,url_o',
+        per_page: 500,
+        format: 'json',
+        media: 'photos',
+        nojsoncallback: '1',
+    };
+    
+    var url = baseUrl + '?' + Object.keys(params).map(key => key + '=' + params[key]).join('&');
+
     $.nette.ajax({
-        url: 'https://picasaweb.google.com/data/feed/api/user/bigbandbiskupska/albumid/{$gallery->id|noescape}?alt=json&imgmax=1080u&thumbsize=100c',
+        url: url,
         timeout: 10000,
-        dataType: 'jsonp',
+        dataType: 'json',
         off: ['spinner']
     }).done(function (result) {
-
-        if (!result.feed || !result.feed.entry || !result.feed.entry.length)
+        if (!result.photoset || !result.photoset.photo || !result.photoset.photo.length)
         {
             // empty (or fail)
             $("#images").text("Litujeme, ale žádné obrázky nebyly nalezeny")
@@ -38,23 +54,22 @@ $(function () {
         $("#images").html("")
 
         var linksContainer = $('#images')
-        $(".gallery-name").text(result.feed.title.$t)
-        $(".gallery-description").text(result.feed.subtitle.$t)
+        $(".gallery-name").text(result.photoset.title)
+        //$(".gallery-description").text(result.photoset.id)
 
-        for (var i = 0; i < result.feed.entry.length; i++)
+        for (var i = 0; i < result.photoset.photo.length; i++)
         {
-            var $e = result.feed.entry[i];
-            var $thumbnail = $e.media$group.media$thumbnail[0]
-            var $image = $e.media$group.media$content[0]
+            var $e = result.photoset.photo[i];
+            var $thumbnail = $e.url_sq;
+            var $image = $e.url_o;
             var $img = $('<img>')
-                    .prop('src', $thumbnail.url)
-                    .prop('type', $image.type)
-                    .prop('alt', $e.media$group.media$title.$t)
+                    .prop('src', $thumbnail)
+                    .prop('alt', $e.title)
                     .addClass('img')
             $('<a>')
                     .append($img)
-                    .prop('href', $image.url)
-                    .prop('title', $e.media$group.media$description.$t)
+                    .prop('href', $image)
+                    .prop('title', $e.title)
                     .attr('data-gallery', '')
                     .appendTo(linksContainer)
         }
