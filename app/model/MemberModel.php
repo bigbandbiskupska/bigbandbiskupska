@@ -4,8 +4,8 @@ namespace App\Model;
 
 use Tulinkry\Model\BaseModel;
 
-class MemberModel extends BaseModel
-{
+class MemberModel extends BaseModel {
+
     private $sections;
     private $oldmembers;
 
@@ -30,26 +30,26 @@ class MemberModel extends BaseModel
         }, $members['oldmembers']);
     }
 
-    public function item ( $id ) {
-        return isset( $this -> sections[ $id ] ) ? $this -> sections[ $id ] : NULL;
+    public function item($id) {
+        return isset($this->sections[$id]) ? $this->sections[$id] : NULL;
     }
 
-    public function limit ( $limit = 10, $offset = 0, $by = array (), $order = array () ) {
-        $limited = [ ];
-        for ( $i = $offset; $i < $limit + $offset; $i ++ )
-            if ( isset( $this -> sections[ $i ] ) )
-                $limited [] = $this -> sections[ $i ];
+    public function limit($limit = 10, $offset = 0, $by = array(), $order = array()) {
+        $limited = [];
+        for ($i = $offset; $i < $limit + $offset; $i ++)
+            if (isset($this->sections[$i]))
+                $limited [] = $this->sections[$i];
         return $limited;
     }
 
-    public function all () {
-        return $this -> sections;
+    public function all() {
+        return $this->sections;
     }
 
-    public function by ( $by = array (), $order = array () ) {
-        if ( isset( $by[ "old" ] ) && $by[ "old" ] === true )
-            return $this -> oldmembers;
-        return [ ];
+    public function by($by = array(), $order = array()) {
+        if (isset($by["old"]) && $by["old"] === true)
+            return $this->oldmembers;
+        return [];
     }
 
 }

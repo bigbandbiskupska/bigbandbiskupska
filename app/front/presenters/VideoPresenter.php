@@ -5,8 +5,7 @@ namespace App\FrontModule\Presenters;
 use Nette;
 use App;
 
-class VideoPresenter extends BasePresenter
-{
+class VideoPresenter extends BasePresenter {
 
     /**
      * @var App\Model\VideoModel
@@ -14,8 +13,8 @@ class VideoPresenter extends BasePresenter
      */
     public $videos;
 
-    public function actionDefault () {
-        $this -> template -> videos = $this -> videos -> by( [ ], [ "name" => "ASC" ] );
+    public function actionDefault() {
+        $this->template->videos = $this->videos->by([], ["name" => "ASC"]);
     }
 
 }

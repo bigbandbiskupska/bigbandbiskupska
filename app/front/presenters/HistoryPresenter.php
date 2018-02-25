@@ -2,7 +2,6 @@
 
 namespace App\FrontModule\Presenters;
 
-class HistoryPresenter extends BasePresenter
-{
+class HistoryPresenter extends BasePresenter {
     
 }

@@ -8,8 +8,7 @@ use Latte\Loaders\StringLoader;
 use Nette;
 use WebLoader\InvalidArgumentException;
 
-class BandPresenter extends BasePresenter
-{
+class BandPresenter extends BasePresenter {
 
     /**
      * @var MemberModel
@@ -17,15 +16,15 @@ class BandPresenter extends BasePresenter
      */
     public $members;
 
-    public function actionDefault () {
+    public function actionDefault() {
 
-        $this -> template -> sections = $this -> members -> all();
-        $this -> template -> oldmembers = $this -> members -> by( ["old" => true ] );
+        $this->template->sections = $this->members->all();
+        $this->template->oldmembers = $this->members->by(["old" => true]);
     }
 
-    public function generateDescription ( $member ) {
+    public function generateDescription($member) {
         $latte = new Latte\Engine;
-        $latte -> setLoader( new StringLoader() );
+        $latte->setLoader(new StringLoader());
 
 
         $start = [
@@ -151,15 +150,15 @@ class BandPresenter extends BasePresenter
         ];
 
         $instruments = [
-            "trumpeta" => [ "trumpeta", "trumpety", "trumpetě", "trumpetu", "trumpeto", "trumpetě", "trumpetou" ],
-            "klarinet" => [ "klarinet", "klarinetu", "klarinetem", "klarinet", "klarinete", "klarinetu", "klarinetem" ],
-            "saxofon" => [ "saxofon", "saxofonu", "saxofonu", "saxofon", "saxofone", "saxofonu", "saxofonem" ],
-            "basa" => [ "basa", "basy", "base", "basu", "baso", "base", "basou" ],
-            "bicí" => [ "bicí", "bicích", "bicím", "bicí", "bicí", "bicích", "bicími" ],
-            "klávesy" => [ "klávesy", "kláves", "klávesám", "klávesy", "klávesy", "klávesách", "klávesami" ],
-            "flétna" => [ "flétna", "flétny", "flétně", "flétnu", "flétno", "flétně", "flétnou" ],
-            "trombón" => [ "trombón", "trombónu", "trombónu", "trombón", "trombóne", "trombónu", "trombónem" ],
-            "zpěv" => [ "zpěv", "zpěvu", "zpěvu", "zpěv", "zpěve", "zpěvu", "zpěvem" ],
+            "trumpeta" => ["trumpeta", "trumpety", "trumpetě", "trumpetu", "trumpeto", "trumpetě", "trumpetou"],
+            "klarinet" => ["klarinet", "klarinetu", "klarinetem", "klarinet", "klarinete", "klarinetu", "klarinetem"],
+            "saxofon" => ["saxofon", "saxofonu", "saxofonu", "saxofon", "saxofone", "saxofonu", "saxofonem"],
+            "basa" => ["basa", "basy", "base", "basu", "baso", "base", "basou"],
+            "bicí" => ["bicí", "bicích", "bicím", "bicí", "bicí", "bicích", "bicími"],
+            "klávesy" => ["klávesy", "kláves", "klávesám", "klávesy", "klávesy", "klávesách", "klávesami"],
+            "flétna" => ["flétna", "flétny", "flétně", "flétnu", "flétno", "flétně", "flétnou"],
+            "trombón" => ["trombón", "trombónu", "trombónu", "trombón", "trombóne", "trombónu", "trombónem"],
+            "zpěv" => ["zpěv", "zpěvu", "zpěvu", "zpěv", "zpěve", "zpěvu", "zpěvem"],
         ];
 
         $plural = [
@@ -175,68 +174,68 @@ class BandPresenter extends BasePresenter
         ];
 
         $words = [
-            "trumpety" => [ "trumpety", "trumpet", "trumpetám", "trumpety", "trumpety", "trumpetách", "trumpetami" ],
-            "klarinety" => [ "klarinety", "klarinetů", "klarinetům", "klarinety", "klarinety", "klarinetech", "klarinetům" ],
-            "saxofony" => [ "saxofony", "saxofonů", "saxofonům", "saxofony", "saxofony", "saxofonech", "saxofony" ],
-            "basy" => [ "basy", "bas", "basám", "basy", "basy", "basách", "basami" ],
+            "trumpety" => ["trumpety", "trumpet", "trumpetám", "trumpety", "trumpety", "trumpetách", "trumpetami"],
+            "klarinety" => ["klarinety", "klarinetů", "klarinetům", "klarinety", "klarinety", "klarinetech", "klarinetům"],
+            "saxofony" => ["saxofony", "saxofonů", "saxofonům", "saxofony", "saxofony", "saxofonech", "saxofony"],
+            "basy" => ["basy", "bas", "basám", "basy", "basy", "basách", "basami"],
             //"bicí" => [ "bicí", "bicích", "bicím", "bicí", "bicí", "bicích", "bicími" ],
             //"klávesy" => [ "klávesy", "kláves", "klávesám", "klávesy", "klávesy", "klávesách", "klávesami" ],
-            "flétny" => [ "flétny", "fléten", "flétnám", "flétny", "flétny", "flétnách", "flétnami" ],
-            "trombóny" => [ "trombóny", "trombónů", "trombónům", "trombóny", "trombóny", "trombónech", "trombóny" ],
-            "zpěvy" => [ "zpěvy", "zpěvů", "zpěvům", "zpěvy", "zpěvy", "zpěvech", "zpěvy" ],
-            "rok" => [ "rok", "roku", "rokem", "rok", "roku", "roku", "rokem" ],
-            "roky" => [ "roky", "roků", "rokům", "roky", "roky", "rocích", "rokami" ],
-            "léta" => [ "léta", "let", "letům", "léta", "léta", "letech", "lety" ],
+            "flétny" => ["flétny", "fléten", "flétnám", "flétny", "flétny", "flétnách", "flétnami"],
+            "trombóny" => ["trombóny", "trombónů", "trombónům", "trombóny", "trombóny", "trombónech", "trombóny"],
+            "zpěvy" => ["zpěvy", "zpěvů", "zpěvům", "zpěvy", "zpěvy", "zpěvech", "zpěvy"],
+            "rok" => ["rok", "roku", "rokem", "rok", "roku", "roku", "rokem"],
+            "roky" => ["roky", "roků", "rokům", "roky", "roky", "rocích", "rokami"],
+            "léta" => ["léta", "let", "letům", "léta", "léta", "letech", "lety"],
         ];
 
         $pronouns = [
-            "on" => [ "on", "něj", "mu", "ho", "", "něm", "ním" ],
-            "ona" => [ "ona", "ní", "ní", "ji", "", "ní", "ní" ],
+            "on" => ["on", "něj", "mu", "ho", "", "něm", "ním"],
+            "ona" => ["ona", "ní", "ní", "ji", "", "ní", "ní"],
         ];
 
         $interests = [
-            "informatika" => [ "informatika", "", "informatice", "informatika", "", "informatice", "informatikou" ],
-            "deskové hry" => [ "deskové hry", "", "deskovým hrám", "deskové hry", "", "deskových hrách", "deskovými hrami" ],
-            "sport" => [ "sport", "", "sportu", "sport", "", "sportu", "sportem" ],
-            "plavání" => [ "plavání", "", "plavání", "plavání", "", "plavání", "plaváním" ],
-            "extrémní lyžování" => [ "extrémní lyžování", "", "extrémnímu lyžování", "extrémní lyžování", "", "extrémním lyžování", "extrémním lyžováním" ],
-            "nahánění bodů u kapelníka" => [ "nahánění bodů u kapelníka", "", "nahánění bodů u kapelníka", "nahánění bodů u kapelníka", "", "nahánění bodů u kapelníka", "naháněním bodů u kapelníka" ],
-            "stavění hradů z písku" => [ "stavění hradů z písku", "", "stavění hradů z písku", "stavění hradů z písku", "", "stavění hradů z písku", "stavěním hradů z písku" ],
-            "pískání přes kousek trávy" => [ "pískání přes kousek trávy", "", "pískání přes kousek trávy", "pískání přes kousek trávy", "", "pískání přes kousek trávy", "pískáním přes kousek trávy" ],
-            "fandění fotbalu" => [ "fandění fotbalu", "", "fandění fotbalu", "fandění fotbalu", "", "fandění fotbalu", "fanděním fotbalu" ],
-            "vaření" => [ "vaření", "", "vaření", "vaření", "", "vaření", "vařením" ],
-            "zalévání zahrady" => [ "zalévání zahrady", "", "zalévání zahrady", "zalévání zahrady", "", "zalévání zahrady", "zaléváním zahrady" ],
-            "učení" => [ "učení", "", "učení", "učení", "", "učení", "učením" ],
-            "domácí kutilství" => [ "domácí kutilství", "", "domácímu kutilství", "domácí kutilství", "", "domácím kutilství", "domácím kutilstvím" ],
-            "akvaristika" => [ "akvaristika", "", "akvaristice", "akvaristiku", "", "akvaristice", "akvaristikou" ],
-            "numismatiku" => [ "numismatiku", "", "numismatice", "numismatiku", "", "numismatice", "numismatikou" ],
-            "dějepis" => [ "dějepis", "", "dějepisu", "dějepis", "", "dějepisu", "dějepisem" ],
-            "rybaření" => [ "rybaření", "", "rybaření", "rybaření", "", "rybaření", "rybařením" ],
-            "lovení bouřek" => [ "lovení bouřek", "", "lovení bouřek", "lovení bouřek", "", "lovení bouřek", "lověním bouřek" ],
-            "pěstování fazolí" => [ "pěstování fazolí", "", "pěstování fazolí", "pěstování fazolí", "", "pěstování fazolí", "pěstováním fazolí" ],
-            "keramika" => [ "keramika", "", "keramice", "keramiku", "", "keramice", "keramikou" ],
-            "jízda na koni" => [ "jízda na koni", "", "jízdě na koni", "jízdu na koni", "", "jízdě na koni", "jízdou na koni" ],
-            "poloprofesionální pití vody" => [ "poloprofesionální pití vody", "", "poloprofesionálnímu pití vody", "poloprofesionální pití vody", "", "poloprofesionálním pití vody", "poloprofesionálním pití vody" ],
-            "čtení Méďy Pusíka" => [ "čtení Méďy Pusíka", "", "čtení Méďy Pusíka", "čtení Méďy Pusíka", "", "čtení Méďy Pusíka", "čtením Méďy Pusíka" ],
-            "pletení vlněných šál" => [ "pletení vlněných šál", "", "pletení vlněných šál", "pletení vlněných šál", "", "pletení vlněných šál", "pletením vlněných šál" ],
-            "objíždení letních hudebních festivalů" => [ "objíždení letních hudebních festivalů", "", "objíždení letních hudebních festivalů", "objíždení letních hudebních festivalů", "", "objíždení letních hudebních festivalů", "objíždením letních hudebních festivalů" ],
-            "nošení velké červené bedny se stojany" => [ "nošení velké červené bedny se stojany", "", "nošení velké červené bedny se stojany", "nošení velké červené bedny se stojany", "", "nošení velké červené bedny se stojany", "nošením velké červené bedny se stojany" ],
-            "truhlaření" => [ "truhlaření", "", "truhlaření", "truhlaření", "", "truhlaření", "truhlařením" ],
-            "gymnastika" => [ "gymnastika", "", "gymnastice", "gymnastiku", "", "gymnastice", "gymnastikou" ],
-            "degustaci vína" => [ "degustace vína", "", "degustaci vína", "degustaci vína", "", "degustaci vína", "degustací vína" ],
-            "sbírání nerostů a hornin" => [ "sbírání nerostů a hornin", "", "sbírání nerostů a hornin", "sbírání nerostů a hornin", "", "sbírání nerostů a hornin", "sbíráním nerostů a hornin" ],
-            "chytání motýlů" => [ "chytání motýlů", "", "chytání motýlů", "chytání motýlů", "", "chytání motýlů", "chytáním motýlů" ],
-            "astrologii" => [ "astrologie", "", "astrologii", "astrologii", "", "astrologii", "astrologií" ],
-            "stanování v zakázaných oblastech" => [ "stanování v zakázaných oblastech", "", "stanování v zakázaných oblastech", "stanování v zakázaných oblastech", "", "stanování v zakázaných oblastech", "stanováním v zakázaných oblastech" ],
-            "okousávání tužky" => [ "okousávání tužky", "", "okousávání tužky", "okousávání tužky", "", "okousávání tužky", "okousáváním tužky" ],
-            "okousávání nehtů" => [ "okousávání nehtů", "", "okousávání nehtů", "okousávání nehtů", "", "okousávání nehtů", "okousáváním nehtů" ],
-            "okousávání nohou" => [ "okousávání nohou", "", "okousávání nohou", "okousávání nohou", "", "okousávání nohou", "okousáváním nohou" ],
-            "opravování telefonů" => [ "opravování telefonů", "", "opravování telefonů", "opravování telefonů", "", "opravování telefonů", "opravováním telefonů" ],
-            "závody na kancelářských křeslech" => [ "závody na kancelářských křeslech", "", "závodům na kancelářských křeslech", "závody na kancelářských křeslech", "", "závodech na kancelářských křeslech", "závody na kancelářských křeslech" ],
-            "kloboučnictví" => [ "kloboučnictví", "", "kloboučnictví", "kloboučnictví", "", "kloboučnictví", "kloboučnictvím" ],
-            "šeptání do hrnce" => [ "šeptání do hrnce", "", "šeptání do hrnce", "šeptání do hrnce", "", "šeptání do hrnce", "šeptáním do hrnce" ],
-            "čištění bazenů" => [ "čištění bazenů", "", "čištění bazenů", "čištění bazenů", "", "čištění bazenů", "čištěním bazenů" ],
-            "pojídání másla" => [ "pojídání másla", "", "pojídání másla", "pojídání másla", "", "pojídání másla", "pojídáním másla" ],
+            "informatika" => ["informatika", "", "informatice", "informatika", "", "informatice", "informatikou"],
+            "deskové hry" => ["deskové hry", "", "deskovým hrám", "deskové hry", "", "deskových hrách", "deskovými hrami"],
+            "sport" => ["sport", "", "sportu", "sport", "", "sportu", "sportem"],
+            "plavání" => ["plavání", "", "plavání", "plavání", "", "plavání", "plaváním"],
+            "extrémní lyžování" => ["extrémní lyžování", "", "extrémnímu lyžování", "extrémní lyžování", "", "extrémním lyžování", "extrémním lyžováním"],
+            "nahánění bodů u kapelníka" => ["nahánění bodů u kapelníka", "", "nahánění bodů u kapelníka", "nahánění bodů u kapelníka", "", "nahánění bodů u kapelníka", "naháněním bodů u kapelníka"],
+            "stavění hradů z písku" => ["stavění hradů z písku", "", "stavění hradů z písku", "stavění hradů z písku", "", "stavění hradů z písku", "stavěním hradů z písku"],
+            "pískání přes kousek trávy" => ["pískání přes kousek trávy", "", "pískání přes kousek trávy", "pískání přes kousek trávy", "", "pískání přes kousek trávy", "pískáním přes kousek trávy"],
+            "fandění fotbalu" => ["fandění fotbalu", "", "fandění fotbalu", "fandění fotbalu", "", "fandění fotbalu", "fanděním fotbalu"],
+            "vaření" => ["vaření", "", "vaření", "vaření", "", "vaření", "vařením"],
+            "zalévání zahrady" => ["zalévání zahrady", "", "zalévání zahrady", "zalévání zahrady", "", "zalévání zahrady", "zaléváním zahrady"],
+            "učení" => ["učení", "", "učení", "učení", "", "učení", "učením"],
+            "domácí kutilství" => ["domácí kutilství", "", "domácímu kutilství", "domácí kutilství", "", "domácím kutilství", "domácím kutilstvím"],
+            "akvaristika" => ["akvaristika", "", "akvaristice", "akvaristiku", "", "akvaristice", "akvaristikou"],
+            "numismatiku" => ["numismatiku", "", "numismatice", "numismatiku", "", "numismatice", "numismatikou"],
+            "dějepis" => ["dějepis", "", "dějepisu", "dějepis", "", "dějepisu", "dějepisem"],
+            "rybaření" => ["rybaření", "", "rybaření", "rybaření", "", "rybaření", "rybařením"],
+            "lovení bouřek" => ["lovení bouřek", "", "lovení bouřek", "lovení bouřek", "", "lovení bouřek", "lověním bouřek"],
+            "pěstování fazolí" => ["pěstování fazolí", "", "pěstování fazolí", "pěstování fazolí", "", "pěstování fazolí", "pěstováním fazolí"],
+            "keramika" => ["keramika", "", "keramice", "keramiku", "", "keramice", "keramikou"],
+            "jízda na koni" => ["jízda na koni", "", "jízdě na koni", "jízdu na koni", "", "jízdě na koni", "jízdou na koni"],
+            "poloprofesionální pití vody" => ["poloprofesionální pití vody", "", "poloprofesionálnímu pití vody", "poloprofesionální pití vody", "", "poloprofesionálním pití vody", "poloprofesionálním pití vody"],
+            "čtení Méďy Pusíka" => ["čtení Méďy Pusíka", "", "čtení Méďy Pusíka", "čtení Méďy Pusíka", "", "čtení Méďy Pusíka", "čtením Méďy Pusíka"],
+            "pletení vlněných šál" => ["pletení vlněných šál", "", "pletení vlněných šál", "pletení vlněných šál", "", "pletení vlněných šál", "pletením vlněných šál"],
+            "objíždení letních hudebních festivalů" => ["objíždení letních hudebních festivalů", "", "objíždení letních hudebních festivalů", "objíždení letních hudebních festivalů", "", "objíždení letních hudebních festivalů", "objíždením letních hudebních festivalů"],
+            "nošení velké červené bedny se stojany" => ["nošení velké červené bedny se stojany", "", "nošení velké červené bedny se stojany", "nošení velké červené bedny se stojany", "", "nošení velké červené bedny se stojany", "nošením velké červené bedny se stojany"],
+            "truhlaření" => ["truhlaření", "", "truhlaření", "truhlaření", "", "truhlaření", "truhlařením"],
+            "gymnastika" => ["gymnastika", "", "gymnastice", "gymnastiku", "", "gymnastice", "gymnastikou"],
+            "degustaci vína" => ["degustace vína", "", "degustaci vína", "degustaci vína", "", "degustaci vína", "degustací vína"],
+            "sbírání nerostů a hornin" => ["sbírání nerostů a hornin", "", "sbírání nerostů a hornin", "sbírání nerostů a hornin", "", "sbírání nerostů a hornin", "sbíráním nerostů a hornin"],
+            "chytání motýlů" => ["chytání motýlů", "", "chytání motýlů", "chytání motýlů", "", "chytání motýlů", "chytáním motýlů"],
+            "astrologii" => ["astrologie", "", "astrologii", "astrologii", "", "astrologii", "astrologií"],
+            "stanování v zakázaných oblastech" => ["stanování v zakázaných oblastech", "", "stanování v zakázaných oblastech", "stanování v zakázaných oblastech", "", "stanování v zakázaných oblastech", "stanováním v zakázaných oblastech"],
+            "okousávání tužky" => ["okousávání tužky", "", "okousávání tužky", "okousávání tužky", "", "okousávání tužky", "okousáváním tužky"],
+            "okousávání nehtů" => ["okousávání nehtů", "", "okousávání nehtů", "okousávání nehtů", "", "okousávání nehtů", "okousáváním nehtů"],
+            "okousávání nohou" => ["okousávání nohou", "", "okousávání nohou", "okousávání nohou", "", "okousávání nohou", "okousáváním nohou"],
+            "opravování telefonů" => ["opravování telefonů", "", "opravování telefonů", "opravování telefonů", "", "opravování telefonů", "opravováním telefonů"],
+            "závody na kancelářských křeslech" => ["závody na kancelářských křeslech", "", "závodům na kancelářských křeslech", "závody na kancelářských křeslech", "", "závodech na kancelářských křeslech", "závody na kancelářských křeslech"],
+            "kloboučnictví" => ["kloboučnictví", "", "kloboučnictví", "kloboučnictví", "", "kloboučnictví", "kloboučnictvím"],
+            "šeptání do hrnce" => ["šeptání do hrnce", "", "šeptání do hrnce", "šeptání do hrnce", "", "šeptání do hrnce", "šeptáním do hrnce"],
+            "čištění bazenů" => ["čištění bazenů", "", "čištění bazenů", "čištění bazenů", "", "čištění bazenů", "čištěním bazenů"],
+            "pojídání másla" => ["pojídání másla", "", "pojídání másla", "pojídání másla", "", "pojídání másla", "pojídáním másla"],
         ];
 
         $top = [
@@ -262,70 +261,70 @@ class BandPresenter extends BasePresenter
             $words,
         ];
 
-        $exluded_instruments = array_diff( array_keys( $instruments ), [$member -> instrument ] );
-        shuffle( $exluded_instruments );
+        $exluded_instruments = array_diff(array_keys($instruments), [$member->instrument]);
+        shuffle($exluded_instruments);
 
 
-        $latte -> addFilter( 'years', function ($s, $case = 1) use($words) {
-            switch ( $s ) {
+        $latte->addFilter('years', function ($s, $case = 1) use($words) {
+            switch ($s) {
                 case 0: return "teď";
-                case 1: return $s . " " . $words[ "rok" ][ $case - 1 ];
+                case 1: return $s . " " . $words["rok"][$case - 1];
                 case 2:
                 case 3:
-                case 4: return $s . " " . $words[ "roky" ][ $case - 1 ];
-                default: return $s . " " . $words[ "léta" ][ $case - 1 ];
+                case 4: return $s . " " . $words["roky"][$case - 1];
+                default: return $s . " " . $words["léta"][$case - 1];
             }
-        } );
+        });
 
-        $latte -> addFilter( 'rand', function($s) {
-            if ( is_array( $s ) )
-                return $s [ array_rand( $s ) ];
+        $latte->addFilter('rand', function($s) {
+            if (is_array($s))
+                return $s [array_rand($s)];
             return $s;
-        } );
+        });
 
-        $latte -> addFilter( "case", function($s, $case = 1) use ($dictionary) {
+        $latte->addFilter("case", function($s, $case = 1) use ($dictionary) {
             $convert = function($x) use($dictionary, $case) {
-                foreach ( $dictionary as $dict ) {
-                    if ( isset( $dict[ $x ] ) && isset( $dict[ $x ][ $case - 1 ] ) )
-                        return $dict[ $x ][ $case - 1 ];
+                foreach ($dictionary as $dict) {
+                    if (isset($dict[$x]) && isset($dict[$x][$case - 1]))
+                        return $dict[$x][$case - 1];
                 }
-                throw new Nette\InvalidArgumentException( "word was not found \"" . $s . "\"" );
+                throw new Nette\InvalidArgumentException("word was not found \"" . $s . "\"");
             };
 
-            if ( is_array( $s ) ) {
-                return array_map( $convert, $s );
+            if (is_array($s)) {
+                return array_map($convert, $s);
             }
 
-            return $convert( $s );
-        } );
+            return $convert($s);
+        });
 
 
         $parameters = [
-            "year" => rand( 2010, date( 'Y' ) - 1 ),
-            'suffix' => $member -> male ? '' : 'a',
-            'instrument' => $member -> instrument,
-            'gender' => $member -> male ? 'on' : 'ona',
-            'age' => rand( 8, 15 ),
+            "year" => rand(2010, date('Y') - 1),
+            'suffix' => $member->male ? '' : 'a',
+            'instrument' => $member->instrument,
+            'gender' => $member->male ? 'on' : 'ona',
+            'age' => rand(8, 15),
             'member' => $member,
-            'interests' => $xxx = self::generateInterests( $interests, $max = rand( 3, 4 ) ),
-            'other' => self::generateInterests( $interests, count( $interests ) - $max, $xxx ),
+            'interests' => $xxx = self::generateInterests($interests, $max = rand(3, 4)),
+            'other' => self::generateInterests($interests, count($interests) - $max, $xxx),
             'oinstruments' => $exluded_instruments,
-            'movies' => $this -> arrayShuffle( array_map( function($s) use($latte, $member, $plural) {
-                                return $latte -> renderToString( $s, [ "instrument" => $member -> instrument,
-                                            "instruments" => $plural[ $member -> instrument ] ] );
-                            }, $movies ) ),
-            'theatres' => $this -> arrayShuffle( array_map( function($s) use($latte, $member, $plural) {
-                                return $latte -> renderToString( $s, [ "instrument" => $member -> instrument,
-                                            "instruments" => $plural[ $member -> instrument ] ] );
-                            }, $theatres ) ),
-            'songs' => $this -> arrayShuffle( array_map( function($s) use($latte, $member, $plural) {
-                                return $latte -> renderToString( $s, [ "instrument" => $member -> instrument,
-                                            "instruments" => $plural[ $member -> instrument ] ] );
-                            }, $songs ) ),
-            'books' => $this -> arrayShuffle( array_map( function($s) use($latte, $member, $plural) {
-                                return $latte -> renderToString( $s, [ "instrument" => $member -> instrument,
-                                            "instruments" => $plural[ $member -> instrument ] ] );
-                            }, $books ) ),
+            'movies' => $this->arrayShuffle(array_map(function($s) use($latte, $member, $plural) {
+                                return $latte->renderToString($s, ["instrument" => $member->instrument,
+                                            "instruments" => $plural[$member->instrument]]);
+                            }, $movies)),
+            'theatres' => $this->arrayShuffle(array_map(function($s) use($latte, $member, $plural) {
+                                return $latte->renderToString($s, ["instrument" => $member->instrument,
+                                            "instruments" => $plural[$member->instrument]]);
+                            }, $theatres)),
+            'songs' => $this->arrayShuffle(array_map(function($s) use($latte, $member, $plural) {
+                                return $latte->renderToString($s, ["instrument" => $member->instrument,
+                                            "instruments" => $plural[$member->instrument]]);
+                            }, $songs)),
+            'books' => $this->arrayShuffle(array_map(function($s) use($latte, $member, $plural) {
+                                return $latte->renderToString($s, ["instrument" => $member->instrument,
+                                            "instruments" => $plural[$member->instrument]]);
+                            }, $books)),
             'likes' => $like,
             'top' => $top,
         ];
@@ -334,50 +333,50 @@ class BandPresenter extends BasePresenter
 
 
         $template = [
-            count( $start ) ? $start [ array_rand( $start ) ] : "",
-            count( $bigband ) ? $bigband [ array_rand( $bigband ) ] : "",
-            count( $interest ) ? $interest [ array_rand( $interest ) ] : "",
-            count( $after ) ? $after [ array_rand( $after ) ] : "",
+            count($start) ? $start [array_rand($start)] : "",
+            count($bigband) ? $bigband [array_rand($bigband)] : "",
+            count($interest) ? $interest [array_rand($interest)] : "",
+            count($after) ? $after [array_rand($after)] : "",
         ];
 
 
-        return $latte -> renderToString( implode( " ", $template ), $parameters );
+        return $latte->renderToString(implode(" ", $template), $parameters);
     }
 
-    protected function arrayShuffle ( $array ) {
-        shuffle( $array );
+    protected function arrayShuffle($array) {
+        shuffle($array);
         return $array;
     }
 
-    public static function generateInterests ( $interests, $n, $exlude = [ ] ) {
-        $keys = array_keys( $interests );
+    public static function generateInterests($interests, $n, $exlude = []) {
+        $keys = array_keys($interests);
 
-        if ( $n + count( $exlude ) > count( $keys ) )
-            throw new InvalidArgumentException( "n is greater than " + count( $keys ) );
+        if ($n + count($exlude) > count($keys))
+            throw new InvalidArgumentException("n is greater than " + count($keys));
 
-        $taken = [ ];
+        $taken = [];
 
-        while ( count( $taken ) !== $n ) {
-            $rand = rand() % count( $keys );
-            if ( ! in_array( $keys[ $rand ], $taken ) && ! in_array( $keys[ $rand ], $exlude ) )
-                $taken [] = $keys[ $rand ];
+        while (count($taken) !== $n) {
+            $rand = rand() % count($keys);
+            if (!in_array($keys[$rand], $taken) && !in_array($keys[$rand], $exlude))
+                $taken [] = $keys[$rand];
         }
         return $taken;
     }
 
-    public function generateExtendedDescription ( $member ) {
+    public function generateExtendedDescription($member) {
 
         $latte = new Latte\Engine;
 
 
-        $latte -> addFilter( "length", function($s) {
-            return count( $s );
-        } );
+        $latte->addFilter("length", function($s) {
+            return count($s);
+        });
 
         $template = '{(string)"ahoj"|firstUpper}';
 
-        $latte -> setLoader( new StringLoader() );
-        return $latte -> renderToString( $template, ["c" => true ] );
+        $latte->setLoader(new StringLoader());
+        return $latte->renderToString($template, ["c" => true]);
     }
 
 }
