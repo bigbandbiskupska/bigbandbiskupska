@@ -10,27 +10,10 @@ class VideoModel extends BaseModel
 
     protected $videos;
 
-    public function __construct () {
-        $this -> videos = array (
-            (object) [
-                "name" => "Vánoční koncert 2016",
-                "date" => DateTime::from("2016-12-18 20:00:00"),
-                "url" => "https://www.youtube.com/embed/Ow3VgMDlvbo",
-                "link" => "https://www.youtube.com/watch?v=Ow3VgMDlvbo",
-            ],
-            (object) [
-                "name" => "Vánoční koncert 2015",
-                "date" => DateTime::from("2015-12-20 20:00:00"),
-                "url" => "https://www.youtube.com/embed/HyTUZ_jC0bk",
-                "link" => "https://www.youtube.com/watch?v=HyTUZ_jC0bk",
-            ],
-            (object) [
-                "name" => "Vánoční koncert 2014",
-                "date" => DateTime::from("2014-12-20 20:00:00"),
-                "url" => "https://www.youtube.com/embed/sDD11ZJUQfU",
-                "link" => "https://www.youtube.com/watch?v=sDD11ZJUQfU",
-            ],
-        );
+    public function __construct() {
+        $this->videos = array_map(function($o) {
+            return (object) $o;
+        }, \Nette\Neon\Neon::decode(file_get_contents(__DIR__ . '/models/videos.neon')));
     }
 
     public function item ( $id ) {
