@@ -50,6 +50,13 @@ $(function() {
         }
 
         $("#galleries").html("")
+        
+        result.photosets.photoset = result.photosets.photoset.sort((a, b) => {
+            var year1 = parseInt(a.title._content.replace(/[^\d]+/, '') || 0);
+            var year2 = parseInt(b.title._content.replace(/[^\d]+/, '') || 0);
+
+            return year1 < year2;
+        });
 
         var linksContainer = $('#galleries')
         for ( var i = 0, cnt = 0; i < result.photosets.photoset.length; i ++, cnt ++ )
