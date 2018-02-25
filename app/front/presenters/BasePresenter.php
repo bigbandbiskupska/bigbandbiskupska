@@ -49,8 +49,9 @@ class BasePresenter extends Presenter {
         });
 
         $template->addFilter('timeleft', function ($s, $round = 1) use ($template) {
-            if (!$s instanceof DateTime)
+            if (!($s instanceof DateTime) && !($s instanceof \DateTime))
                 return $s;
+
             $diff = $s->diff(new DateTime());
             $r = "";
             foreach (['r' => (object) ['part' => 'y', 'next' => 'm', 'ratio' => 12],
