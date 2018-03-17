@@ -1,0 +1,115 @@
+{block title}Fotky{/block}
+
+{block heading}
+<div class="row">
+    <h1 id="fotky" class="link-target">Fotky</h1>
+</div>
+{/block}
+
+{block mininav}
+<li>
+    <a href="#fotky">Fotky</a>
+</li>
+{/block}
+
+
+{block content}
+
+{script}
+$(function () {
+    var API_key = "0341f1f52bbe6222c1388e750d548a62";
+    var baseUrl = "https://api.flickr.com/services/rest/";
+    var params = {
+        method: 'flickr.photosets.getPhotos',
+        user_id: '153036765@N08',
+        api_key: API_key,
+        photoset_id: '{$concertGalleryId|noescape}',
+        extras: 'url_o,url_m',
+        per_page: 500,
+        format: 'json',
+        media: 'photos',
+        nojsoncallback: '1',
+    };
+    
+    var url = baseUrl + '?' + Object.keys(params).map(key => key + '=' + params[key]).join('&');
+
+    $.nette.ajax({
+        url: url,
+        timeout: 10000,
+        dataType: 'json',
+        off: ['spinner']
+    }).done(function (result) {
+        if (!result.photoset || !result.photoset.photo || !result.photoset.photo.length)
+        {
+            // empty (or fail)
+            $("#images").text("Litujeme, ale žádné obrázky nebyly nalezeny")
+            return;
+        }
+
+        var $linksContainer = $('#images')
+        $linksContainer.html("")
+
+        for (var i = 0; i < result.photoset.photo.length; i++)
+        {
+            var $node = $(".photo-template")
+                .clone()
+                .removeClass('hidden')
+                .removeClass('photo-template')
+            var e = result.photoset.photo[i];
+            var thumbnail = e.url_m;
+            var image = e.url_o;
+            $node.find('img.photo-thumbnail')
+                    .prop('src', thumbnail)
+                    .prop('alt', e.title)
+            $node.find('a.album-link')
+                    .prop('href', image)
+                    .prop('title', e.title)
+                    .attr('data-gallery', '')
+            $node.find('.photo-id').text(e.id)
+            $node.find('.photo-thumbnail-url').text(thumbnail)
+            $node.find('.photo-url').text(image)
+
+            $node.appendTo($linksContainer)
+        }
+    }).fail(function () {
+        $("#images").text("K albu koncertů se nejde připojit nebo vůbec neexistuje.")
+    })
+});
+{/script}
+
+<div class="row">
+    <div class="col-lg-12" id="images">
+        <div class="progress">Loading ...</div>
+    </div>
+</div>
+
+<div class="col-md-12 hidden photo-template">
+    <div class="row">
+      <div class="col-md-4">
+        <a href=""
+           title=""
+           class="album-link text-center">
+            <img
+                src=""
+                class="img img-responsive photo-thumbnail"
+                title=""
+                alt=""
+            />
+        </a>
+      </div>
+      <div class="col-md-8">
+        <dl>
+            <dt>ID</dt>
+            <dd><pre class="photo-id"></pre></dd>
+            <dt>Thumbnail</dt>
+            <dd><pre class="photo-thumbnail-url"></pre></dd>
+            <dt>Url</dt>
+            <dd><pre class="photo-url"></pre></dd>
+        </dl>
+      </div>
+    </div>
+    <hr />
+</div>
+
+{/block}
+

@@ -54,6 +54,8 @@ class RouterFactory {
         $router[] = new Route('[<locale=cs cs|en>/]galerie', 'Front:Gallery:default');
         $router[] = new Route('[<locale=cs cs|en>/]galerie/<id>', 'Front:Gallery:detail');
 
+        $router[] = new Route('[<locale=cs cs|en>/]photos', 'Front:Photos:default');
+
         #$router[] = new Route('<presenter>/<action>[/<id>]', 'Front:Homepage:default');
         return $router;
     }
