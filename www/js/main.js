@@ -20,6 +20,7 @@ $(window).load(function() {
 	}
 })
 
+
 $(function() {
 	if(jQuery.nette && window.history && window.history.pushState) {
 		jQuery.nette.ext('paginator', {
@@ -39,11 +40,6 @@ $(function() {
 	}
 
 	$.nette.init();
-
-	var userId = "bigbandbiskupska"
-	var authKey = "Gv1sRgCPjusPOarbzhYw"
-	var imageSize = 1080
-	var thumbnailSize = 100
 
 	$("#mini-nav-menu ul li a[href^='#']").filter(':not(.lang)').click(function(e) {
 		if($(".navbar-toggle:visible").length)
@@ -214,65 +210,88 @@ $(function() {
 		}, 300);
 	});
 
-	if($(".google-image").length) {
-		var authKey = "Gv1sRgCKKIrt64gMaLzAE"
-		var albums = {}
+	(function() {
+		if($(".google-image").length === 0) {
+			return;
+		}
+		var baseUrl = "https://api.flickr.com/services/rest/";
+		var authKey = "0341f1f52bbe6222c1388e750d548a62"
+		var albums = {};
 
-		$(".google-image").each(function(i) {
+		$(".google-image").each(function() {
 			var photoId = $(this).data('photoId') || null
 			var albumId = $(this).data('albumId') || null
 			
-			if ( !photoId || !albumId ) return;
+			if (!photoId || !albumId) return;
 
-			albums [ albumId ] = {}
+			albums[albumId] = {}
 		});
 
-		window['loadPhotos'] = function(result) {
-			for ( var i = 0; i < result.feed.entry.length; i ++ ) {
-				  var $e = result.feed.entry[i];
-				  albums [ $e.gphoto$albumid.$t ] [ $e.gphoto$id.$t ] = $e;
-			}
-		};
-
-		var fill = function(i) {
+		var fill = function() {
 			var photoId = $(this).data('photoId') || null
 			var albumId = $(this).data('albumId') || null
 			var $that = $(this)
 
-			if(!albumId || !photoId || !albums[albumId] || !albums[albumId][photoId] ) return;
+			if(!albumId || !photoId || !albums[albumId] || !albums[albumId][photoId] ) {
+				console.debug('Could not find a image data for album ' + albumId + ' and photo ' + photoId);
+				return;
+			}
 
-			var $e = albums[albumId][photoId]
-			var $thumbnail = $e.media$group.media$thumbnail[0]
-			var $image = $e.media$group.media$content[0]
+			var e = albums[albumId][photoId];
+			var thumbnail = e.url_m;
+			var image = e.url_o;
 			var $img = $('<img>')
-							.prop('src', $thumbnail.url)
-							.prop('type', $image.type)
-							.addClass('img img-rounded')
-							.addClass('img-resp')
-							.addClass('img-responsive')
-							.prop('alt', $e.media$group.media$title.$t)
-			$('<a/>')
-				.append($img)
-				.prop('href', $image.url)
-				.prop('title', $e.media$group.media$description.$t)
-				.attr('data-gallery', '')
-				.appendTo($that)
+					.prop('src', thumbnail)
+					.prop('alt', e.title)
+					.addClass('img img-rounded')
+					.addClass('img-resp')
+					.addClass('img-responsive')
+			$('<a>')
+					.append($img)
+					.prop('href', image)
+					.prop('title', e.title)
+					.attr('data-gallery', '')
+					.appendTo($that)
 		};
 
-		for(var key in albums)
-		{
-			$.ajax({
-				url: 'https://picasaweb.google.com/data/feed/api/user/' + userId + '/albumid/' + key + '?alt=json&authkey=' + authKey + '&imgmax=' + imageSize + 'u&thumbsize=720',
-				timeout: 5000,
-				jsonpCallback: 'loadPhotos',
-				dataType: 'jsonp',
-				cache: true,
-			}).done(function(r) {
-				$(".google-image").each(fill)
-			}).fail(function(){
-			});
+		var promises = [];
+		for(var key in albums) {
+			var params = {
+				method: 'flickr.photosets.getPhotos',
+				user_id: '153036765@N08',
+				api_key: authKey,
+				photoset_id: key,
+				extras: 'url_o,url_m',
+				per_page: 500,
+				format: 'json',
+				media: 'photos',
+				nojsoncallback: '1',
+			};
 
+			var url = baseUrl + '?' + Object.keys(params).map(key => key + '=' + params[key]).join('&');
+
+			promises.push(
+				$.nette.ajax({
+					url: url,
+					timeout: 10000,
+					dataType: 'json',
+					off: ['spinner', 'unique']
+				}).done(function(result) {
+					if (!result.photoset || !result.photoset.photo || !result.photoset.photo.length) {
+						return;
+					}
+					for ( var i = 0; i < result.photoset.photo.length; i ++ ) {
+						var e = result.photoset.photo[i];
+						albums[key][e.id] = e;
+					}
+				}).fail(function(e){
+					console.debug('Failed loading album ' + key);
+				})
+			);
 		}
 
-	}
+		Promise.all(promises).then(function() {
+			$(".google-image").each(fill);
+		});
+	})();
 });
