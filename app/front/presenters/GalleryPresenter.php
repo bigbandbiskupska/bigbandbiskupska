@@ -4,6 +4,11 @@ namespace App\FrontModule\Presenters;
 
 class GalleryPresenter extends BasePresenter {
 
+    public function beforeRender() {
+        $this->template->flickrUser = isset($this->parameters->params['flickr']['user']) ? $this->parameters->params['flickr']['user'] : 'invalidUser';
+        $this->template->flickrApiKey = isset($this->parameters->params['flickr']['APIkey']) ? $this->parameters->params['flickr']['APIkey'] : 'invalidKey';
+    }
+
     public function actionDetail($id) {
         //if ( ( $gallery = $this -> galleries -> item ( $id ) ) == NULL )
         //    $this -> notFoundException ();

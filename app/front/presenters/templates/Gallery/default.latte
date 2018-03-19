@@ -22,11 +22,11 @@ $(function() {
     var ignoredTitles = [ 'Profile Photos', 'Koncerty' ];
 
     var baseUrl = "https://api.flickr.com/services/rest/";
-    var API_key = "0341f1f52bbe6222c1388e750d548a62";
+    var API_key = {$flickrApiKey};
 
     var params = {
         method: 'flickr.photosets.getList',
-        user_id: '153036765@N08',
+        user_id: {$flickrUser},
         api_key: API_key,
         primary_photo_extras: 'url_sq,url_o',
         per_page: 500,

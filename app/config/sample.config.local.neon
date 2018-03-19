@@ -5,6 +5,8 @@ common:
                 APIkey: apikey
         flickr:
             concertAlbum: xxxx
+            user: uknown_user
+            APIkey: apikey
 
 development < common:
 

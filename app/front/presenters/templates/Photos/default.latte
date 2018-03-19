@@ -15,11 +15,11 @@
 
 {script}
 $(function () {
-    var API_key = "0341f1f52bbe6222c1388e750d548a62";
+    var API_key = {$flickrApiKey};
     var baseUrl = "https://api.flickr.com/services/rest/";
     var params = {
         method: 'flickr.photosets.getPhotos',
-        user_id: '153036765@N08',
+        user_id: {$flickrUser},
         api_key: API_key,
         photoset_id: '{$concertGalleryId|noescape}',
         extras: 'url_o,url_m',
