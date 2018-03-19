@@ -3,6 +3,9 @@ common:
         google:
             maps:
                 APIkey: apikey
+        flickr:
+            concertAlbum: xxxx
+
 development < common:
 
 production < common:
