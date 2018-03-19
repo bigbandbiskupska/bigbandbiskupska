@@ -37,8 +37,14 @@
 	{/block}
 
 	<link rel="icon" href="{$basePath}/img/icons/bbb.ico">
-	<link rel="alternate" href="{link //this, (expand) $presenter->parameters, locale => 'cs'}" hreflang="cs" />
-	<link rel="alternate" href="{link //this, (expand) $presenter->parameters, locale => 'en'}" hreflang="en" />
+
+	{if $presenter->isLinkCurrent(':Error:*') || $presenter->isLinkCurrent(':Error4xx:*')}
+		<link rel="alternate" href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'cs'}" hreflang="cs" />
+		<link rel="alternate" href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'en'}" hreflang="en" />
+	{else}
+		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, locale => 'cs'}" hreflang="cs" />
+		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, locale => 'en'}" hreflang="en" />
+	{/if}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -136,8 +142,13 @@
 	                <b class="caret"></b>
 	              </a>
 	              <ul class="dropdown-menu">
-	                <li><a href="{link this, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs"><img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}</a></li>
-	                <li><a href="{link this, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en"><img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}</a></li>
+					{if $presenter->isLinkCurrent(':Error:*') || $presenter->isLinkCurrent(':Error4xx:*')}
+	                    <li><a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs"><img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}</a></li>
+	                    <li><a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en"><img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}</a></li>
+					{else}
+		                <li><a href="{link this, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs"><img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}</a></li>
+		                <li><a href="{link this, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en"><img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}</a></li>
+					{/if}
 	              </ul>
 	            </li>
 			</ul>
@@ -145,16 +156,29 @@
 	    <!-- mini lang menu -->
 	    <div class="collapse navbar-collapse" id="mini-lang-menu">
 			<ul class="nav navbar-nav navbar-right visible-xs" role="tablist">
-	            <li>
-					<a href="{link this, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs">
-						<img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}
-					</a>
-				</li>
-				<li>
-					<a href="{link this, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en">
-						<img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}
-					</a>
-				</li>
+				{if $presenter->isLinkCurrent(':Error:*') || $presenter->isLinkCurrent(':Error4xx:*')}
+		            <li>
+						<a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs">
+							<img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}
+						</a>
+					</li>
+					<li>
+						<a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en">
+							<img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}
+						</a>
+					</li>
+				{else}
+		            <li>
+						<a href="{link this, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs">
+							<img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}
+						</a>
+					</li>
+					<li>
+						<a href="{link this, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en">
+							<img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}
+						</a>
+					</li>
+				{/if}
 			</ul>
 	    </div><!-- /mini lang menu -->
 	  </div><!-- /.container -->
