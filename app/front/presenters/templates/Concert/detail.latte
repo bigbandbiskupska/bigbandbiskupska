@@ -1,14 +1,10 @@
 {block title}{$concert->name} {$concert->date|date: 'Y'}{/block}
 
 {block heading}
-
-<div class="row">
     <a href="{link Concert:default}" title="Zpět na výběr koncertů">
         <button class="btn btn-default btn-back pull-right">Všechny koncerty</button>
     </a>
     <h1 id="{$concert->name|webalize}" class="link-target">{$concert->name}</h1>
-</div>
-
 {/block}
 
 {block mininav}
