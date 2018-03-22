@@ -73,7 +73,6 @@ class MissingTranslationsTest extends Tester\TestCase
             // extract the messages from latte
             $catalogue = new Kdyby\Translation\MessageCatalogue($lang);
             $this->extractor->extract(APP_DIR, $catalogue);
-            
 
             $translatorCatalogue = $this->translator->getCatalogue($lang);
 
@@ -82,6 +81,10 @@ class MissingTranslationsTest extends Tester\TestCase
                     $id = explode(".", $id);
                     $tmpDomain = count($id) <= 1 ? $domain : array_shift($id);
                     $id = implode(".", $id);
+
+                    // TODO: temporary fix for looped translations
+                    // see #61
+                    $id = preg_replace('/(.*)\.\$i$/', '\1.1', $id);
 
                     if ($translatorCatalogue->defines($id, $tmpDomain)) {
                        $counts [ self::MESSAGE_DEFINED ] ++; 
