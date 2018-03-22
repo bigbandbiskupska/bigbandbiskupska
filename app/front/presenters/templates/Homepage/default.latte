@@ -52,7 +52,7 @@
 										title="{$concert->name}">
 										<h5 itemprop="name">{$concert->name}</h5>
 									</a>
-									<small>{$concert->date|weekday}, {$concert->date|date: 'd. m. H:i'}</small>
+									<small>{$concert->date|weekday}, {$concert->date|date: 'j. n. H:i'}</small>
 					                <meta itemprop="url" content="{link //:Front:Concert:detail $concert->id}">
 					                <div itemprop="location" itemscope="" itemtype="http://schema.org/MusicVenue">
 					                    <meta itemprop="name" n:if="isset($concert->location_text)" content="{$concert->location_text}">
