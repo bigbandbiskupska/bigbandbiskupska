@@ -34,7 +34,7 @@
 										 class="main-logo alignleft"
 										 role="logo" />
 							{var $i = 1}
-							{while $template->translate("front.presenters.homepage.default.text.lead.$i") !== "front.presenters.homepage.default.text.lead.$i"}
+							{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.lead.$i", "front")}
 							<p class="lead">
 								{_front.presenters.homepage.default.text.lead.$i, array(repertoire_link => $presenter->link('Song:default'))|noescape}
 							</p>
@@ -113,7 +113,7 @@
 							<div class="row">
 								<div class="col-md-9">
 									{var $i = 1}
-									{while $template->translate("front.presenters.homepage.default.text.brief.$i") !== "front.presenters.homepage.default.text.brief.$i"}
+									{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.brief.$i", "front")}
 									<p>
 										{_front.presenters.homepage.default.text.brief.$i}
 									</p>
@@ -152,7 +152,7 @@
 								<div class="col-md-9">
 									<p></p>
 									{var $i = 1}
-									{while $template->translate("front.presenters.homepage.default.text.history.$i") !== "front.presenters.homepage.default.text.history.$i"}
+									{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.history.$i", "front")}
 									<p>
 										{_front.presenters.homepage.default.text.history.$i}
 									</p>
@@ -167,7 +167,7 @@
 								<div class="col-md-9">
 								    <h3>{_front.presenters.homepage.default.netherlands}</h3>
 									{var $i = 1}
-									{while $template->translate("front.presenters.homepage.default.text.netherlands.$i") !== "front.presenters.homepage.default.text.netherlands.$i"}
+									{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.netherlands.$i", "front")}
 									<p>
 										{_front.presenters.homepage.default.text.netherlands.$i}
 									</p>
@@ -206,7 +206,7 @@
 								<div class="col-md-9">
 								    <h3>{_front.presenters.homepage.default.france}</h3>
 									{var $i = 1}
-									{while $template->translate("front.presenters.homepage.default.text.france.$i") !== "front.presenters.homepage.default.text.france.$i"}
+									{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.france.$i", "front")}
 									<p>
 										{_front.presenters.homepage.default.text.france.$i}
 									</p>
@@ -222,7 +222,7 @@
 								<div class="col-md-9">
 									<h3>{_front.presenters.homepage.default.sweden}</h3>
 									{var $i = 1}
-									{while $template->translate("front.presenters.homepage.default.text.sweden.$i") !== "front.presenters.homepage.default.text.sweden.$i"}
+									{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.sweden.$i", "front")}
 									<p>
 										{_front.presenters.homepage.default.text.sweden.$i}
 									</p>
@@ -260,7 +260,7 @@
 								<div class="col-md-9">
 								    <h3>{_front.presenters.homepage.default.austria}</h3>
 									{var $i = 1}
-									{while $template->translate("front.presenters.homepage.default.text.austria.$i") !== "front.presenters.homepage.default.text.austria.$i"}
+									{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.austria.$i", "front")}
 									<p>
 										{_front.presenters.homepage.default.text.austria.$i}
 									</p>
@@ -301,7 +301,7 @@
 							<div class="row">
 								<div class="col-lg-8 col-sm-6">
 									{var $i = 1}
-									{while $template->translate("front.presenters.homepage.default.text.zus-biskupska.$i") !== "front.presenters.homepage.default.text.zus-biskupska.$i"}
+									{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.zus-biskupska.$i", "front")}
 									<p>
 										{_front.presenters.homepage.default.text.zus-biskupska.$i}
 									</p>
