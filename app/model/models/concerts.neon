@@ -1,8 +1,18 @@
 -
+	id: 30
+	lattitude: 50.0830039
+	longitude: 14.4098664
+	date: 2018-06-10 16:00:00 +0200
+	name: OPEN AIR s Barborou Tellinger
+	location_text: "Střelecký ostrov"
+	photo_id: "37598303725"
+	album_id: "72157689366932494"
+
+-
 	id: 29
 	lattitude: 50.0875476
 	longitude: 14.3999416
-	date: 2018-05-31 18:00:00 +0200
+	date: 2018-05-31 18:30:00 +0200
 	name: Závěrečný koncert ZUŠ Biskupská 2018
 	location_text: "Sál Bohuslava Martinů, Malostranské náměstí, Praha"
 	photo_id: "37598303725"
