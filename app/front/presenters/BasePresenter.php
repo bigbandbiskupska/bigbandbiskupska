@@ -33,7 +33,6 @@ class BasePresenter extends Presenter {
         $this->template->isMobile = Browser::isMobile();
         $this->template->locale = $this->translator->getLocale();
         $timestamp = $this->parameters->params['appDir'] . DIRECTORY_SEPARATOR . 'timestamp';
-        var_dump(DateTime::from(@filemtime($timestamp)));
         if(file_exists($timestamp)) {
             $this->template->lastUpdated = DateTime::from(@filemtime($timestamp));
         }
