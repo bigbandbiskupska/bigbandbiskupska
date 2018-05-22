@@ -6,6 +6,7 @@ use Kdyby\Translation\Translator;
 use Nette;
 use Nette\Application\ForbiddenRequestException;
 use Nette\Utils\DateTime;
+use Nette\Utils\FileSystem;
 use Nette\Http\Request;
 use Texy;
 use Texy\Modules\HeadingModule;
@@ -31,6 +32,19 @@ class BasePresenter extends Presenter {
         $this->template->productionMode = Tracy\Debugger::$productionMode;
         $this->template->isMobile = Browser::isMobile();
         $this->template->locale = $this->translator->getLocale();
+        $timestamp = $this->parameters->params['appDir'] . DIRECTORY_SEPARATOR . 'timestamp';
+        var_dump(DateTime::from(@filemtime($timestamp)));
+        if(file_exists($timestamp)) {
+            $this->template->lastUpdated = DateTime::from(@filemtime($timestamp));
+        }
+    }
+
+    public static function update() {
+        $timestamp = APP_DIR . DIRECTORY_SEPARATOR . 'timestamp';
+        if(file_exists($timestamp)) {
+            FileSystem::delete($timestamp);
+        }
+        FileSystem::write($timestamp, "");
     }
 
     protected function createTemplate($class = NULL) {
