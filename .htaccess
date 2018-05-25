@@ -28,6 +28,13 @@
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^subdom/[^/]+/(.+[^/])$ /$1/ [R]
 
+  # subdomena kalendar - kalendar.bigbandbiskupska.cz
+  RewriteCond %{REQUEST_URI} !^subdom/
+  RewriteCond %{REQUEST_URI} !^/subdom/
+  RewriteCond %{HTTP_HOST} ^(www.)?kalendar\.([^.]*)\.([^.]*)$
+  RewriteCond %{DOCUMENT_ROOT}/subdom/calendar -d
+  RewriteRule (.*) subdom/calendar/%2/$1 [DPI]
+
   # Nette Framework
   RewriteCond %{HTTP_HOST} ^(www.)?(.*).([^.]*).([^.]*)$
   RewriteCond %{DOCUMENT_ROOT}/domains/%2.%3.%4 !-d
