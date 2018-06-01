@@ -54,7 +54,7 @@
     "minimum-stability": "dev",
     "prefer-stable" : true,
     "require-dev": {
-        "nette/tester": "dev-master",
+        "nette/tester": "^2.0.1",
         "kdyby/console": "^2.6"
     }
 }
