@@ -1,4 +1,15 @@
 -
+	id: 31
+	lattitude: 50.0914069
+	longitude: 14.4343022
+	date: 2018-09-22 11:00:00 +0200
+	name: Svatopetrského kování - Big Band Biskupská
+	location_text: "Park pod Petrskou věží, Praha"
+	photo_id: "38485520031"
+	album_id: "72157689366932494"
+	description: Big band Biskupská zahájí novou koncertní sezónu v rámci pražského setkání uměleckých kovářů a žáků odborných škol pod Petrskou věží. Začátek vystoupení byl stanoven na 11 hodin v parku pod Petrskou věží.
+
+-
 	id: 30
 	lattitude: 50.0830039
 	longitude: 14.4098664
