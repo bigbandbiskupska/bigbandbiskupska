@@ -1,4 +1,37 @@
 -
+	id: 34
+	lattitude: 50.087394
+	longitude: 14.417399
+	date: 2018-12-16 19:00:00 +0100
+	name: Vánoční koncert Big Bandu Biskupská
+	location_text: "Městská knihovna v Praze, Mariánské náměstí 98/1, 110 00 Praha"
+	photo_id: "24613500088"
+	album_id: "72157689366932494"
+	description: "Big Band Biskupská vystoupí opět v adventním období v ohromném sále Městské knihovny na Mariánském náměstí. Hostem koncertu bude herec, scénárista a zpěvák Josef Laufer.\n\nVstupenky jsou k dispozici na vstupenky@bigbandbiskupska.cz."
+
+-
+	id: 33
+	lattitude: 49.9750042
+	longitude: 14.3946925
+	date: 2018-12-07 18:00:00 +0100
+	name: Vánoční koncert na Zbraslavi - Big Band Biskupská
+	location_text: "Černé divadlo Jiřího Srnce, U Lékárny 597, 156 00 Praha-Zbraslav"
+	photo_id: "37598327525"
+	album_id: "72157689366932494"
+	description: "V pátek 7. prosince rozezníme sál divadla Jiřího Srnce na Zbraslavi. Přijďte všichni v hojném počtu, bude na co se dívat. Více podrobností ještě oznámíme."
+
+-
+	id: 32
+	lattitude: 50.077203
+	longitude: 14.439803
+	date: 2018-11-29 19:00:00 +0200
+	name: Ples VŠCHT - Big Band Biskupská
+	location_text: "Radiopalác, Vinohradská 1789/40, 120 00 Praha 2"
+	photo_id: "38485520031"
+	album_id: "72157689366932494"
+	description: Big Band Biskupská bude doprovázet ples VŠCHT v Radiopaláci. Ples začíná v 19h.
+
+-
 	id: 31
 	lattitude: 50.0914069
 	longitude: 14.4343022
