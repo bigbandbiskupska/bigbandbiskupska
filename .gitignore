@@ -3,8 +3,8 @@ log/*
 temp/cache/*
 www/generated
 composer.lock
-/nbproject/private/
-/nbproject/
+.idea/
+.phpintel/
 
 Repertoar_BBB.csv
 extract_repertoar.php
