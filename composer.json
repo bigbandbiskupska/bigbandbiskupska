@@ -52,7 +52,6 @@
         "tulinkry/poll": "dev-master"
     },
     "minimum-stability": "dev",
-    "prefer-stable" : true,
     "require-dev": {
         "nette/tester": "^2.0.1",
         "kdyby/console": "^2.6"
