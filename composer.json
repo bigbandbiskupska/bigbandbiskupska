@@ -48,10 +48,11 @@
         "kdyby/translation": "^2.3.0",
         "tulinkry/tulinkry": "dev-master",
         "tulinkry/script": "dev-master",
-        "tulinkry/git": "dev-master",
+        "tulinkry/git": "1.0.1",
         "tulinkry/poll": "dev-master"
     },
     "minimum-stability": "dev",
+    "prefer-stable" : true,
     "require-dev": {
         "nette/tester": "^2.0.1",
         "kdyby/console": "^2.6"
