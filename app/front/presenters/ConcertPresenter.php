@@ -2,22 +2,22 @@
 
 namespace App\FrontModule\Presenters;
 
-use App\Model\ConcertModel;
+use App\Model\ConcertsModel;
 use Nette\Http\IResponse;
 use Nette\Utils\Strings;
 
 class ConcertPresenter extends BasePresenter {
 
     /**
-     * @var ConcertModel
+     * @var ConcertsModel
      * @inject
      */
     public $concerts;
 
     public function actionDefault() {
         $paginator = $this->getPaginator();
-        $paginator->itemCount = $this->concerts->count(["visible" => true], ["start" => "DESC", "end" => "DESC"]);
-        $this->template->concerts = $this->concerts->groupByMonth($paginator->itemsPerPage, $paginator->offset, ["visible" => true], ["start" => "DESC", "end" => "DESC"]);
+        $paginator->itemCount = $this->concerts->count();
+        $this->template->concerts = $this->concerts->groupByMonth($paginator->itemsPerPage, $paginator->offset);
         if ($this->isAjax()) {
             $this->invalidateControl("concerts");
         }
@@ -28,7 +28,7 @@ class ConcertPresenter extends BasePresenter {
             $this->template->APIkey = $this->parameters->params['google']['maps']['APIkey'];
         else
             $this->template->APIkey = NULL;
-        if (!$this->template->concert = $this->concerts->item($id))
+        if (!$this->template->concert = $this->concerts->find($id))
             $this->notFoundException("Trying to access detail of concert with id " . $id);
 
         if (isset($this->template->concert->slug) && $this->template->concert->slug !== $slug)

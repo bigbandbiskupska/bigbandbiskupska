@@ -45,7 +45,7 @@
 
         {foreach $sections as $name => $members}
             {foreach $members as $id => $member}
-                <area n:if="count($member->coords)" shape="poly" coords="{$member->coords|join}" href="#{$member->name|webalize}" title="{$member->name}" />
+                <area n:if="count($member->photo_coords)" shape="poly" coords="{$member->photo_coords|join}" href="#{$member->name|webalize}" title="{$member->name}" />
             {/foreach}
         {/foreach}
 
@@ -61,7 +61,7 @@
         <h3>{$name|capitalize}</h3>
         <section class="panel-group member-accordion" role="tablist" >
             {foreach $members as $id => $member}
-                {if isset($member->dirigent) && $member->dirigent}
+                {if $member->instrument === 'dirigent'}
                     {include conductor, "_member" => $member}
                 {else}
                     {include member, "_member" => $member}

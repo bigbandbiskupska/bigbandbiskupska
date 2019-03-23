@@ -160,10 +160,10 @@ common:
     services:
         routerFactory: App\RouterFactory
         router: @routerFactory::createRouter
-        concerts: App\Model\ConcertModel()
-        members: App\Model\MemberModel()
-        songs: App\Model\SongModel()
-        videos: App\Model\VideoModel()
+        concerts: App\Model\ConcertsModel()
+        members: App\Model\MembersModel()
+        songs: App\Model\SongsModel()
+        videos: App\Model\VideosModel()
         - Tulinkry\Poll\Services\NeonPollProvider(%appDir%/../polls/polls.neon)
         update: App\Model\UpdateModel()
 

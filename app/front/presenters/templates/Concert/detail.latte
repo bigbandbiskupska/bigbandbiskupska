@@ -25,10 +25,10 @@
         <div class="event-spec col-md-9">
             <div class="event-place">
                 <div itemprop="location" itemscope="" itemtype="http://schema.org/MusicVenue">
-                    <meta itemprop="name" n:if="isset($concert->location_text)" content="{$concert->location_text}">
-                    <meta itemprop="address" n:if="isset($concert->location_text)" content="{$concert->location_text}">
+                    <meta itemprop="name" n:if="isset($concert->place)" content="{$concert->place}">
+                    <meta itemprop="address" n:if="isset($concert->place)" content="{$concert->place}">
                 </div>
-                <h3>{$concert->location_text}</h3>
+                <h3>{$concert->place}</h3>
             </div>
         </div>
 
@@ -79,14 +79,14 @@
         <script>
         function map() {
             var mapCanvas = document.getElementById("map");
-            var lattitude = {$concert->lattitude};
+            var latitude = {$concert->latitude};
             var longitude = {$concert->longitude};
             var mapOptions = {
-                center: new google.maps.LatLng(lattitude,longitude),
+                center: new google.maps.LatLng(latitude,longitude),
                 zoom: 15
             }
             var marker = new google.maps.Marker({
-                position: { lat: lattitude, lng: longitude },
+                position: { lat: latitude, lng: longitude },
                 map: map,
             });
 

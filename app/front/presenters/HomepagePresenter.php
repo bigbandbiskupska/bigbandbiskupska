@@ -8,7 +8,7 @@ use App;
 class HomepagePresenter extends BasePresenter {
 
     /**
-     * @var App\Model\ConcertModel
+     * @var App\Model\ConcertsModel
      * @inject
      */
     public $concerts;

@@ -6,16 +6,16 @@ use Nette\Application\IRouter;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
 use Nette\Utils\Strings;
-use App\Model\ConcertModel;
+use App\Model\ConcertsModel;
 
 class RouterFactory {
 
     /**
-     * @var ConcertModel
+     * @var ConcertsModel
      */
     private $concerts;
 
-    public function __construct(ConcertModel $concerts) {
+    public function __construct(ConcertsModel $concerts) {
         $this->concerts = $concerts;
     }
 
@@ -38,13 +38,13 @@ class RouterFactory {
             'action' => 'detail',
             NULL => array(
                 Route::FILTER_IN => function($params) {
-                    if (isset($params['id']) && ($concert = $this->concerts->item($params['id'])) !== NULL) {
+                    if (isset($params['id']) && ($concert = $this->concerts->find($params['id'])) !== NULL) {
                         $params['slug'] = isset($concert->slug) ? $concert->slug : Strings::webalize($concert->name);
                     }
                     return $params;
                 },
                 Route::FILTER_OUT => function($params) {
-                    if (isset($params['id']) && ($concert = $this->concerts->item($params['id'])) !== NULL) {
+                    if (isset($params['id']) && ($concert = $this->concerts->find($params['id'])) !== NULL) {
                         $params['slug'] = isset($concert->slug) ? $concert->slug : Strings::webalize($concert->name);
                     }
                     return $params;

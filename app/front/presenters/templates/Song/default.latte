@@ -61,12 +61,12 @@
             {*
             {else}
                 <a 
-                    href="https://www.youtube.com/results?search_query={$_song->name|escapeurl}+{$_song->interpreter|escapeurl}"
+                    href="https://www.youtube.com/results?search_query={$_song->name|escapeurl}+{$_song->author|escapeurl}"
                     title="Najít na Youtube {$_song->name}" target="_blank">
             *}
         {/if}
         <span class="song-name">{$_song->name}</span>
-        <small class="song-interpreter" n:if="isset($_song->interpreter) && !empty($_song->interpreter)">{$_song->interpreter}</small>
+        <small class="song-interpreter" n:if="isset($_song->author) && !empty($_song->author)">{$_song->author}</small>
         {if isset($_song->link) && !empty($_song->link)}
         </a>
     {/if}

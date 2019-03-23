@@ -2,14 +2,15 @@
 
 namespace App\FrontModule\Presenters;
 
-use App\Model\SongModel;
+use App\Model\SongsModel;
 use Tulinkry;
 use Tulinkry\Poll\Control\FormPollControl;
 
-class SongPresenter extends BasePresenter {
+class SongPresenter extends BasePresenter
+{
 
     /**
-     * @var SongModel
+     * @var SongsModel
      * @inject
      */
     public $songs;
@@ -20,12 +21,14 @@ class SongPresenter extends BasePresenter {
      */
     public $polls;
 
-    public function actionDefault() {
+    public function actionDefault()
+    {
         $this->template->songsByName = $this->songs->by([], ["name" => "ASC"]);
-        $this->template->songsByInterpreter = $this->songs->by([], ["interpreter" => "ASC"]);
+        $this->template->songsByInterpreter = $this->songs->by([], ["author" => "ASC"]);
     }
 
-    protected function createComponentFormPollControl() {
+    protected function createComponentFormPollControl()
+    {
         return (new FormPollControl($this->polls, 1));
     }
 

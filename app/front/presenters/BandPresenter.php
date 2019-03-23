@@ -2,7 +2,7 @@
 
 namespace App\FrontModule\Presenters;
 
-use App\Model\MemberModel;
+use App\Model\MembersModel;
 use Latte;
 use Latte\Loaders\StringLoader;
 use Nette;
@@ -11,15 +11,33 @@ use WebLoader\InvalidArgumentException;
 class BandPresenter extends BasePresenter {
 
     /**
-     * @var MemberModel
+     * @var MembersModel
      * @inject
      */
     public $members;
 
-    public function actionDefault() {
+    public function actionDefault()
+    {
+        $this->template->sections = array();
+        foreach ($this->members->all() as $id => $member) {
+            if (!isset($member->group)) {
+                continue;
+            }
 
-        $this->template->sections = $this->members->all();
-        $this->template->oldmembers = $this->members->by(["old" => true]);
+            if (!array_key_exists($member->group, $this->template->sections)) {
+                $this->template->sections[$member->group] = array();
+            }
+
+            // clone to writable
+            $member = (object)$member->toArray();
+
+            $member->photo_coords = json_decode($member->photo_coords, true);
+            $member->extra = json_decode($member->extra, true);
+
+            array_push($this->template->sections[$member->group], $member);
+        }
+
+        $this->template->oldmembers = $this->members->by(['active' => false]);
     }
 
     public function generateDescription($member) {
@@ -304,9 +322,9 @@ class BandPresenter extends BasePresenter {
 
         $parameters = [
             "year" => rand(2010, date('Y') - 1),
-            'suffix' => $member->male ? '' : 'a',
+            'suffix' => $member->gender == 'male' ? '' : 'a',
             'instrument' => $member->instrument,
-            'gender' => $member->male ? 'on' : 'ona',
+            'gender' => $member->gender == 'male' ? 'on' : 'ona',
             'age' => rand(8, 15),
             'member' => $member,
             'interests' => $xxx = self::generateInterests($interests, $max = rand(3, 4)),
