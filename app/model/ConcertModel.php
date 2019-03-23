@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Nette\Neon\Neon;
 use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
 use Tulinkry\Model\BaseModel;
@@ -12,10 +13,13 @@ class ConcertModel extends BaseModel {
 
     private $concerts;
 
-    public function __construct() {
-        $this->concerts = array_map(function($o) {
-            return (object) $o;
-        }, \Nette\Neon\Neon::decode(file_get_contents(__DIR__ . '/models/concerts.neon')));
+    public function __construct()
+    {
+        $this->concerts = array_map(function ($o) {
+            $concert = (object)$o;
+            $concert->description = file_get_contents(__DIR__ . "/models/concerts/{$concert->id}.txt");
+            return $concert;
+        }, Neon::decode(file_get_contents(__DIR__ . '/models/concerts.neon')));
     }
 
     public function item($id) {
