@@ -1,29 +1,29 @@
 <?php
 
+use App\Model\BaseModel;
 use Nette\DI\Container;
 use Tester\Assert;
-use Tester\TestCase;
 
 $container = require __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "bootstrap.php";
 
-class VideoModelTest extends TestCase {
+class VideoModelTest extends TestCaseWithDatabase
+{
 
+    /** @var BaseModel */
     protected $model;
-    protected $container;
 
-    public function __construct(Container $container) {
-        $this->container = $container;
+    public function __construct(Container $container)
+    {
+        parent::__construct($container);
     }
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->model = $this->container->getService('videos');
     }
 
-    public function tearDown() {
-        
-    }
-
-    public function testAll() {
+    public function testAll()
+    {
         Assert::true(count($this->model->all()) > 0);
     }
 

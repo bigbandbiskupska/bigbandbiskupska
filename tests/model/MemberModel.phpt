@@ -2,32 +2,31 @@
 
 use Nette\DI\Container;
 use Tester\Assert;
-use Tester\TestCase;
 
 $container = require __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "bootstrap.php";
 
-class MemberModelTest extends TestCase {
+class MemberModel extends TestCaseWithDatabase
+{
 
+    /** @var BaseModel */
     protected $model;
-    protected $container;
 
-    public function __construct(Container $container) {
-        $this->container = $container;
+    public function __construct(Container $container)
+    {
+        parent::__construct($container);
     }
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->model = $this->container->getService('members');
     }
 
-    public function tearDown() {
-        
-    }
-
-    public function testAll() {
+    public function testAll()
+    {
         Assert::true(count($this->model->all()) > 0);
     }
 
 }
 
 # Spuštění testovacích metod
-run(new MemberModelTest($container));
+run(new MemberModel($container));

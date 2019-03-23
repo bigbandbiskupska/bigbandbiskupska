@@ -8,14 +8,14 @@ use Tester\TestCase;
 
 $container = require __DIR__ . "/../../bootstrap.php";
 
-class HomepagePresenterTest extends TestCase
+class HomepagePresenterTest extends TestCaseWithDatabase
 {
-
+    /** @var Presenter */
     protected $presenter;
-    protected $container;
 
-    public function __construct ( Container $container ) {
-        $this -> container = $container;
+    public function __construct(Container $container)
+    {
+        parent::__construct($container);
     }
 
     public function setUp () {

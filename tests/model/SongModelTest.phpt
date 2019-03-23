@@ -2,25 +2,20 @@
 
 use Nette\DI\Container;
 use Tester\Assert;
-use Tester\TestCase;
 
 $container = require __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "bootstrap.php";
 
-class SongModelTest extends TestCase {
+class SongModelTest extends TestCaseWithDatabase {
 
+    /** @var BaseModel */
     protected $model;
-    protected $container;
 
     public function __construct(Container $container) {
-        $this->container = $container;
+        parent::__construct($container);
     }
 
     public function setUp() {
         $this->model = $this->container->getService('songs');
-    }
-
-    public function tearDown() {
-        
     }
 
     public function testAll() {

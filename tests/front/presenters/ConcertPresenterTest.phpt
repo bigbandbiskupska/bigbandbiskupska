@@ -1,6 +1,7 @@
 <?php
 
 use Nette\Application\Request;
+use Nette\Application\UI\Presenter;
 use Nette\Http\IResponse;
 use Nette\DI\Container;
 use Nette\Utils\Strings;
@@ -10,14 +11,14 @@ use Tester\TestCase;
 
 $container = require __DIR__ . "/../../bootstrap.php";
 
-class ConcertPresenterTest extends TestCase
+class ConcertPresenterTest extends TestCaseWithDatabase
 {
-
+    /** @var Presenter */
     protected $presenter;
-    protected $container;
 
-    public function __construct ( Container $container ) {
-        $this -> container = $container;
+    public function __construct(Container $container)
+    {
+        parent::__construct($container);
     }
 
     public function setUp () {
@@ -46,7 +47,7 @@ class ConcertPresenterTest extends TestCase
         $response = $this->presenter->run( $request );
         $concerts = $this->container->getService('concerts');
 
-        Assert::notEqual(NULL, $concert = $concerts->item(1));
+        Assert::notEqual(NULL, $concert = $concerts->find(1));
 
         Assert::type( 'Nette\Application\Responses\RedirectResponse', $response );
         Assert::equal(IResponse::S301_MOVED_PERMANENTLY, $response->code);
@@ -61,7 +62,7 @@ class ConcertPresenterTest extends TestCase
         $response = $this->presenter->run( $request );
         $concerts = $this->container->getService('concerts');
 
-        Assert::notEqual(NULL, $concert = $concerts->item(1));
+        Assert::notEqual(NULL, $concert = $concerts->find(1));
 
         Assert::type( 'Nette\Application\Responses\RedirectResponse', $response );
         Assert::equal(IResponse::S301_MOVED_PERMANENTLY, $response->code);
@@ -72,7 +73,7 @@ class ConcertPresenterTest extends TestCase
 
     public function testRenderDetail () {
         $concerts = $this->container->getService('concerts');
-        Assert::notEqual(NULL, $concert = $concerts->item(1));
+        Assert::notEqual(NULL, $concert = $concerts->find(1));
         $slug = isset($concert->slug) ? $concert->slug : Strings::webalize($concert->name);
 
         $request = new Request( 'Front:Concert', 'GET', array ( 'action' => 'detail', 'id' => 1, 'slug' => $slug ) );

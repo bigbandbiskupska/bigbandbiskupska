@@ -1,0 +1,16 @@
+common:
+    parameters:
+        database:
+            host: mysql-master
+            dbname: bbb_test_bigbandbiskupska
+            user: root
+            password: root
+            dsn: 'mysql:host=%database.host%'
+
+    services:
+        cacheStorage:
+            factory: Nette\Caching\Storages\DevNullStorage
+development < common:
+
+production < common:
+
