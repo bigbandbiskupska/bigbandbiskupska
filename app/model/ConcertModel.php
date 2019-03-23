@@ -17,7 +17,7 @@ class ConcertModel extends BaseModel {
     {
         $this->concerts = array_map(function ($o) {
             $concert = (object)$o;
-            $concert->description = file_get_contents(__DIR__ . "/models/concerts/{$concert->id}.txt");
+            $concert->description = @file_get_contents(__DIR__ . "/models/concerts/{$concert->id}.txt") ?: '';
             return $concert;
         }, Neon::decode(file_get_contents(__DIR__ . '/models/concerts.neon')));
     }
