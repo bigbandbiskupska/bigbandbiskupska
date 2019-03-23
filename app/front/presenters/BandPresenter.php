@@ -171,6 +171,7 @@ class BandPresenter extends BasePresenter {
             "flétna" => "flétny",
             "trombón" => "trombóny",
             "zpěv" => "zpěv",
+            "kytara" => "kytary",
         ];
 
         $words = [
@@ -180,6 +181,8 @@ class BandPresenter extends BasePresenter {
             "basy" => ["basy", "bas", "basám", "basy", "basy", "basách", "basami"],
             //"bicí" => [ "bicí", "bicích", "bicím", "bicí", "bicí", "bicích", "bicími" ],
             //"klávesy" => [ "klávesy", "kláves", "klávesám", "klávesy", "klávesy", "klávesách", "klávesami" ],
+            "kytara" => [ "kytara", "kytary", "kytaře", "kytaru", "kytaro", "kytaře", "kytarou" ],
+            "kytary" => [ "kytary", "kytar", "kytarám", "kytary", "kytary", "kytarách", "kytarami" ],
             "flétny" => ["flétny", "fléten", "flétnám", "flétny", "flétny", "flétnách", "flétnami"],
             "trombóny" => ["trombóny", "trombónů", "trombónům", "trombóny", "trombóny", "trombónech", "trombóny"],
             "zpěvy" => ["zpěvy", "zpěvů", "zpěvům", "zpěvy", "zpěvy", "zpěvech", "zpěvy"],
