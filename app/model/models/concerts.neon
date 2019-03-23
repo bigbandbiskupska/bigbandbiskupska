@@ -1,0 +1,391 @@
+-
+	id: 39
+	lattitude: 49.9733874
+	longitude: 14.3899573
+	date: 2019-06-27 19:00:00 +0200
+	name: Koncert na Zbraslavi - Big Band Biskupská
+	location_text: "Bowling Zbraslav U Stromečku, Elišky Přemyslovny 433, 15600 Zbraslav"
+	photo_id: "38453593542"
+	album_id: "72157689366932494"
+
+-
+	id: 38
+	lattitude: 49.978075
+	longitude: 14.3922092
+	date: 2019-05-31 17:00:00 +0200
+	name: ZUŠ Open Zbraslav - Big Band Biskupská
+	location_text: "Zámek Zbraslav, Praha"
+	photo_id: "38453593542"
+	album_id: "72157689366932494"
+
+-
+	id: 37
+	lattitude: 50.0875476
+	longitude: 14.3999416
+	date: 2019-05-30 18:30:00 +0200
+	name: Závěrečný koncert ZUŠ Biskupská 2019
+	location_text: "Sál Bohuslava Martinů, Malostranské náměstí, Praha"
+	photo_id: "33400438768"
+	album_id: "72157689366932494"
+
+-
+	id: 36
+	lattitude: 49.2548602
+	longitude: 15.1875094
+	date: 2019-05-17 19:00:00 +0200
+	name: Jazz na hradě v Žirovnici - Big Band Biskupská a Arietta
+	location_text: "Tyršova 456, 394 68 Žirovnice, Česká Republika"
+	photo_id: "33400455438"
+	album_id: "72157689366932494"
+
+-
+	id: 35
+	lattitude: 49.4707622
+	longitude: 15.0016789
+	date: 2019-04-06 19:00:00 +0100
+	name: Koncert pro Ladu - Big Band Biskupská
+	location_text: "Pacov, Česká Republika"
+	photo_id: "47224053442"
+	album_id: "72157689366932494"
+
+-
+	id: 34
+	lattitude: 50.087394
+	longitude: 14.417399
+	date: 2018-12-16 19:00:00 +0100
+	name: Vánoční koncert Big Bandu Biskupská
+	location_text: "Městská knihovna v Praze, Mariánské náměstí 98/1, 110 00 Praha"
+	photo_id: "24613500088"
+	album_id: "72157689366932494"
+
+-
+	id: 33
+	lattitude: 49.9750042
+	longitude: 14.3946925
+	date: 2018-12-07 19:00:00 +0100
+	name: Vánoční koncert na Zbraslavi - Big Band Biskupská
+	location_text: "Černé divadlo Jiřího Srnce, U Lékárny 597, 156 00 Praha-Zbraslav"
+	photo_id: "37598327525"
+	album_id: "72157689366932494"
+
+-
+	id: 32
+	lattitude: 50.077203
+	longitude: 14.439803
+	date: 2018-11-29 19:00:00 +0200
+	name: Ples VŠCHT - Big Band Biskupská
+	location_text: "Radiopalác, Vinohradská 1789/40, 120 00 Praha 2"
+	photo_id: "38485520031"
+	album_id: "72157689366932494"
+
+-
+	id: 31
+	lattitude: 50.0914069
+	longitude: 14.4343022
+	date: 2018-09-22 11:00:00 +0200
+	name: Svatopetrské kování 2018 - Big Band Biskupská
+	location_text: "Park pod Petrskou věží, Praha"
+	photo_id: "38485520031"
+	album_id: "72157689366932494"
+
+-
+	id: 30
+	lattitude: 50.0830039
+	longitude: 14.4098664
+	date: 2018-06-10 17:00:00 +0200
+	name: Barbora Tellinger a Hermès Karel a Big Band Biskupská na Střeleckém ostrově
+	location_text: Střelecký ostrov
+	photo_id: "38485473331"
+	album_id: "72157689366932494"
+
+-
+	id: 29
+	lattitude: 50.0875476
+	longitude: 14.3999416
+	date: 2018-05-31 18:30:00 +0200
+	name: Závěrečný koncert ZUŠ Biskupská 2018
+	location_text: "Sál Bohuslava Martinů, Malostranské náměstí, Praha"
+	photo_id: "37598303725"
+	album_id: "72157689366932494"
+
+-
+	id: 28
+	lattitude: 49.973348
+	longitude: 14.392128
+	date: 2018-05-24 19:00:00 +0200
+	name: ZUŠ OPEN s Big Band Biskupská a Hermés Karel
+	location_text: "Bowling Zbraslav U Stromečku, Elišky Přemyslovny 433, 15600 Zbraslav"
+	photo_id: "37770263774"
+	album_id: "72157689366932494"
+
+-
+	id: 27
+	lattitude: 49.2548602
+	longitude: 15.1875094
+	date: 2018-05-11 19:00:00 +0200
+	name: Jazz na hradě v Žirovnici - Big Band Biskupská a Arietta a Hermès Karel
+	location_text: "Tyršova 456, 394 68 Žirovnice, Česká Republika"
+	photo_id: "37598307995"
+	album_id: "72157689366932494"
+
+-
+	id: 26
+	lattitude: 50.087394
+	longitude: 14.417399
+	date: 2018-05-03 18:30:00 +0100
+	name: Společný koncert BBB a big bandu z rakouského Lembachu
+	location_text: "Městská knihovna v Praze, Mariánské náměstí 98/1, 110 00 Praha"
+	photo_id: "24613500088"
+	album_id: "72157689366932494"
+
+-
+	id: 25
+	lattitude: 50.0907589
+	longitude: 14.4155197
+	date: 2018-03-26 17:30:00 +0100
+	name: Společný koncert BBB a dánského orchestru
+	location_text: "Pražská konzervatoř, Na rejdišti 77/1, 110 00 Praha, Staré Město, Praha"
+	photo_id: "24613500088"
+	album_id: "72157689366932494"
+
+-
+	id: 24
+	lattitude: 49.4707622
+	longitude: 15.0016789
+	date: 2018-03-24 19:00:00 +0100
+	name: Charitativní koncert pro dětský domov - Big Band Biskupská
+	location_text: "Pacov, Česká Republika"
+	photo_id: "24613595558"
+	album_id: "72157689366932494"
+
+-
+	id: 23
+	lattitude: 50.087394
+	longitude: 14.417399
+	date: 2017-12-17 18:00:00 +0100
+	name: Vánoční koncert - Big Band Biskupská
+	location_text: "Městská knihovna v Praze, Mariánské náměstí 98/1, 110 00 Praha"
+	photo_id: "24613500088"
+	album_id: "72157689366932494"
+
+-
+	id: 22
+	lattitude: 49.9750042
+	longitude: 14.3946925
+	date: 2017-12-08 19:00:00 +0100
+	name: Vánoční koncert na Zbraslavi - Big Band Biskupská
+	location_text: "Černé divadlo Jiřího Srnce, U Lékárny 597, 156 00 Praha-Zbraslav"
+	photo_id: "37598327525"
+	album_id: "72157689366932494"
+
+-
+	id: 21
+	lattitude: 48.492639
+	longitude: 13.895044
+	date: 2017-10-06 19:30:00 +0200
+	name: Koncert v Alfons Dorfner Halle - Big Band Biskupská
+	location_text: "Prostor pod Petrskou věží, Praha"
+	photo_id: "24613500088"
+	album_id: "72157689366932494"
+
+-
+	id: 20
+	lattitude: 50.0912747
+	longitude: 14.4347625
+	date: 2017-09-27 17:30:00 +0200
+	name: Den otevřených dveří - ZUŠ Biskupská
+	location_text: "ZUŠ Biskupská, Praha"
+	photo_id: "26709623339"
+	album_id: "72157689366932494"
+
+-
+	id: 19
+	lattitude: 50.0914069
+	longitude: 14.4343022
+	date: 2017-09-23 11:00:00 +0200
+	name: Svatopetrské kování 2017 - Big Band Biskupská
+	location_text: "Park pod Petrskou věží, Praha"
+	photo_id: "38485520031"
+	album_id: "72157689366932494"
+
+-
+	id: 18
+	lattitude: 49.978075
+	longitude: 14.3922092
+	date: 2017-05-30 17:00:00 +0200
+	name: ZUŠ Open Zbraslav - Big Band Biskupská
+	location_text: "Zámek Zbraslav, Praha"
+	photo_id: "38453593542"
+	album_id: "72157689366932494"
+
+-
+	id: 17
+	lattitude: 50.0685447
+	longitude: 14.4065544
+	date: 2017-05-23 18:00:00 +0200
+	name: P. E. Trudeau High School Orchestra feat. Big Band Biskupská
+	location_text: "Paspův sál, Smíchovský pivovar"
+	photo_id: "38453593542"
+	album_id: "72157689366932494"
+
+-
+	id: 16
+	lattitude: 49.4707622
+	longitude: 15.0016789
+	date: 2017-05-20 19:00:00 +0200
+	name: Charitativní koncert pro dětský domov - Big Band Biskupská
+	location_text: "Pacov, Česká Republika"
+	photo_id: "24613595558"
+	album_id: "72157689366932494"
+
+-
+	id: 15
+	lattitude: 50.10402
+	longitude: 14.38807
+	date: 2017-03-08 18:00:00 +0100
+	name: Reunion No.1 - Párty FSv - host Big Band Biskupská
+	location_text: "ČVUT Fakulta stavební, Thákurova 7, 166 29 Praha"
+	photo_id: "37770226634"
+	album_id: "72157689366932494"
+
+-
+	id: 14
+	lattitude: 49.973348
+	longitude: 14.392128
+	date: 2017-06-29 18:00:00 +0200
+	name: Swing pro Zbraslav - Big Band Biskupská
+	location_text: "Bowling Zbraslav U Stromečku, Elišky Přemyslovny 433, 15600 Zbraslav"
+	photo_id: "37770263774"
+	album_id: "72157689366932494"
+
+-
+	id: 13
+	lattitude: 50.0830039
+	longitude: 14.4098664
+	date: 2017-06-26 16:00:00 +0200
+	name: Koncert na Střeleckém ostrově - Big Band Biskupská
+	location_text: Střelecký ostrov
+	photo_id: "38485473331"
+	album_id: "72157689366932494"
+
+-
+	id: 12
+	lattitude: 50.0875476
+	longitude: 14.3999416
+	date: 2017-05-25 19:00:00 +0200
+	name: Závěrečný koncert ZUŠ Biskupská
+	location_text: "Sál Bohuslava Martinů, Malostranské náměstí, Praha"
+	photo_id: "37598303725"
+	album_id: "72157689366932494"
+
+-
+	id: 11
+	lattitude: 50.0907589
+	longitude: 14.4155197
+	date: 2017-04-11 18:30:00 +0200
+	name: Společný koncert ZUŠ Biskupská a host MusiCool Big Band Basilej
+	location_text: "Pražská konzervatoř, Na rejdišti 77/1, 110 00 Praha, Staré Město, Praha"
+	photo_id: "24613500088"
+	album_id: "72157689366932494"
+
+-
+	id: 10
+	lattitude: 49.2548602
+	longitude: 15.1875094
+	date: 2017-05-19 19:00:00 +0200
+	name: Jazz na hradě v Žirovnici - Big Band Biskupská a Arietta
+	location_text: "Tyršova 456, 394 68 Žirovnice, Česká Republika"
+	photo_id: "37598307995"
+	album_id: "72157689366932494"
+
+-
+	id: 9
+	lattitude: 50.0907589
+	longitude: 14.4155197
+	date: 2016-12-18 18:00:00 +0100
+	name: Big Band Biskupská - Vánoční koncert
+	location_text: "Pražská konzervatoř, Na rejdišti 77/1, 110 00 Praha, Staré Město, Praha"
+	price: 100
+	photo_id: "38453590842"
+	album_id: "72157689366932494"
+
+-
+	id: 8
+	lattitude: 49.9750042
+	longitude: 14.3946925
+	date: 2016-12-09 20:00:00 +0100
+	name: Big Band Biskupská - Vánoční koncert na Zbraslavi
+	location_text: "Černé divadlo Jiřího Srnce, U Lékárny 597, 156 00 Praha-Zbraslav"
+	photo_id: "38453589342"
+	album_id: "72157689366932494"
+
+-
+	id: 1
+	lattitude: 50.0875476
+	longitude: 14.3999416
+	date: 2016-10-04 18:30:00 +0200
+	name: Big Band Biskupská na HAMU
+	location_text: "Sál Bohuslava Martinů, Malostranské náměstí, Praha"
+	photo_id: "37598303725"
+	album_id: "72157689366932494"
+
+-
+	id: 2
+	lattitude: 50.0817551
+	longitude: 14.4073673
+	date: 2016-06-28 16:00:00 +0200
+	name: Big Band Biskupská na Střeleckém ostrově
+	location_text: "Střelecký ostrov, Praha 5"
+	photo_id: "37598327525"
+	album_id: "72157689366932494"
+
+-
+	id: 3
+	lattitude: 50.1447072
+	longitude: 15.1176113
+	date: 2016-06-24 18:00:00 +0200
+	name: Big Band Biskupská v Poděbradech
+	location_text: "Kolonáda, Poděbrady"
+	photo_id: "24613503018"
+	album_id: "72157689366932494"
+
+-
+	id: 4
+	lattitude: 50.0875726
+	longitude: 14.4189987
+	date: 2016-06-01 14:00:00 +0200
+	name: Maraton ZUŠ
+	location_text: "Staroměstské náměstí, Praha 1"
+	photo_id: "38485308371"
+	album_id: "72157689366932494"
+
+-
+	id: 5
+	lattitude: 50.0875476
+	longitude: 14.3999416
+	date: 2016-05-26 18:30:00 +0200
+	name: Závěrečný koncert ZUŠ Biskupská
+	location_text: "Sál Bohuslava Martinů, Malostranské náměstí, Praha"
+	photo_id: "37598303725"
+	album_id: "72157689366932494"
+
+-
+	id: 6
+	lattitude: 49.9733874
+	longitude: 14.3899573
+	date: 2016-05-21 15:00:00 +0200
+	name: Koncert na Zbraslavi - Big Band Biskupská
+	location_text: "Bowling Zbraslav U Stromečku, Elišky Přemyslovny 433, 15600 Zbraslav"
+	photo_id: "38453593542"
+	album_id: "72157689366932494"
+
+-
+	id: 7
+	lattitude: 49.2548602
+	longitude: 15.1875094
+	date: 2016-05-20 19:00:00 +0200
+	name: Jazz na hradě v Žirovnici
+	location_text: "Tyršova 456, 394 68 Žirovnice, Česká Republika"
+	photo_id: "26709525949"
+	album_id: "72157689366932494"
+

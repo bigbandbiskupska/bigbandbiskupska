@@ -2,7 +2,9 @@
 
 namespace App\Model;
 
-class MemberModel extends VisibleBaseModel {
+use Tulinkry\Model\BaseModel;
+
+class MemberModel extends BaseModel {
 
     private $sections;
     private $oldmembers;
@@ -18,6 +20,18 @@ class MemberModel extends VisibleBaseModel {
         $this->oldmembers = array_map(function($o) {
             return (object) $o;
         }, $members['oldmembers']);
+    }
+
+    public function item($id) {
+        return isset($this->sections[$id]) ? $this->sections[$id] : NULL;
+    }
+
+    public function limit($limit = 10, $offset = 0, $by = array(), $order = array()) {
+        $limited = [];
+        for ($i = $offset; $i < $limit + $offset; $i ++)
+            if (isset($this->sections[$i]))
+                $limited [] = $this->sections[$i];
+        return $limited;
     }
 
     public function all() {
