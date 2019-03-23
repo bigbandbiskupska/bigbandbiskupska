@@ -4,8 +4,12 @@ MAINTAINER Kryštof Tulinger <k.tulinger@gmail.com>
 ENV WWW_ROOT /app
 
 RUN apt-get -y update && \
-  apt-get -y install git zip nano && \
+  apt-get -y install git zip nano zlib1g-dev && \
   apt-get -y clean
+
+RUN /usr/local/bin/docker-php-ext-install pdo
+RUN /usr/local/bin/docker-php-ext-install pdo_mysql
+RUN /usr/local/bin/docker-php-ext-install zip
 
 WORKDIR /usr/bin
 

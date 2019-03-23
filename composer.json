@@ -11,19 +11,19 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:tulinkry/tulinkry.git"
+            "url": "https://github.com/tulinkry/tulinkry.git"
         },
         {
             "type": "vcs",
-            "url": "git@github.com:tulinkry/script.git"
+            "url": "https://github.com/tulinkry/script.git"
         },
         {
             "type": "vcs",
-            "url": "git@github.com:tulinkry/git.git"
+            "url": "https://github.com/tulinkry/git.git"
         },
         {
             "type": "vcs",
-            "url": "git@github.com:tulinkry/poll.git"
+            "url": "https://github.com/tulinkry/poll.git"
         }
     ],
     "require": {
@@ -45,6 +45,7 @@
         "latte/latte": "~2.3.0",
         "tracy/tracy": "~2.3.0",
         "texy/texy": "~2.9.0",
+        "dg/adminer-custom": "~1.6",
         "kdyby/translation": "^2.3.0",
         "tulinkry/tulinkry": "dev-master",
         "tulinkry/script": "dev-master",

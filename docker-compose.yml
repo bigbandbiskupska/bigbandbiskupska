@@ -6,3 +6,8 @@ services:
       - "8000:80"
     volumes:
       - ".:/app"
+  mysql-master:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
