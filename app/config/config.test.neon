@@ -10,6 +10,7 @@ common:
     services:
         cacheStorage:
             factory: Nette\Caching\Storages\DevNullStorage
+
 development < common:
 
 production < common:

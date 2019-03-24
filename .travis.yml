@@ -10,25 +10,23 @@ matrix:
   allow_failures:
     - php: hhvm
 
+services:
+  - mysql
+
 before_install:
   - composer self-update -q
-#  - composer config github-oauth.github.com "${GH_TOKEN}"
 
 before_script:
   - cp app/config/sample.config.local.neon app/config/config.local.neon
+  - cp app/config/config.travis.neon app/config/config.test.neon
 
 install:
   - git config --global url."https://".insteadOf git://
   - git config --global url."https://github.com/".insteadOf "git@github.com:"
   - composer install --no-interaction --prefer-source
 
-#before_script:
-#  - mysql -u root -e 'CREATE DATABASE testbase;'
-#  - mysql -u root testbase < tests/testbase.sql
-
 script:
   - ./vendor/bin/tester -p $TESTER_PHP_BIN -s ./tests/
-  # - ./vendor/bin/tester -p $TESTER_PHP_BIN -c ./tests/php.ini -s ./tests/
 
 after_failure:
   # Vytiskne obsah souborů *.actual

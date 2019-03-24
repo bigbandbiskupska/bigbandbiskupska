@@ -1,0 +1,16 @@
+common:
+    parameters:
+        database:
+            host: 127.0.0.1
+            user: root
+            password:
+            dsn: 'mysql:host=%database.host%'
+
+    services:
+        cacheStorage:
+            factory: Nette\Caching\Storages\DevNullStorage
+
+development < common:
+
+production < common:
+

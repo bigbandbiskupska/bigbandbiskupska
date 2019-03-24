@@ -34,7 +34,7 @@ $configurator->createRobotLoader()
 
 $configurator->addConfig(APP_DIR . '/config/config.neon', Nette\Configurator::AUTO);
 $configurator->addConfig(APP_DIR . '/config/config.local.neon', Nette\Configurator::AUTO);
-$configurator->addConfig(__DIR__ . '/config/config.test.neon', Nette\Configurator::AUTO);
+$configurator->addConfig(APP_DIR . '/config/config.test.neon', Nette\Configurator::AUTO);
 $configurator->addParameters(array("wwwDir" => TMP_DIR));
 $configurator->addParameters(array("appDir" => APP_DIR));
 $configurator->addParameters(array("testDir" => __DIR__));
