@@ -2,11 +2,11 @@
 
 namespace App;
 
+use App\Model\ConcertsModel;
 use Nette\Application\IRouter;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
 use Nette\Utils\Strings;
-use App\Model\ConcertsModel;
 
 class RouterFactory {
 
@@ -37,16 +37,36 @@ class RouterFactory {
             'presenter' => 'Concert',
             'action' => 'detail',
             NULL => array(
-                Route::FILTER_IN => function($params) {
+                Route::FILTER_IN => function ($params) {
+                    if (isset($params['concert'])) {
+                        /*
+                         * We passed a concert directly as a route parameter, read/generate the slug from it to save db queries.
+                         */
+                        $params['slug'] = isset($params['concert']->slug) ? $params['concert']->slug : Strings::webalize($params['concert']->name);
+                        unset($params['concert']);
+                        return $params;
+                    }
+
                     if (isset($params['id']) && ($concert = $this->concerts->find($params['id'])) !== NULL) {
                         $params['slug'] = isset($concert->slug) ? $concert->slug : Strings::webalize($concert->name);
                     }
+
                     return $params;
                 },
-                Route::FILTER_OUT => function($params) {
+                Route::FILTER_OUT => function ($params) {
+                    if (isset($params['concert'])) {
+                        /*
+                         * We passed a concert directly as a route parameter, read/generate the slug from it to save db queries.
+                         */
+                        $params['slug'] = isset($params['concert']->slug) ? $params['concert']->slug : Strings::webalize($params['concert']->name);
+                        unset($params['concert']);
+                        return $params;
+                    }
+
                     if (isset($params['id']) && ($concert = $this->concerts->find($params['id'])) !== NULL) {
                         $params['slug'] = isset($concert->slug) ? $concert->slug : Strings::webalize($concert->name);
                     }
+
                     return $params;
                 }
             ))

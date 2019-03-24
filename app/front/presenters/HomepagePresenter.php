@@ -2,18 +2,20 @@
 
 namespace App\FrontModule\Presenters;
 
-use Nette;
 use App;
+use App\Model\ConcertsModel;
 
-class HomepagePresenter extends BasePresenter {
+class HomepagePresenter extends BasePresenter
+{
 
     /**
-     * @var App\Model\ConcertsModel
+     * @var ConcertsModel
      * @inject
      */
     public $concerts;
 
-    public function actionDefault() {
+    public function actionDefault()
+    {
         $this->template->concerts = $this->concerts->newest(3, 0);
     }
 

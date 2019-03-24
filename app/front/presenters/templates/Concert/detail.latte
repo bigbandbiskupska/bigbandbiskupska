@@ -97,20 +97,20 @@
 
         <script n:if="$APIkey" src="https://maps.googleapis.com/maps/api/js?callback=map&amp;key={$APIkey}&amp;language=cs"></script>
 
-        <meta itemprop="url" content="{link //:Front:Concert:detail $concert->id}">
+        <meta itemprop="url" content="{link //:Front:Concert:detail id => $concert->id, concert => $concert}">
         {ifset $concert->price}
             <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                 <link itemprop="availability" href="http://schema.org/{if isset($concert->price) && $concert->price >= 0}InStock{else}SoldOut{/if}" />
                 <meta itemprop="price" content="{$concert->price}"/>
                 <meta itemprop="priceCurrency" content="CZK" />
-                <link itemprop="url" href="{link //:Front:Concert:detail $concert->id}" />
+                <link itemprop="url" href="{link //:Front:Concert:detail id => $concert->id, concert => $concert}" />
             </div>
         {else}
             <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                 <link itemprop="availability" href="http://schema.org/InStock" />
                 <meta itemprop="price" content="0"/>
                 <meta itemprop="priceCurrency" content="CZK" />
-                <link itemprop="url" href="{link //:Front:Concert:detail $concert->id}" />
+                <link itemprop="url" href="{link //:Front:Concert:detail id => $concert->id, concert => $concert}" />
             </div>
         {/ifset}
     </div>

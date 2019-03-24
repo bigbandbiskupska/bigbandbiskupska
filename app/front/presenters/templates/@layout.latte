@@ -41,6 +41,9 @@
 	{if $presenter->isLinkCurrent(':Error:*') || $presenter->isLinkCurrent(':Error4xx:*')}
 		<link rel="alternate" href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'cs'}" hreflang="cs" />
 		<link rel="alternate" href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'en'}" hreflang="en" />
+	{elseif $presenter->isLinkCurrent(':Front:Concert:detail')}
+		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, concert => $concert, locale => 'cs'}" hreflang="cs" />
+		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, concert => $concert, locale => 'en'}" hreflang="en" />
 	{else}
 		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, locale => 'cs'}" hreflang="cs" />
 		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, locale => 'en'}" hreflang="en" />
@@ -145,6 +148,9 @@
 					{if $presenter->isLinkCurrent(':Error:*') || $presenter->isLinkCurrent(':Error4xx:*')}
 	                    <li><a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs"><img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}</a></li>
 	                    <li><a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en"><img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}</a></li>
+					{elseif $presenter->isLinkCurrent(':Front:Concert:detail')}
+						<li><a href="{link this, (expand) $presenter->parameters, concert => $concert, locale => 'cs'}" class="lang lang-cs"><img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}</a></li>
+						<li><a href="{link this, (expand) $presenter->parameters, concert => $concert, locale => 'en'}" class="lang lang-en"><img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}</a></li>
 					{else}
 		                <li><a href="{link this, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs"><img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}</a></li>
 		                <li><a href="{link this, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en"><img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}</a></li>
@@ -164,6 +170,17 @@
 					</li>
 					<li>
 						<a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en">
+							<img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}
+						</a>
+					</li>
+				{elseif $presenter->isLinkCurrent(':Front:Concert:detail')}
+					<li>
+						<a href="{link this, (expand) $presenter->parameters, concert => $concert, locale => 'cs'}" class="lang lang-cs">
+							<img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}
+						</a>
+					</li>
+					<li>
+						<a href="{link this, (expand) $presenter->parameters, concert => $concert, locale => 'en'}" class="lang lang-en">
 							<img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}
 						</a>
 					</li>

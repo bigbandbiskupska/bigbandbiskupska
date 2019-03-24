@@ -130,7 +130,7 @@
                 <div itemprop="description" class="hidden">
                     {$_concert->description|noescape|texy}
                 </div>
-                <meta itemprop="url" content="{link //:Front:Concert:detail $_concert->id}">
+                <meta itemprop="url" content="{link //:Front:Concert:detail id => $_concert->id, concert => $_concert}">
                 <div itemprop="location" itemscope="" itemtype="http://schema.org/MusicVenue">
                     <meta itemprop="name" n:if="isset($_concert->location_text)" content="{$_concert->location_text}">
                     <meta itemprop="address" n:if="isset($_concert->location_text)" content="{$_concert->location_text}">
@@ -141,19 +141,19 @@
                         <link itemprop="availability" href="http://schema.org/{if isset($_concert->price) && $_concert->price >= 0}InStock{else}SoldOut{/if}" />
                         <meta itemprop="price" content="{$_concert->price}"/>
                         <meta itemprop="priceCurrency" content="CZK" />
-                        <link itemprop="url" href="{link //:Front:Concert:detail $_concert->id}" />
+                        <link itemprop="url" href="{link //:Front:Concert:detail id => $_concert->id, concert => $_concert}" />
                     </div>
                 {else}
                     <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                         <link itemprop="availability" href="http://schema.org/InStock" />
                         <meta itemprop="price" content="0"/>
                         <meta itemprop="priceCurrency" content="CZK" />
-                        <link itemprop="url" href="{link //:Front:Concert:detail $_concert->id}" />
+                        <link itemprop="url" href="{link //:Front:Concert:detail id => $_concert->id, concert => $_concert}" />
                     </div>
                 {/ifset}
             </div>
 
-            <a href="{link :Front:Concert:detail $_concert->id}" title="Další informace">
+            <a href="{link :Front:Concert:detail id => $_concert->id, concert => $_concert}" title="Další informace">
                 <button class="btn btn-default btn-back pull-right">Další informace</button>
             </a>
         </div>
