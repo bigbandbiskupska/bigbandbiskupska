@@ -39,8 +39,6 @@ $(function() {
 		});
 	}
 
-	$.nette.init();
-
 	$("#mini-nav-menu ul li a[href^='#']").filter(':not(.lang)').click(function(e) {
 		if($(".navbar-toggle:visible").length)
 			$("#mini-nav-menu").collapse("toggle");
@@ -210,15 +208,20 @@ $(function() {
 		}, 300);
 	});
 
-	(function() {
-		if($(".google-image").length === 0) {
+	var loadFlickerImages = function() {
+		$images = $(".google-image").filter(function() {
+			return !$(this).data('google-image-loaded');
+		});
+
+		if($images.length === 0) {
 			return;
 		}
+
 		var baseUrl = "https://api.flickr.com/services/rest/";
 		var authKey = "0341f1f52bbe6222c1388e750d548a62"
 		var albums = {};
 
-		$(".google-image").each(function() {
+		$images.each(function() {
 			var photoId = $(this).data('photoId') || null
 			var albumId = $(this).data('albumId') || null
 			
@@ -252,6 +255,8 @@ $(function() {
 					.prop('title', e.title)
 					.attr('data-gallery', '')
 					.appendTo($that)
+
+			$that.data('google-image-loaded', true)
 		};
 
 		var promises = [];
@@ -291,7 +296,14 @@ $(function() {
 		}
 
 		Promise.all(promises).then(function() {
-			$(".google-image").each(fill);
+			$images.each(fill);
 		});
-	})();
+	};
+
+	jQuery.nette.ext({
+		load: loadFlickerImages
+	});
+
+	// finally fire nette init
+	$.nette.init();
 });
