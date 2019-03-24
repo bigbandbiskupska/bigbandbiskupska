@@ -10,19 +10,19 @@
     "license": ["MIT", "BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
     "repositories": [
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/tulinkry/tulinkry.git"
         },
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/tulinkry/script.git"
         },
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/tulinkry/git.git"
         },
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/tulinkry/poll.git"
         }
     ],

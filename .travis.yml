@@ -21,8 +21,6 @@ before_script:
   - cp app/config/config.travis.neon app/config/config.test.neon
 
 install:
-  - git config --global url."https://".insteadOf git://
-  - git config --global url."https://github.com/".insteadOf "git@github.com:"
   - composer install --no-interaction --prefer-source
 
 script:
