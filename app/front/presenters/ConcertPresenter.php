@@ -6,7 +6,8 @@ use App\Model\ConcertsModel;
 use Nette\Http\IResponse;
 use Nette\Utils\Strings;
 
-class ConcertPresenter extends BasePresenter {
+class ConcertPresenter extends BasePresenter
+{
 
     /**
      * @var ConcertsModel
@@ -14,7 +15,8 @@ class ConcertPresenter extends BasePresenter {
      */
     public $concerts;
 
-    public function actionDefault() {
+    public function actionDefault()
+    {
         $paginator = $this->getPaginator();
         $paginator->itemCount = $this->concerts->count();
         $this->template->concerts = $this->concerts->groupByMonth($paginator->itemsPerPage, $paginator->offset);

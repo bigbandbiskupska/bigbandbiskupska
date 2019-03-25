@@ -21,28 +21,29 @@ class BandPresenterTest extends TestCaseWithDatabase
 
     public function setUp()
     {
-        $factory = $this -> container -> getByType( 'Nette\Application\IPresenterFactory' );
-        $this -> presenter = $factory -> createPresenter( 'Front:Band' );
-        $this -> presenter -> autoCanonicalize = false;
+        $factory = $this->container->getByType('Nette\Application\IPresenterFactory');
+        $this->presenter = $factory->createPresenter('Front:Band');
+        $this->presenter->autoCanonicalize = false;
     }
 
-    public function testRender () {
-        $request = new Request( 'Front:Band', 'GET', array () );
-        $response = $this -> presenter -> run( $request );
+    public function testRender()
+    {
+        $request = new Request('Front:Band', 'GET', array());
+        $response = $this->presenter->run($request);
 
-        Assert::type( 'Nette\Application\Responses\TextResponse', $response );
-        Assert::type( 'Nette\Bridges\ApplicationLatte\Template', $response -> getSource() );
+        Assert::type('Nette\Application\Responses\TextResponse', $response);
+        Assert::type('Nette\Bridges\ApplicationLatte\Template', $response->getSource());
 
-        $html = (string) $response -> getSource();
+        $html = (string)$response->getSource();
 
-        $dom = DomQuery::fromHtml( $html );
+        $dom = DomQuery::fromHtml($html);
 
-        Assert::true( $dom->has('#' + $this->presenter->translator->translate('front.presenters.band.default.hash.photo') ) );
-        Assert::true( $dom->has('#' + $this->presenter->translator->translate('front.presenters.band.default.hash.members') ) );
-        Assert::true( $dom->has('#' + $this->presenter->translator->translate('front.layout.hash.top')) );
+        Assert::true($dom->has('#' + $this->presenter->translator->translate('front.presenters.band.default.hash.photo')));
+        Assert::true($dom->has('#' + $this->presenter->translator->translate('front.presenters.band.default.hash.members')));
+        Assert::true($dom->has('#' + $this->presenter->translator->translate('front.layout.hash.top')));
     }
 
 }
 
 # Spuštění testovacích metod
-run( new BandPresenterTest( $container ) );
+run(new BandPresenterTest($container));

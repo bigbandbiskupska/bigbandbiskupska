@@ -8,7 +8,8 @@ use Latte\Loaders\StringLoader;
 use Nette;
 use WebLoader\InvalidArgumentException;
 
-class BandPresenter extends BasePresenter {
+class BandPresenter extends BasePresenter
+{
 
     /**
      * @var MembersModel
@@ -40,7 +41,8 @@ class BandPresenter extends BasePresenter {
         $this->template->oldmembers = $this->members->by(['active' => false]);
     }
 
-    public function generateDescription($member) {
+    public function generateDescription($member)
+    {
         $latte = new Latte\Engine;
         $latte->setLoader(new StringLoader());
 
@@ -61,7 +63,6 @@ class BandPresenter extends BasePresenter {
             "V {\$age-6|years: 6} začal{\$suffix} svižně s {\$oinstruments[0]|case: 7}. V {\$age-4|years: 6} změnil{\$suffix} k {\$oinstruments[1]|case: 3}. "
             . "Myslel{\$suffix} si, že to už je finále, ale pak uviděl{\$suffix} v {\$age|years: 6} {\$instrument|case: 4}. A u toho už zůstal{\$suffix}.",
         ];
-
 
 
         $bigband = [
@@ -199,8 +200,8 @@ class BandPresenter extends BasePresenter {
             "basy" => ["basy", "bas", "basám", "basy", "basy", "basách", "basami"],
             //"bicí" => [ "bicí", "bicích", "bicím", "bicí", "bicí", "bicích", "bicími" ],
             //"klávesy" => [ "klávesy", "kláves", "klávesám", "klávesy", "klávesy", "klávesách", "klávesami" ],
-            "kytara" => [ "kytara", "kytary", "kytaře", "kytaru", "kytaro", "kytaře", "kytarou" ],
-            "kytary" => [ "kytary", "kytar", "kytarám", "kytary", "kytary", "kytarách", "kytarami" ],
+            "kytara" => ["kytara", "kytary", "kytaře", "kytaru", "kytaro", "kytaře", "kytarou"],
+            "kytary" => ["kytary", "kytar", "kytarám", "kytary", "kytary", "kytarách", "kytarami"],
             "flétny" => ["flétny", "fléten", "flétnám", "flétny", "flétny", "flétnách", "flétnami"],
             "trombóny" => ["trombóny", "trombónů", "trombónům", "trombóny", "trombóny", "trombónech", "trombóny"],
             "zpěvy" => ["zpěvy", "zpěvů", "zpěvům", "zpěvy", "zpěvy", "zpěvech", "zpěvy"],
@@ -286,25 +287,29 @@ class BandPresenter extends BasePresenter {
         shuffle($exluded_instruments);
 
 
-        $latte->addFilter('years', function ($s, $case = 1) use($words) {
+        $latte->addFilter('years', function ($s, $case = 1) use ($words) {
             switch ($s) {
-                case 0: return "teď";
-                case 1: return $s . " " . $words["rok"][$case - 1];
+                case 0:
+                    return "teď";
+                case 1:
+                    return $s . " " . $words["rok"][$case - 1];
                 case 2:
                 case 3:
-                case 4: return $s . " " . $words["roky"][$case - 1];
-                default: return $s . " " . $words["léta"][$case - 1];
+                case 4:
+                    return $s . " " . $words["roky"][$case - 1];
+                default:
+                    return $s . " " . $words["léta"][$case - 1];
             }
         });
 
-        $latte->addFilter('rand', function($s) {
+        $latte->addFilter('rand', function ($s) {
             if (is_array($s))
                 return $s [array_rand($s)];
             return $s;
         });
 
-        $latte->addFilter("case", function($s, $case = 1) use ($dictionary) {
-            $convert = function($x) use($dictionary, $case) {
+        $latte->addFilter("case", function ($s, $case = 1) use ($dictionary) {
+            $convert = function ($x) use ($dictionary, $case) {
                 foreach ($dictionary as $dict) {
                     if (isset($dict[$x]) && isset($dict[$x][$case - 1]))
                         return $dict[$x][$case - 1];
@@ -330,27 +335,25 @@ class BandPresenter extends BasePresenter {
             'interests' => $xxx = self::generateInterests($interests, $max = rand(3, 4)),
             'other' => self::generateInterests($interests, count($interests) - $max, $xxx),
             'oinstruments' => $exluded_instruments,
-            'movies' => $this->arrayShuffle(array_map(function($s) use($latte, $member, $plural) {
-                                return $latte->renderToString($s, ["instrument" => $member->instrument,
-                                            "instruments" => $plural[$member->instrument]]);
-                            }, $movies)),
-            'theatres' => $this->arrayShuffle(array_map(function($s) use($latte, $member, $plural) {
-                                return $latte->renderToString($s, ["instrument" => $member->instrument,
-                                            "instruments" => $plural[$member->instrument]]);
-                            }, $theatres)),
-            'songs' => $this->arrayShuffle(array_map(function($s) use($latte, $member, $plural) {
-                                return $latte->renderToString($s, ["instrument" => $member->instrument,
-                                            "instruments" => $plural[$member->instrument]]);
-                            }, $songs)),
-            'books' => $this->arrayShuffle(array_map(function($s) use($latte, $member, $plural) {
-                                return $latte->renderToString($s, ["instrument" => $member->instrument,
-                                            "instruments" => $plural[$member->instrument]]);
-                            }, $books)),
+            'movies' => $this->arrayShuffle(array_map(function ($s) use ($latte, $member, $plural) {
+                return $latte->renderToString($s, ["instrument" => $member->instrument,
+                    "instruments" => $plural[$member->instrument]]);
+            }, $movies)),
+            'theatres' => $this->arrayShuffle(array_map(function ($s) use ($latte, $member, $plural) {
+                return $latte->renderToString($s, ["instrument" => $member->instrument,
+                    "instruments" => $plural[$member->instrument]]);
+            }, $theatres)),
+            'songs' => $this->arrayShuffle(array_map(function ($s) use ($latte, $member, $plural) {
+                return $latte->renderToString($s, ["instrument" => $member->instrument,
+                    "instruments" => $plural[$member->instrument]]);
+            }, $songs)),
+            'books' => $this->arrayShuffle(array_map(function ($s) use ($latte, $member, $plural) {
+                return $latte->renderToString($s, ["instrument" => $member->instrument,
+                    "instruments" => $plural[$member->instrument]]);
+            }, $books)),
             'likes' => $like,
             'top' => $top,
         ];
-
-
 
 
         $template = [
@@ -364,12 +367,14 @@ class BandPresenter extends BasePresenter {
         return $latte->renderToString(implode(" ", $template), $parameters);
     }
 
-    protected function arrayShuffle($array) {
+    protected function arrayShuffle($array)
+    {
         shuffle($array);
         return $array;
     }
 
-    public static function generateInterests($interests, $n, $exlude = []) {
+    public static function generateInterests($interests, $n, $exlude = [])
+    {
         $keys = array_keys($interests);
 
         if ($n + count($exlude) > count($keys))
@@ -385,12 +390,13 @@ class BandPresenter extends BasePresenter {
         return $taken;
     }
 
-    public function generateExtendedDescription($member) {
+    public function generateExtendedDescription($member)
+    {
 
         $latte = new Latte\Engine;
 
 
-        $latte->addFilter("length", function($s) {
+        $latte->addFilter("length", function ($s) {
             return count($s);
         });
 

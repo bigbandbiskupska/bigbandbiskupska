@@ -6,16 +6,19 @@ use Nette;
 use Nette\Application\Responses;
 use Tracy\ILogger;
 
-class ErrorPresenter extends \App\FrontModule\Presenters\BasePresenter implements Nette\Application\IPresenter {
+class ErrorPresenter extends \App\FrontModule\Presenters\BasePresenter implements Nette\Application\IPresenter
+{
 
     /** @var ILogger */
     private $logger;
 
-    public function __construct(ILogger $logger) {
+    public function __construct(ILogger $logger)
+    {
         $this->logger = $logger;
     }
 
-    public function run(Nette\Application\Request $request) {
+    public function run(Nette\Application\Request $request)
+    {
         $exception = $request->getParameter('exception');
 
         if ($exception instanceof Nette\Application\BadRequestException) {

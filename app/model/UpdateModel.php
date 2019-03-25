@@ -4,9 +4,9 @@ namespace App\Model;
 
 use Tulinkry\Poll\Services\NeonPollProvider;
 use Tulinkry\Services\ParameterService;
-use Nette\DI\Container;
 
-class UpdateModel {
+class UpdateModel
+{
 
     /**
      * @var ParameterService
@@ -18,12 +18,14 @@ class UpdateModel {
      */
     private $polls;
 
-    public function __construct(ParameterService $parameters, NeonPollProvider $polls) {
+    public function __construct(ParameterService $parameters, NeonPollProvider $polls)
+    {
         $this->parameters = $parameters;
         $this->polls = $polls;
     }
 
-    public function __invoke() {
+    public function __invoke()
+    {
         $poll = null;
         foreach ($this->polls->all() as $p) {
             if ($p->question->text === 'Anketa o divácky aktuálně nejoblíbenější píseň') {

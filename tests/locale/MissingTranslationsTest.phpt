@@ -28,39 +28,44 @@ class MissingTranslationsTest extends Tester\TestCase
     protected $container;
 
 
-	public function __construct(Nette\DI\Container $container) {
-		$this->container = $container;
-	}
+    public function __construct(Nette\DI\Container $container)
+    {
+        $this->container = $container;
+    }
 
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->translator = $this->container->getByType('Kdyby\Translation\Translator');
         $this->extractor = $this->container->getByType('Symfony\Component\Translation\Extractor\ChainExtractor');
         $this->loader = $this->container->getByType('Kdyby\Translation\IResourceLoader');
     }
 
-    public function tearDown() {
+    public function tearDown()
+    {
     }
 
-    public function testDefaultTranslations() {
+    public function testDefaultTranslations()
+    {
         $defaultLang = "cs_CZ";
-        $catalogues = [ "en_US" ];
+        $catalogues = ["en_US"];
 
         $translatorCatalogue = $this->translator->getCatalogue($defaultLang);
 
-        foreach($catalogues as $lang) {
+        foreach ($catalogues as $lang) {
             $catalogue = $this->translator->getCatalogue($lang);
-            foreach($translatorCatalogue->all() as $domain => $bunch) {
-                foreach($bunch as $id => $single) {
-                    Assert::equal(true, $catalogue->defines($id, $domain), 
-                        sprintf("Catalogue \"%s\" does not define message \"%s.%s\"", $lang, $domain, $id) );
+            foreach ($translatorCatalogue->all() as $domain => $bunch) {
+                foreach ($bunch as $id => $single) {
+                    Assert::equal(true, $catalogue->defines($id, $domain),
+                        sprintf("Catalogue \"%s\" does not define message \"%s.%s\"", $lang, $domain, $id));
                 }
             }
         }
     }
 
-    public function testFindMissingTranslations() {
-        $catalogues = [ "cs_CZ", "en_US" ];
+    public function testFindMissingTranslations()
+    {
+        $catalogues = ["cs_CZ", "en_US"];
 
 
         foreach ($catalogues as $lang) {
@@ -76,7 +81,7 @@ class MissingTranslationsTest extends Tester\TestCase
 
             $translatorCatalogue = $this->translator->getCatalogue($lang);
 
-            foreach($catalogue->all() as $domain => $bunch) {
+            foreach ($catalogue->all() as $domain => $bunch) {
                 foreach ($bunch as $id => $single) {
                     $id = explode(".", $id);
                     $tmpDomain = count($id) <= 1 ? $domain : array_shift($id);
@@ -87,17 +92,17 @@ class MissingTranslationsTest extends Tester\TestCase
                     $id = preg_replace('/(.*)\.\$i$/', '\1.1', $id);
 
                     if ($translatorCatalogue->defines($id, $tmpDomain)) {
-                       $counts [ self::MESSAGE_DEFINED ] ++; 
+                        $counts [self::MESSAGE_DEFINED]++;
                     } else if ($translatorCatalogue->has($id, $tmpDomain)) {
-                        $counts [ self::MESSAGE_EQUALS_FALLBACK  ] ++;
+                        $counts [self::MESSAGE_EQUALS_FALLBACK]++;
                     } else {
-                        $counts [ self::MESSAGE_MISSING  ] ++;
+                        $counts [self::MESSAGE_MISSING]++;
                     }
                 }
             }
 
-            Assert::same( 0, $counts[self::MESSAGE_MISSING], "There should be no missing translation" );
-            Assert::same( 0, $counts[self::MESSAGE_EQUALS_FALLBACK], "There should be no fallback translation" );
+            Assert::same(0, $counts[self::MESSAGE_MISSING], "There should be no missing translation");
+            Assert::same(0, $counts[self::MESSAGE_EQUALS_FALLBACK], "There should be no fallback translation");
         }
     }
 }

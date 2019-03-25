@@ -2,6 +2,7 @@
 
 namespace App\FrontModule\Presenters;
 
-class ContactPresenter extends BasePresenter {
-    
+class ContactPresenter extends BasePresenter
+{
+
 }
