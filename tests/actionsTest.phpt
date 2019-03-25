@@ -7,9 +7,8 @@ $container = require __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php";
 
 $appDir = $container->parameters['appDir'];
 $testDir = $container->parameters['testDir'];
-$tempDir = $container->parameters['tempDir'];
 
-foreach (Finder::findFiles('*.php*')->from($appDir, $testDir)->exclude($tempDir) as $path => $splfile) {
+foreach (Finder::findFiles('*.php*')->from($appDir, $testDir)->exclude('temp/*') as $path => $splfile) {
     if (($content = @file_get_contents($path)) === FALSE) {
         Assert::fail("The file '$path' should be readable");
     }

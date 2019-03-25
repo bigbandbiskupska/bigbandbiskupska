@@ -41,8 +41,7 @@ $configurator->addParameters(array("testDir" => __DIR__));
 
 $configurator->addParameters([
     'appDir' => APP_DIR,
-    'wwwDir' => TMP_DIR,
-    'tempDir' => TMP_DIR
+    'wwwDir' => TMP_DIR
 ]);
 
 $container = $configurator->createContainer();
