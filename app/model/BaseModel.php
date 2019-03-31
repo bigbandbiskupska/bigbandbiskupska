@@ -30,10 +30,13 @@ class BaseModel
     protected $defaultWhere = array();
     protected $defaultOrder = array();
 
-    public function __construct(Context $database)
+    public function __construct(Context $database, $table = NULL)
     {
         $this->database = $database;
-        $this->table = Strings::lower(str_replace('Model', '', ClassType::from($this)->getShortName()));
+        $name = str_replace('Model', '', ClassType::from($this)->getShortName());
+        $name = str_replace('Admin', '', $name);
+        $name = str_replace('Visible', '', $name);
+        $this->table = $table ?: Strings::lower($name);
     }
 
     public function all()

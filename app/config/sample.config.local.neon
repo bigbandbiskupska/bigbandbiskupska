@@ -13,7 +13,9 @@ common:
             user: root
             password:
             dsn: 'mysql:host=%database.host%;dbname=%database.dbname%'
-
+    security:
+        users:
+            jamesbond: 007
 development < common:
 
 production < common:

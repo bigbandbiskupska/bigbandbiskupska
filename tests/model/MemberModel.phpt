@@ -18,7 +18,7 @@ class MemberModel extends TestCaseWithDatabase
 
     public function setUp()
     {
-        $this->model = $this->container->getService('members');
+        $this->model = $this->container->getByType('App\Model\VisibleMembersModel');
     }
 
     public function testAll()

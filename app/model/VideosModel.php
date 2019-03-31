@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class VideosModel extends VisibleBaseModel
+class VideosModel extends BaseModel
 {
     protected $defaultOrder = array(
         'name' => 'DESC'

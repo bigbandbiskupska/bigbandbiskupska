@@ -47,7 +47,7 @@ class ConcertPresenterTest extends TestCaseWithDatabase
     {
         $request = new Request('Front:Concert', 'GET', array('action' => 'detail', 'id' => 1, 'slug' => 'bad_slug'));
         $response = $this->presenter->run($request);
-        $concerts = $this->container->getService('concerts');
+        $concerts = $this->container->getByType('App\Model\VisibleConcertsModel');
 
         Assert::notEqual(NULL, $concert = $concerts->find(1));
 
@@ -63,7 +63,7 @@ class ConcertPresenterTest extends TestCaseWithDatabase
     {
         $request = new Request('Front:Concert', 'GET', array('action' => 'detail', 'id' => 1));
         $response = $this->presenter->run($request);
-        $concerts = $this->container->getService('concerts');
+        $concerts = $this->container->getByType('App\Model\VisibleConcertsModel');
 
         Assert::notEqual(NULL, $concert = $concerts->find(1));
 
@@ -76,7 +76,7 @@ class ConcertPresenterTest extends TestCaseWithDatabase
 
     public function testRenderDetail()
     {
-        $concerts = $this->container->getService('concerts');
+        $concerts = $this->container->getByType('App\Model\VisibleConcertsModel');
         Assert::notEqual(NULL, $concert = $concerts->find(1));
         $slug = isset($concert->slug) ? $concert->slug : Strings::webalize($concert->name);
 

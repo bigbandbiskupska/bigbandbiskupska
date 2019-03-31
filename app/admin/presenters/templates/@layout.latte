@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta lang="cs" />
+	<meta http-equiv="Content-language" content="cs" />
+	<meta name="viewport" content="width=device-width" />
+
+	<meta name="description" content="{_front.layout.description}" />
+
+	<meta name="keywords" content="big band, big band biskupská, Big Band Biskupská, biskupská, Milan Tolkner, Tolkner, Biskupská, orchestr, hudba, jazz, swing" />
+	<meta name="author" content="{_front.layout.name}" />
+	<meta name="copyright" content="Tuli" />
+	<meta name="google-site-verification" content="w5txZH_KO0xRIZ61xp6E8JZgIufrq1-kK9KzZe3htJI" />
+
+	<meta property="og:site_name" content="BigBandBiskupská.cz">
+	<meta property="og:description" content="{_front.layout.description}">
+	<meta property="og:title" content="{_front.layout.description}">
+
+	<link rel="canonical" href="http://bigbandbiskupska.cz/">
+
+	<meta name="application-name" content="BigBandBiskupská.cz">
+	<meta name="msapplication-tooltip" content="Navštívit BigBandBiskupská.cz">
+	<meta name="msapplication-starturl" content="http://bigbandbiskupska.cz/">
+
+	<meta name="msapplication-task" content="name={_front.layout.menu.concerts};action-uri=/koncerty/;icon-uri=http://bigbandbiskupska.cz/img/icons/bbb.ico">
+	<meta name="msapplication-task" content="name={_front.layout.menu.galleries};action-uri=/galerie/;icon-uri=http://bigbandbiskupska.cz/img/icons/bbb.ico">
+	<meta name="msapplication-task" content="name={_front.layout.menu.contact};action-uri=/kontakt/;icon-uri=http://bigbandbiskupska.cz/img/icons/bbb.ico">
+	<meta name="msapplication-task" content="name={_front.layout.menu.band};action-uri=/kapela/;icon-uri=http://bigbandbiskupska.cz/img/icons/bbb.ico">
+
+	{block sheets}
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/blueimp-gallery.min.css">
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/bootstrap-image-gallery.min.css">
+
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/datetimepicker.css">
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/datagrid.css">
+	<!-- Use this css for ajax spinners -->
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/datagrid-spinners.css">
+
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/style.css" />
+	{/block}
+
+	<link rel="icon" href="{$basePath}/img/icons/bbb.ico">
+
+	{if $presenter->isLinkCurrent(':Error:*') || $presenter->isLinkCurrent(':Error4xx:*')}
+		<link rel="alternate" href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'cs'}" hreflang="cs" />
+		<link rel="alternate" href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'en'}" hreflang="en" />
+	{elseif $presenter->isLinkCurrent(':Front:Concert:detail')}
+		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, concert => $concert, locale => 'cs'}" hreflang="cs" />
+		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, concert => $concert, locale => 'en'}" hreflang="en" />
+	{else}
+		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, locale => 'cs'}" hreflang="cs" />
+		<link rel="alternate" href="{link //this, (expand) $presenter->parameters, locale => 'en'}" hreflang="en" />
+	{/if}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<title>{ifset title}{include title|striptags} | {/ifset}{_front.layout.name}</title>
+	<meta property="og:title" content="{ifset title}{include title|striptags} | {/ifset}{_front.layout.name}" />
+</head>
+
+<body data-spy="scroll" data-target="#mini-nav-menu" data-offset="90" id="{_front.layout.hash.top}" class="link-target">
+
+	<nav class="navbar navbar-default navbar-menu navbar-fixed-top" id="navbar-top">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mini-nav-menu" aria-expanded="false">
+	        <span class="sr-only">{_front.layout.menu.show}</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <button type="button" class="navbar-toggle collapsed lang-toggle" data-toggle="collapse" data-target="#mini-lang-menu" aria-expanded="false">
+            <img class="nation_flag" src="{$basePath}/img/locale/{$locale}.png" />
+	      </button>
+	      	<div class="">
+				<img src="{$basePath}/img/icons/bbb.ico" 
+				 alt="Logo"
+				 role="logo"
+				 class="img pull-left navbar-logo" />
+
+			    <a href="{link :Front:Homepage:default}" 
+			       title="{_front.layout.name}"
+			       class="navbar-brand pull-left">
+			    	{_front.layout.name}
+			    </a>
+			</div>
+	    </div>
+	    <div class="collapse navbar-collapse" id="mini-nav-menu">
+			<ul class="nav navbar-nav navbar-right visible-xs" role="tablist">
+		        <li n:class="$presenter->isLinkCurrent(':Front:Homepage:default') ? 'active'">
+		        	<a href="{link :Admin:Homepage:default}">{_front.layout.menu.start}
+		        		<span n:if="$presenter->isLinkCurrent(':Front:Homepage:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+		        	</a>
+		        </li>
+		        <li n:class="$presenter->isLinkCurrent(':Admin:Band:default') ? 'active'">
+		        	<a href="{link :Admin:Band:default}" class="">{_front.layout.menu.band}
+		        		<span n:if="$presenter->isLinkCurrent(':Admin:Band:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+		        	</a>
+		        </li>
+		        <li n:class="$presenter->isLinkCurrent(':Admin:Concert:default') ? 'active'">
+		        	<a href="{link :Admin:Concert:default}" class="">{_front.layout.menu.concerts}
+		        		<span n:if="$presenter->isLinkCurrent(':Admin:Concert:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+		        	</a>
+		        </li>
+		        <li n:class="$presenter->isLinkCurrent(':Admin:Song:default') ? 'active'">
+		        	<a href="{link :Admin:Song:default}" class="">{_front.layout.menu.songs}
+		        		<span n:if="$presenter->isLinkCurrent(':Admin:Song:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+		        	</a>
+		        </li>
+		        <li n:class="$presenter->isLinkCurrent(':Admin:Video:default') ? 'active'">
+		        	<a href="{link :Admin:Video:default}" class="">Video
+		        		<span n:if="$presenter->isLinkCurrent(':Admin:Video:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+		        	</a>
+		        </li>
+			</ul>
+			<hr class="clearfix visible-xs" />
+			<ul class="nav navbar-nav navbar-right" role="tablist">
+				{block mininav}
+				{/block}
+
+				<li>
+					<a href="{link :Admin:Sign:out}" title="Odhlásit">Odhlásit</a>
+				</li>
+			</ul>
+	    </div><!-- /.navbar-collapse -->
+	    <!-- mini lang menu -->
+	    <div class="collapse navbar-collapse" id="mini-lang-menu">
+			<ul class="nav navbar-nav navbar-right visible-xs" role="tablist">
+				{if $presenter->isLinkCurrent(':Error:*') || $presenter->isLinkCurrent(':Error4xx:*')}
+		            <li>
+						<a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs">
+							<img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}
+						</a>
+					</li>
+					<li>
+						<a href="{link :Front:Homepage:default, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en">
+							<img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}
+						</a>
+					</li>
+				{elseif $presenter->isLinkCurrent(':Front:Concert:detail')}
+					<li>
+						<a href="{link this, (expand) $presenter->parameters, concert => $concert, locale => 'cs'}" class="lang lang-cs">
+							<img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}
+						</a>
+					</li>
+					<li>
+						<a href="{link this, (expand) $presenter->parameters, concert => $concert, locale => 'en'}" class="lang lang-en">
+							<img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}
+						</a>
+					</li>
+				{else}
+		            <li>
+						<a href="{link this, (expand) $presenter->parameters, locale => 'cs'}" class="lang lang-cs">
+							<img class="nation_flag" src="{$basePath}/img/locale/cs.png" /> {_ 'front.layout.lang.czech'}
+						</a>
+					</li>
+					<li>
+						<a href="{link this, (expand) $presenter->parameters, locale => 'en'}" class="lang lang-en">
+							<img class="nation_flag" src="{$basePath}/img/locale/en.png" /> {_ 'front.layout.lang.english'}
+						</a>
+					</li>
+				{/if}
+			</ul>
+	    </div><!-- /mini lang menu -->
+	  </div><!-- /.container -->
+	</nav>
+
+	<div id="top-margin" class="clearfix"></div>
+
+	<nav class="navbar navbar-default navbar-menu hidden-xs" id="navbar-menu">
+	  <div class="container">
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="navbar-header">
+	      <button type="button" 
+	      		  class="navbar-toggle collapsed" 
+	      		  data-toggle="collapse" 
+	      		  data-target="#collapse-menu" 
+	      		  aria-expanded="false">
+	        <span class="sr-only">{_front.layout.name}</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	    </div>
+
+	   	<div class="collapse navbar-collapse" id="collapse-menu">
+	      <ul class="nav navbar-nav">
+	        <li n:class="$presenter->isLinkCurrent(':Front:Homepage:default') ? 'active'">
+	        	<a href="{link :Admin:Homepage:default}">{_front.layout.menu.start}
+	        		<span n:if="$presenter->isLinkCurrent(':Front:Homepage:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+	        	</a>
+	        </li>
+	        <li n:class="$presenter->isLinkCurrent(':Admin:Band:default') ? 'active'">
+	        	<a href="{link :Admin:Band:default}" class="">{_front.layout.menu.band}
+	        		<span n:if="$presenter->isLinkCurrent(':Admin:Band:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+	        	</a>
+	        </li>
+	        <li n:class="$presenter->isLinkCurrent(':Admin:Concert:default') ? 'active'">
+	        	<a href="{link :Admin:Concert:default}" class="">{_front.layout.menu.concerts}
+	        		<span n:if="$presenter->isLinkCurrent(':Admin:Concert:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+	        	</a>
+	        </li>
+	        <li n:class="$presenter->isLinkCurrent(':Admin:Song:default') ? 'active'">
+	        	<a href="{link :Admin:Song:default}" class="">{_front.layout.menu.songs}
+	        		<span n:if="$presenter->isLinkCurrent(':Admin:Song:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+	        	</a>
+	        </li>
+	        <li n:class="$presenter->isLinkCurrent(':Admin:Video:default') ? 'active'">
+	        	<a href="{link :Admin:Video:default}" class="">Video
+	        		<span n:if="$presenter->isLinkCurrent(':Admin:Video:default')" class="sr-only"> ({_front.layout.menu.actual})</span>
+	        	</a>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container -->
+	</nav>
+
+	{block top-content}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default panel-content">
+					<div class="panel-heading">
+						{snippet flashes}
+						<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+						{/snippet}
+						{block heading}
+						<h1>
+						</h1>
+						{/block}
+					</div>
+					<div class="panel-body">
+						{include content}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{/block}
+
+	<nav class="navbar navbar-default navbar-fixed-bottom copyright">
+	  <div class="container text-center">
+		{_front.layout.name} <span {if isset($lastUpdated) && $lastUpdated} title="Naposledy upraveno {$lastUpdated|date: 'j. n. Y H:i:s'}"{/if}>2016</span> &copy; {_front.layout.copyright}
+	  </div>
+	</nav>
+
+
+	<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+	<div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
+	    <!-- The container for the modal slides -->
+	    <div class="slides"></div>
+	    <!-- Controls for the borderless lightbox -->
+	    <h3 class="title"></h3>
+	    <a class="prev">‹</a>
+	    <a class="next">›</a>
+	    <a class="close">×</a>
+	    <a class="play-pause"></a>
+	    <ol class="indicator"></ol>
+	    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+	    <div class="modal fade">
+	        <div class="modal-dialog modal-lg">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button type="button" class="close" aria-hidden="true">&times;</button>
+	                    <h4 class="modal-title"></h4>
+	                </div>
+	                <div class="modal-body next"></div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-default pull-left prev">
+	                        <i class="glyphicon glyphicon-chevron-left"></i>
+	                        {_Previous}
+	                    </button>
+	                    <button type="button" class="btn btn-primary next">
+	                        {_Next}
+	                        <i class="glyphicon glyphicon-chevron-right"></i>
+	                    </button>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+    <div id="top-button">
+        <a href="#{_front.layout.hash.top}" title="{_front.layout.menu.top}">
+            <span class="glyphicon glyphicon-arrow-up"></span>
+        </a>
+    </div>
+
+
+	{block scripts}
+	<script src="{$basePath}/js/jquery.min.js"></script>
+	<script src="{$basePath}/js/bootstrap.min.js"></script>
+
+	<script src="{$basePath}/js/jquery.blueimp-gallery.min.js"></script>
+	<script src="{$basePath}/js/bootstrap-image-gallery.min.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/nette.ajax.js"></script>
+	<script src="{$basePath}/js/spinner.ajax.js"></script>
+
+	<script src="{$basePath}/js/datetimepicker.js"></script>
+	<script src="{$basePath}/js/datagrid.js"></script>
+
+	<!-- It is recommended to include this JS file with just a few bits. It refreshes URL on non ajax request -->
+	<script src="{$basePath}/js/datagrid-instant-url-refresh.js"></script>
+
+	<!-- Use this little extension for ajax spinners -->
+	<script src="{$basePath}/js/datagrid-spinners.js"></script>
+
+	<script src="{$basePath}/js/main.js"></script>
+	{/block}
+
+	{scripts}
+
+	{styles}
+
+	<script n:if="$productionMode" type="text/javascript">
+	  /* <![CDATA[ */
+	  (function(i,s,o,g,r,a,m){l}i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){l}
+	  (i[r].q=i[r].q||[]).push(arguments){r},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  {r})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-79563712-1', 'auto');
+	  ga('send', 'pageview');
+       /* ]]> */
+	</script>
+</body>
+</html>
+
+
+

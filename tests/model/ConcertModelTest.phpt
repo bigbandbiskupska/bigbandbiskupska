@@ -18,7 +18,7 @@ class ConcertModelTest extends TestCaseWithDatabase
 
     public function setUp()
     {
-        $this->model = $this->container->getService('concerts');
+        $this->model = $this->container->getByType('App\Model\VisibleConcertsModel');
     }
 
     public function testAll()

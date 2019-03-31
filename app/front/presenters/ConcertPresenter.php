@@ -3,6 +3,7 @@
 namespace App\FrontModule\Presenters;
 
 use App\Model\ConcertsModel;
+use App\Model\VisibleConcertsModel;
 use Nette\Http\IResponse;
 use Nette\Utils\Strings;
 
@@ -10,7 +11,7 @@ class ConcertPresenter extends BasePresenter
 {
 
     /**
-     * @var ConcertsModel
+     * @var VisibleConcertsModel
      * @inject
      */
     public $concerts;

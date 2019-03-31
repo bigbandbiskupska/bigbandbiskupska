@@ -2,17 +2,18 @@
 
 namespace App\FrontModule\Presenters;
 
-use App\Model\MembersModel;
+use App\Model\VisibleMembersModel;
 use Latte;
 use Latte\Loaders\StringLoader;
 use Nette;
+use Nette\Utils\Json;
 use WebLoader\InvalidArgumentException;
 
 class BandPresenter extends BasePresenter
 {
 
     /**
-     * @var MembersModel
+     * @var VisibleMembersModel
      * @inject
      */
     public $members;
@@ -32,8 +33,8 @@ class BandPresenter extends BasePresenter
             // clone to writable
             $member = (object)$member->toArray();
 
-            $member->photo_coords = json_decode($member->photo_coords, true);
-            $member->extra = json_decode($member->extra, true);
+            $member->photo_coords = Json::decode($member->photo_coords, true);
+            $member->extra = Json::decode($member->extra, true);
 
             array_push($this->template->sections[$member->group], $member);
         }

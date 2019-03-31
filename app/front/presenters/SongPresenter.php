@@ -3,6 +3,8 @@
 namespace App\FrontModule\Presenters;
 
 use App\Model\SongsModel;
+use App\Model\AdminSongsModel;
+use App\Model\VisibleSongsModel;
 use Tulinkry;
 use Tulinkry\Poll\Control\FormPollControl;
 
@@ -10,7 +12,7 @@ class SongPresenter extends BasePresenter
 {
 
     /**
-     * @var SongsModel
+     * @var VisibleSongsModel
      * @inject
      */
     public $songs;

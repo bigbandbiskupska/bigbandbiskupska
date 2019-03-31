@@ -4,12 +4,14 @@ namespace App\FrontModule\Presenters;
 
 use App;
 use App\Model\VideosModel;
+use App\Model\AdminVideosModel;
+use App\Model\VisibleVideosModel;
 
 class VideoPresenter extends BasePresenter
 {
 
     /**
-     * @var VideosModel
+     * @var VisibleVideosModel
      * @inject
      */
     public $videos;

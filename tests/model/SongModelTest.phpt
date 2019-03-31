@@ -18,7 +18,7 @@ class SongModelTest extends TestCaseWithDatabase
 
     public function setUp()
     {
-        $this->model = $this->container->getService('songs');
+        $this->model = $this->container->getByType('App\Model\VisibleSongsModel');
     }
 
     public function testAll()

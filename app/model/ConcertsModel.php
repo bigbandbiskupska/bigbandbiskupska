@@ -5,7 +5,7 @@ namespace App\Model;
 use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
 
-class ConcertsModel extends VisibleBaseModel
+class ConcertsModel extends BaseModel
 {
     protected $defaultOrder = array(
         'date' => 'DESC',

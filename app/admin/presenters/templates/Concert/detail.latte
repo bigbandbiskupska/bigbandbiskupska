@@ -1,0 +1,14 @@
+{block detail}
+<h2>{$item->name}</h2>
+    {formContainer items_detail_form-$item->id}
+        {input id, value => $item->id}
+        {label place /}: {input place, value => $item->place}
+        {label address /}: {input address, value => $item->address}
+        {label latitude /}: {input latitude, value => $item->latitude}
+        {label longitude /}: {input longitude, value => $item->longitude}
+        {* haven't found a different way how to inject value to textarea *}
+        {? $_form['description']->setDefaultValue($item->description) ?}
+        {label description /}: {input description}
+        {input save}
+    {/formContainer}
+{/block}

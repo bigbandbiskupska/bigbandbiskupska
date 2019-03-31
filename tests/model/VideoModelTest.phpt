@@ -19,7 +19,7 @@ class VideoModelTest extends TestCaseWithDatabase
 
     public function setUp()
     {
-        $this->model = $this->container->getService('videos');
+        $this->model = $this->container->getByType('App\Model\VisibleVideosModel');
     }
 
     public function testAll()

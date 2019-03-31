@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model\ConcertsModel;
+use App\Model\VisibleConcertsModel;
 use Nette\Application\IRouter;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
@@ -12,11 +13,11 @@ class RouterFactory
 {
 
     /**
-     * @var ConcertsModel
+     * @var VisibleConcertsModel
      */
     private $concerts;
 
-    public function __construct(ConcertsModel $concerts)
+    public function __construct(VisibleConcertsModel $concerts)
     {
         $this->concerts = $concerts;
     }
@@ -79,6 +80,15 @@ class RouterFactory
 
         $router[] = new Route('[<locale=cs cs|en>/]photos', 'Front:Photos:default');
 
+        $router[] = new Route('[<locale cs|en>/]sign', 'Admin:Sign:in');
+        $router[] = new Route('[<locale cs|en>/][admin/]signout', 'Admin:Sign:out');
+        $router[] = new Route('[<locale cs|en>/]admin/[home]', 'Admin:Homepage:default');
+        $router[] = new Route('[<locale cs|en>/]admin/kapela', 'Admin:Band:default');
+        $router[] = new Route('[<locale cs|en>/]admin/kontakt', 'Admin:Contact:default');
+        $router[] = new Route('[<locale cs|en>/]admin/historie', 'Admin:History:default');
+        $router[] = new Route('[<locale cs|en>/]admin/repertoar', 'Admin:Song:default');
+        $router[] = new Route('[<locale cs|en>/]admin/videa', 'Admin:Video:default');
+        $router[] = new Route('[<locale cs|en>/]admin/koncerty[/<paginator-page=1>]', 'Admin:Concert:default');
         #$router[] = new Route('<presenter>/<action>[/<id>]', 'Front:Homepage:default');
         return $router;
     }

@@ -13,6 +13,10 @@ $.nette.ext('spinner', {
 			})
 		}
 
+		if(!this.spinner) {
+			return;
+		}
+
 		var that = this
 		$(window).mousemove(function(e) {
 			that.spinner.offset({top: e.pageY, left: e.pageX});
@@ -46,6 +50,10 @@ $.nette.ext('loader', {
 		var that = this
 		var interval = 500
 		settings.timeout = settings.timeout || 5000
+
+		if(!this.loader) {
+			return;
+		}
 
 		var func = function() {
 			var step = Math.ceil( interval * 100 / settings.timeout )

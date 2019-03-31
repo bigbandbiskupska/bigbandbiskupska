@@ -50,7 +50,8 @@
         "tulinkry/tulinkry": "dev-master",
         "tulinkry/script": "dev-master",
         "tulinkry/git": "1.0.1",
-        "tulinkry/poll": "dev-master"
+        "tulinkry/poll": "dev-master",
+        "ublaboo/datagrid": "=5.4.1"
     },
     "minimum-stability": "dev",
     "prefer-stable" : true,

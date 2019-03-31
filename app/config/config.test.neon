@@ -10,7 +10,9 @@ common:
     services:
         cacheStorage:
             factory: Nette\Caching\Storages\DevNullStorage
-
+    security:
+        users:
+            jamesbond: 007
 development < common:
 
 production < common:

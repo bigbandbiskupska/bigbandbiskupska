@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class SongsModel extends VisibleBaseModel
+class SongsModel extends BaseModel
 {
     protected $defaultOrder = array(
         'name' => 'DESC'
