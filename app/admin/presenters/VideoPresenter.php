@@ -2,10 +2,10 @@
 
 namespace App\AdminModule\Presenters;
 
-use App\AdminModule\Components\Grid;
 use App\Model\AdminVideosModel;
 use Nette\Http\Request;
 use Nette\Utils\DateTime;
+use Tulinkry\Components\Grid;
 
 class VideoPresenter extends BasePresenter
 {

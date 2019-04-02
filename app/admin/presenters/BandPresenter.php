@@ -2,11 +2,11 @@
 
 namespace App\AdminModule\Presenters;
 
-use App\AdminModule\Components\Grid;
 use App\Model\AdminMembersModel;
 use Nette\Http\Request;
 use Nette\Neon\Neon;
 use Nette\Utils\Json;
+use Tulinkry\Components\Grid;
 
 class BandPresenter extends BasePresenter
 {

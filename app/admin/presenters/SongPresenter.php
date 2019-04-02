@@ -2,9 +2,9 @@
 
 namespace App\AdminModule\Presenters;
 
-use App\AdminModule\Components\Grid;
 use App\Model\AdminSongsModel;
 use Nette\Http\Request;
+use Tulinkry\Components\Grid;
 
 class SongPresenter extends BasePresenter
 {
