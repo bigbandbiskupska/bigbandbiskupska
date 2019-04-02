@@ -1,5 +1,5 @@
 #ajax-spinner {
-	display: none;
+    display: none;
     position: absolute;
     top: 50%;
     left: 48%;
@@ -11,65 +11,65 @@
 }
 
 #top-button {
-	border-radius: 50%;
-	border: 3px solid #555;
-	background-color: #F8F8F8;
-	box-shadow: 0 0 10px 10px #F8F8F8;
+    border-radius: 50%;
+    border: 3px solid #555;
+    background-color: #F8F8F8;
+    box-shadow: 0 0 10px 10px #F8F8F8;
 
-	height: 50px;
-	width: 50px;
+    height: 50px;
+    width: 50px;
 
-	position: fixed;
-	z-index: 25000;
-	right: -60px;
-	bottom: 8%;
+    position: fixed;
+    z-index: 25000;
+    right: -60px;
+    bottom: 8%;
 
-	text-align: center;
-	padding-top: 13px;
+    text-align: center;
+    padding-top: 13px;
 
-	display: none;
-	cursor: pointer;
+    display: none;
+    cursor: pointer;
 }
 
 img.icon {
-	max-width: 25px;
-	max-height: 25px;
+    max-width: 25px;
+    max-height: 25px;
 }
 
 .copyright {
-	/* bottom fixed navbar */
-	min-height: 25px;
-	max-height: 30px;
+    /* bottom fixed navbar */
+    min-height: 25px;
+    max-height: 30px;
 }
 
 body {
-	/* margin-top: 80px; -- not neccessary because the top is static */
-	/* bottom fixed navbar */
-	margin-bottom: 30px;
-	background: #DDD;
+    /* margin-top: 80px; -- not neccessary because the top is static */
+    /* bottom fixed navbar */
+    margin-bottom: 30px;
+    background: #DDD;
 
 }
 
 .link-target:before {
-  display: block;
-  content: " ";
-  margin-top: -80px; /* top navbar height */
-  height: 80px; /* top navbar height */
-  visibility: hidden;
+    display: block;
+    content: " ";
+    margin-top: -80px; /* top navbar height */
+    height: 80px; /* top navbar height */
+    visibility: hidden;
 }
 
 .navbar {
-	border-radius: unset;
+    border-radius: unset;
 }
 
 .navbar .navbar-nav {
-  display: inline-block;
-  float: none;
-  vertical-align: top;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
 }
 
 .navbar .navbar-collapse {
-  text-align: center;
+    text-align: center;
 }
 
 .navbar-brand {
@@ -77,60 +77,60 @@ body {
 }
 
 .navbar-menu {
-	box-shadow: 0 0px 10px 10px rgb(248, 248, 248);
-	margin-bottom: 0px;
-	border-bottom: none;
-	z-index: 15000;
+    box-shadow: 0 0px 10px 10px rgb(248, 248, 248);
+    margin-bottom: 0px;
+    border-bottom: none;
+    z-index: 15000;
 }
 
 #top-margin {
-	min-height: 50px;
+    min-height: 50px;
 }
 
 
 #navbar-top {
-	margin-bottom: 0;
-	z-index: 20000;
-	order-bottom: 1px solid #E7E7E7;
+    margin-bottom: 0;
+    z-index: 20000;
+    order-bottom: 1px solid #E7E7E7;
 }
 
 
 #navbar-menu {
-	position: relative;
-	/*argin-top: 50px;*/
+    position: relative;
+    /*argin-top: 50px;*/
 }
 
 #navbar-menu:before {
-	content: '';
-	width: 100%;
-	background: black;
-	z-index: 50000;
-	height: 1.5px;
+    content: '';
+    width: 100%;
+    background: black;
+    z-index: 50000;
+    height: 1.5px;
 }
 
 .extra-space {
-	height: 50px;
+    height: 50px;
 }
 
 /* other formats */
 
 .panel-content {
-	box-shadow: 0 0 10px 10px rgb(248, 248, 248);
-	border: none;
+    box-shadow: 0 0 10px 10px rgb(248, 248, 248);
+    border: none;
 }
 
 .panel-content > .panel-body {
 
-	background-color: #F8F8F8;
+    background-color: #F8F8F8;
 }
 
 .panel-content > .panel-heading {
-	background-color: #F8F8F8;
+    background-color: #F8F8F8;
 }
 
 
 .full-row {
-	width: 100%;
+    width: 100%;
 }
 
 .event-date {
@@ -139,11 +139,11 @@ body {
 }
 
 .event-date * {
-	margin: 0px;
+    margin: 0px;
 }
 
 .band-photo {
-	overflow-x: auto;
+    overflow-x: auto;
 }
 
 
@@ -151,26 +151,26 @@ body {
 
 
 .bg-image {
-	padding: 0;
-	margin: 0;
-	background-color: transparent;
-	z-index: -12000;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    z-index: -12000;
 }
 
 .bg-image img {
-	min-width: 100%;
+    min-width: 100%;
 }
 
 .picture {
-	/*margin-top: 15px;*/
-	margin-bottom: 15px;
-	position: relative;
-	padding: 0;
+    /*margin-top: 15px;*/
+    margin-bottom: 15px;
+    position: relative;
+    padding: 0;
 }
 
 .pic {
-	position: relative;
-	padding: 0;
+    position: relative;
+    padding: 0;
 }
 
 .img-gradient-bottom {
@@ -181,13 +181,13 @@ body {
     bottom: 0;
     height: 10%;
     background: none;
-    background: -moz-linear-gradient(top,  rgba(221,221,221,0) 0%, rgba(221,221,221,1) 80%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(221,221,221,0)), color-stop(80%,rgba(221,221,221,1)));
-    background: -webkit-linear-gradient(top,  rgba(221,221,221,0) 0%,rgba(221,221,221,1) 80%);
-    background: -o-linear-gradient(top,  rgba(221,221,221,0) 0%,rgba(221,221,221,1) 80%);
-    background: -ms-linear-gradient(top,  rgba(221,221,221,0) 0%,rgba(221,221,221,1) 80%);
-    background: linear-gradient(to bottom,  rgba(221,221,221,0) 0%,rgba(221,221,221,1) 80%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00F8F8F8', endColorstr='#FFF8F8F8',GradientType=0 );
+    background: -moz-linear-gradient(top, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(221, 221, 221, 0)), color-stop(80%, rgba(221, 221, 221, 1)));
+    background: -webkit-linear-gradient(top, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    background: -o-linear-gradient(top, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    background: -ms-linear-gradient(top, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    background: linear-gradient(to bottom, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00F8F8F8', endColorstr='#FFF8F8F8', GradientType=0);
 }
 
 .img-gradient-top {
@@ -197,153 +197,153 @@ body {
     left: 0;
     height: 10%;
     background: none;
-    background: -moz-linear-gradient(bottom,  rgba(221,221,221,0) 0%, rgba(221,221,221,1) 80%);
-    background: -webkit-gradient(linear, left bottom, left bottom, color-stop(0%,rgba(221,221,221,0)), color-stop(80%,rgba(221,221,221,1)));
-    background: -webkit-linear-gradient(bottom,  rgba(221,221,221,0) 0%,rgba(221,221,221,1) 80%);
-    background: -o-linear-gradient(bottom,  rgba(221,221,221,0) 0%,rgba(221,221,221,1) 80%);
-    background: -ms-linear-gradient(bottom,  rgba(221,221,221,0) 0%,rgba(221,221,221,1) 80%);
-    background: linear-gradient(to top,  rgba(221,221,221,0) 0%,rgba(221,221,221,1) 80%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00F8F8F8', endColorstr='#FFF8F8F8',GradientType=0 );
+    background: -moz-linear-gradient(bottom, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    background: -webkit-gradient(linear, left bottom, left bottom, color-stop(0%, rgba(221, 221, 221, 0)), color-stop(80%, rgba(221, 221, 221, 1)));
+    background: -webkit-linear-gradient(bottom, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    background: -o-linear-gradient(bottom, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    background: -ms-linear-gradient(bottom, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    background: linear-gradient(to top, rgba(221, 221, 221, 0) 0%, rgba(221, 221, 221, 1) 80%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00F8F8F8', endColorstr='#FFF8F8F8', GradientType=0);
 }
 
 #picture {
-	z-index: -12000;
-	margin-top: -5%;
-	margin-bottom: -12%;
+    z-index: -12000;
+    margin-top: -5%;
+    margin-bottom: -12%;
 }
 
 /* ---------------------------------------- */
 
 .img300x300 {
-	max-width: 300px;
-	max-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
 }
 
 .img300x150 {
-	max-width: 300px;
-	max-height: 150px;
+    max-width: 300px;
+    max-height: 150px;
 }
 
 .img150x100 {
-	max-width: 150px;
-	max-height: 100px;
+    max-width: 150px;
+    max-height: 100px;
 }
 
 .img25x25 {
-	max-width: 25px;
-	max-height: 25px;
+    max-width: 25px;
+    max-height: 25px;
 }
 
 .img50x50 {
-	max-width: 50px;
-	max-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
 }
 
 .img-resp {
-	height: auto;
-	width: auto;
-	display: inline;
+    height: auto;
+    width: auto;
+    display: inline;
 }
 
 /* ---------------------------------------- */
 
 img.alignright {
-	padding: 4px;
-	margin: 0 0 2px 7px;
-	display: inline;
+    padding: 4px;
+    margin: 0 0 2px 7px;
+    display: inline;
 }
 
 img.alignleft {
-	padding: 4px;
-	margin: 0 7px 2px 0;
-	display: inline;
+    padding: 4px;
+    margin: 0 7px 2px 0;
+    display: inline;
 }
 
 .alignright {
-	float: right;
+    float: right;
 }
 
 .alignleft {
-	float: left;
+    float: left;
 }
 
 .main-logo {
-	width: 100px;
+    width: 100px;
 }
 
 .navbar-logo {
-	max-height: 50px;
-	padding: 9px 10px;
+    max-height: 50px;
+    padding: 9px 10px;
 }
 
 /* ---------------------------------------- */
 
 .panel-concert-future .event-date .panel-heading {
-	color: #3C763D;
-	background-color: #DFF0D8;
-	border-color: #D6E9C6;
+    color: #3C763D;
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
 }
 
 .panel-concert-past .event-date .panel-heading {
-	color: #A94442;
-	background-color: #F2DEDE;
-	border-color: #EBCCD1;
+    color: #A94442;
+    background-color: #F2DEDE;
+    border-color: #EBCCD1;
 }
 
 .panel-concert-future .event-date {
-	color: #3C763D;
+    color: #3C763D;
 }
 
 .panel-concert-past .event-date {
-	color: #A94442;
+    color: #A94442;
 }
 
 .panel-concert {
-	cursor: pointer;
-	cursor: hand;
+    cursor: pointer;
+    cursor: hand;
 }
 
 .event-description {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 /* ------------------ nation flag --------- */
 
 .nation_flag {
-	height: 15px;
-	vertical-align: unset;
+    height: 15px;
+    vertical-align: unset;
 }
 
 .lang-toggle {
-	max-height: 35px;
+    max-height: 35px;
 }
 
 /* ------------------ lead ---------------- */
 
 @media (min-width: 768px) {
-  .lead {
-    font-size: 18px;
-  }
+    .lead {
+        font-size: 18px;
+    }
 }
 
 @media (min-width: 991px) {
-  .lead {
-    font-size: 16px;
-  }
+    .lead {
+        font-size: 16px;
+    }
 }
 
 /* ------------------ Concert detail ---------------- */
 #image-detail {
-	margin-top: 8px;
+    margin-top: 8px;
 }
 
 .btn-back {
-	margin: 2%;
+    margin: 2%;
 }
 
 /* ----------------- administration mobile overflow -------------- */
 .container .panel-body, .container-fluid .panel-body {
-	overflow-x: auto;
+    overflow-x: auto;
 }
 
 /*
