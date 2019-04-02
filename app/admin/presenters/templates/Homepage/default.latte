@@ -1,42 +1,38 @@
-{block top-content}
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default panel-content">
-                <div class="panel-heading">
-                    {snippet flashes}
-                    <div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
-                    {/snippet}
-                    <h1>Administrace</h1>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p>
-                                Vítej v administraci. Pokračovat na jednotlivé položky můžeš výběrem v horní liště nebo
-                                přímo zde pod
-                                textem.
-                            </p>
+{block container-class}container{/block}
 
-                            <dl>
-                                <dt>Členové</dt>
-                                <dt><a href="{link Band:default}" title="Administrace členů">Administrace členů</a></dt>
-                                <dt>Koncerty</dt>
-                                <dt><a href="{link Concert:default}" title="Administrace koncertů">Administrace
-                                    koncertů</a></dt>
-                                <dt>Repertoár</dt>
-                                <dt><a href="{link Song:default}" title="Administrace repertoáru">Administrace
-                                    repertoáru</a></dt>
-                                <dt>Videa</dt>
-                                <dt><a href="{link Video:default}" title="Administrace videí">Administrace videí</a>
-                                </dt>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{block title}Administrace{/block}
+
+{block heading}
+<h1 id="administrace" class="link-target">Administrace</h1>
 {/block}
 
+{block mininav}
+<li>
+    <a href="#administrace">Administrace</a>
+</li>
+{include #parent}
+{/block}
+
+
+{block content}
+
+<p>
+    Vítej v administraci. Pokračovat na jednotlivé položky můžeš výběrem v horní liště nebo
+    přímo zde pod
+    textem.
+</p>
+
+<dl>
+    <dt>Členové</dt>
+    <dt><a href="{link Band:default}" title="Administrace členů">Administrace členů</a></dt>
+    <dt>Koncerty</dt>
+    <dt><a href="{link Concert:default}" title="Administrace koncertů">Administrace
+        koncertů</a></dt>
+    <dt>Repertoár</dt>
+    <dt><a href="{link Song:default}" title="Administrace repertoáru">Administrace
+        repertoáru</a></dt>
+    <dt>Videa</dt>
+    <dt><a href="{link Video:default}" title="Administrace videí">Administrace videí</a>
+    </dt>
+</dl>
+{/block}

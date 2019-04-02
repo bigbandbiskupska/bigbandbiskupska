@@ -62,6 +62,7 @@
 
 <body data-spy="scroll" data-target="#mini-nav-menu" data-offset="90" id="{_front.layout.hash.top}" class="link-target">
 
+	{block navigation}
 	<nav class="navbar navbar-default navbar-menu navbar-fixed-top" id="navbar-top">
 	  <div class="container">
 	    <!-- Brand and toggle get grouped for better mobile display -->
@@ -138,6 +139,10 @@
 				{block mininav}
 
 				{/block}
+
+				<li n:if="$user->loggedIn">
+					<a href="{link :Admin:Sign:out}" title="Odhlásit">Odhlásit</a>
+				</li>
 
 	            <li class="dropdown hidden-xs">
 	              <a href="#" class="dropdown-toggle lang" data-toggle="dropdown">
@@ -267,16 +272,19 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container -->
 	</nav>
+	{/block}
 
+	{block background-picture}
 	<div class="container-fluid pic picture" {ifCurrent :Front:Homepage:Default}{else}id="picture"{/ifCurrent}>
 		<header class="bg-image clearfix">
 	    	<img src="{$basePath}/img/band/{if $isMobile}mobile/{/if}01.jpg" alt="" class="img-responsive" />
 		</header>
 		<div class="img-gradient-bottom"></div>
 	</div>
+	{/block}
 
 	{block top-content}
-	<div class="container">
+	<div class="{block container-class}container{/block}">
 		<div n:foreach="$flashes as $flash" n:class="alert, alert-$flash->type">{$flash->message}</div>
 
 		<div class="row">
