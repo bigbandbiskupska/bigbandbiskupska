@@ -56,11 +56,11 @@
     "texy/texy": "~2.9.0",
     "dg/adminer-custom": "~1.6",
     "kdyby/translation": "^2.3.0",
-    "tulinkry/tulinkry": "dev-master",
-    "tulinkry/script": "dev-master",
-    "tulinkry/git": "1.0.1",
-    "tulinkry/poll": "dev-master",
-    "tulinkry/grid": "dev-master"
+    "tulinkry/tulinkry": ">=1.0, <1.1",
+    "tulinkry/script": ">=1.0, <1.1",
+    "tulinkry/git": ">=1.0, <1.1",
+    "tulinkry/poll": ">=1.0, <1.1",
+    "tulinkry/grid": ">=1.0, <1.1"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
