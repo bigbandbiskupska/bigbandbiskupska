@@ -1,3 +1,7 @@
+html {
+    overflow: hidden;
+}
+
 #ajax-spinner {
     display: none;
     position: absolute;
@@ -343,7 +347,7 @@ img.alignleft {
 
 /* ----------------- administration mobile overflow -------------- */
 .container .panel-body, .container-fluid .panel-body {
-    overflow: scroll;
+    overflow-x: auto;
 }
 
 /*
