@@ -2,98 +2,78 @@
 
 namespace App\AdminModule\Presenters;
 
-use App\Model\AdminSongsModel;
+use App\AdminModule\Components\Grid;
 use App\Model\AdminVideosModel;
-use Nette\Forms\Container;
+use Nette\Http\Request;
+use Nette\Utils\DateTime;
 
-class VideoPresenter extends DataGridBasePresenter
+class VideoPresenter extends BasePresenter
 {
-
-
     /**
      * @var AdminVideosModel
      * @inject
      */
     public $videos;
 
-    public function getModel()
+    /**
+     * @var Request
+     * @inject
+     */
+    public $httpRequest;
+
+
+    public function createComponentGrid($name)
     {
-        return $this->videos;
+        $grid = new Grid($this->httpRequest);
+
+        $grid->setModel($this->videos)
+            ->setFormFactory(function (\Tulinkry\Forms\Container $container) {
+                $container->addText('name', 'Jméno');
+                $container->addText('link', 'Odkaz');
+                $container->addText('url', 'Url');
+                $container->addText('date', 'Datum')
+                    ->setDefaultValue((new DateTime())->format('j. n. Y H:i'));
+                $container->addSelect('hidden', 'Viditelnost', [
+                    0 => 'Viditelný',
+                    1 => 'Schovaný'
+                ]);
+            })
+            ->setConvertToValues(function ($video) {
+                $video = (object)$video->toArray();
+                $video->date = $video->date->format('j. n. Y H:i');
+                return (array)$video;
+            })->setConvertFromValues(function ($values) {
+                $values['date'] = DateTime::createFromFormat('j. n. Y H:i', $values->date);
+                return $values;
+            });
+
+        $grid->addTextColumn('id', '#');
+        $grid->addTextColumn('name', 'Jméno');
+        $grid->addLinkColumn('link', 'Link')
+            ->openInNewTab();
+        $grid->addLinkColumn('url', 'Url')
+            ->openInNewTab();
+        $grid->addDateColumn('date', 'Datum')
+            ->setFormat('j. n. Y H:i');
+        $grid->addSelectColumn('hidden', 'Viditelnost', [
+            0 => [
+                'class' => 'btn-success',
+                'label' => 'Viditelný',
+            ],
+            1 => [
+                'class' => 'btn-danger',
+                'label' => 'Schovaný',
+            ],
+        ])->setDataCallback(function ($id, $value) {
+            $this->redrawControl('flashes');
+            return $this->videos->update($id, [
+                'hidden' => $value
+            ]);
+        });
+
+        $grid->setEditable();
+        $grid->setConfirmDelete('Opravdu chcete smazat tento záznam?');
+
+        return $grid;
     }
-
-    public function getColumns(Container $container)
-    {
-        // inline add/edit
-        $container->addText('name', '');
-        $container->addText('link', '');
-        $container->addText('url', '');
-        $container->addText('date', '');
-    }
-
-    public function hydrateDate($item)
-    {
-        return [
-            'id' => $item->id,
-            'name' => $item->name,
-            'link' => $item->link,
-            'url' => $item->url,
-            'date' => $item->date,
-        ];
-    }
-
-    public function onNewRecord($values)
-    {
-        $values['hidden'] = true;
-        $values['tags'] = json_encode([]);
-        return parent::onNewRecord($values);
-    }
-
-    public function createComponentExamplesGrid($name)
-    {
-        /**
-         * @var DataGrid
-         */
-        $grid = $this->createBasicGrid($name);
-        $grid->setAutoSubmit(true);
-
-        /**
-         * Columns
-         */
-        $grid->addColumnNumber('id', 'Id');
-
-        $grid->addColumnText('name', 'Jméno')
-            ->setSortable()
-            ->setEditableCallback($this->onPropertyChange('name'))
-            ->addAttributes(['class' => 'text-center']);
-
-
-        $grid->addColumnText('link', 'Odkaz')
-            ->setEditableCallback($this->onPropertyChange('link'))
-            ->setSortable();
-
-        $grid->addColumnText('url', 'Video')
-            ->setEditableCallback($this->onPropertyChange('url'))
-            ->setSortable();
-
-        $grid->addColumnText('date', 'Datum')
-            ->setEditableCallback($this->onPropertyChange('date'))
-            ->setSortable();
-
-        $grid->addColumnStatus('hidden', 'Viditelnost')
-            ->setSortable()
-            ->addOption(0, 'Viditelné')
-            ->setClass('btn-success')
-            ->endOption()
-            ->addOption(1, 'Schované')
-            ->setClass('btn-danger')
-            ->endOption()
-            ->onChange[] = $this->onPropertyChange('hidden');
-
-        /**
-         * Filters
-         */
-        $grid->addFilterText('name', 'Filtrovat', ['name'])
-            ->setPlaceholder('Hledej ...');
-    }
-
 }

@@ -5,7 +5,7 @@ namespace App\Model;
 use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
 
-class ConcertsModel extends BaseModel
+class ConcertsModel extends BaseModel implements Hideable
 {
     protected $defaultOrder = array(
         'date' => 'DESC',

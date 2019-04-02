@@ -2,9 +2,10 @@
 
 namespace App\Model;
 
-class SongsModel extends BaseModel
+class SongsModel extends BaseModel implements Hideable
 {
     protected $defaultOrder = array(
-        'name' => 'DESC'
+        'name' => 'ASC',
+        'author' => 'ASC',
     );
 }

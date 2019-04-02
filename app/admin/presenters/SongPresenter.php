@@ -2,91 +2,65 @@
 
 namespace App\AdminModule\Presenters;
 
+use App\AdminModule\Components\Grid;
 use App\Model\AdminSongsModel;
-use Nette\Forms\Container;
+use Nette\Http\Request;
 
-class SongPresenter extends DataGridBasePresenter
+class SongPresenter extends BasePresenter
 {
-
-
     /**
      * @var AdminSongsModel
      * @inject
      */
     public $songs;
 
-    public function getModel()
+
+    /**
+     * @var Request
+     * @inject
+     */
+    public $httpRequest;
+
+
+    public function createComponentGrid($name)
     {
-        return $this->songs;
+        $grid = new Grid($this->httpRequest);
+
+        $grid->setModel($this->songs)
+            ->setFormFactory(function (\Tulinkry\Forms\Container $container) {
+                $container->addText('name', 'Jméno');
+                $container->addText('author', 'Interpret');
+                $container->addText('link', 'Odkaz');
+                $container->addSelect('hidden', 'Viditelnost', [
+                    0 => 'Viditelný',
+                    1 => 'Schovaný'
+                ]);
+            });
+
+        $grid->addTextColumn('id', '#');
+        $grid->addTextColumn('name', 'Jméno');
+        $grid->addTextColumn('author', 'Interpret');
+        $grid->addLinkColumn('link', 'Odkaz')
+            ->openInNewTab();
+        $grid->addSelectColumn('hidden', 'Viditelnost', [
+            0 => [
+                'class' => 'btn-success',
+                'label' => 'Viditelný',
+            ],
+            1 => [
+                'class' => 'btn-danger',
+                'label' => 'Schovaný',
+            ],
+        ])->setDataCallback(function ($id, $value) {
+            $this->redrawControl('flashes');
+            return $this->songs->update($id, [
+                'hidden' => $value
+            ]);
+        });
+
+        $grid->setEditable();
+        $grid->setConfirmDelete('Opravdu chcete smazat tento záznam?');
+
+        return $grid;
     }
-
-    public function getColumns(Container $container)
-    {
-        // inline add/edit
-        $container->addText('name', '');
-        $container->addText('author', '');
-        $container->addText('link', '');
-    }
-
-    public function hydrateDate($item)
-    {
-        return [
-            'id' => $item->id,
-            'name' => $item->name,
-            'author' => $item->author,
-            'link' => $item->link,
-        ];
-    }
-
-    public function onNewRecord($values)
-    {
-        $values['hidden'] = true;
-        $values['tags'] = json_encode([]);
-        return parent::onNewRecord($values);
-    }
-
-    public function createComponentExamplesGrid($name)
-    {
-        /**
-         * @var DataGrid
-         */
-        $grid = $this->createBasicGrid($name);
-        $grid->setAutoSubmit(true);
-
-        /**
-         * Columns
-         */
-        $grid->addColumnNumber('id', 'Id');
-
-        $grid->addColumnText('name', 'Jméno')
-            ->setSortable()
-            ->setEditableCallback($this->onPropertyChange('name'))
-            ->addAttributes(['class' => 'text-center']);
-
-
-        $grid->addColumnText('author', 'Autor')
-            ->setEditableCallback($this->onPropertyChange('author'))
-            ->setSortable();
-
-        $grid->addColumnText('link', 'Odkaz')
-            ->setEditableCallback($this->onPropertyChange('link'))
-            ->setSortable();
-
-        $grid->addColumnStatus('hidden', 'Viditelnost')
-            ->setSortable()
-            ->addOption(0, 'Viditelné')
-            ->setClass('btn-success')
-            ->endOption()
-            ->addOption(1, 'Schované')
-            ->setClass('btn-danger')
-            ->endOption()
-            ->onChange[] = $this->onPropertyChange('hidden');
-
-        /**
-         * Filters
-         */
-        $grid->addFilterText('name', 'Filtrovat', ['name', 'author'])
-            ->setPlaceholder('Hledej ...');
-    }
-
 }

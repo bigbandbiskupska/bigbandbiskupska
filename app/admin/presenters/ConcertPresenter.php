@@ -2,11 +2,12 @@
 
 namespace App\AdminModule\Presenters;
 
+use App\AdminModule\Components\Grid;
 use App\Model\AdminConcertsModel;
-use Nette\Forms\Container;
-use Ublaboo\DataGrid\DataGrid;
+use Nette\Http\Request;
+use Nette\Utils\DateTime;
 
-class ConcertPresenter extends DataGridBasePresenter
+class ConcertPresenter extends BasePresenter
 {
 
     /**
@@ -15,106 +16,70 @@ class ConcertPresenter extends DataGridBasePresenter
      */
     public $concerts;
 
-    public function getModel()
+    /**
+     * @var Request
+     * @inject
+     */
+    public $httpRequest;
+
+    public function createComponentGrid($name)
     {
-        return $this->concerts;
-    }
+        $grid = new Grid($this->httpRequest);
 
-    public function getColumns(Container $container)
-    {
-        // inline add/edit
-        $container->addText('name', '');
-        $container->addText('start', '');
-        $container->addText('place', '');
-    }
+        $grid->setModel($this->concerts)
+            ->setFormFactory(function (\Tulinkry\Forms\Container $container) {
+                $container->addText('name', 'Jméno');
+                $container->addText('start', 'Začátek')
+                    ->setDefaultValue((new DateTime())->format('j. n. Y H:i'));
+                //$container->addText('end', 'Konec');
+                $container->addSelect('hidden', 'Viditelnost', [
+                    0 => 'Viditelný',
+                    1 => 'Schovaný'
+                ]);
 
-    public function hydrateDate($item)
-    {
-        return [
-            'id' => $item->id,
-            'name' => $item->name,
-            'start' => $item->start->format('j. n. Y H:i'),
-            'place' => $item->place,
-        ];
-    }
+                $container->addText('place', 'Místo');
+                $container->addText('address', 'Adresa');
 
-    public function onNewRecord($values)
-    {
-        $values['description'] = '';
-        $values['latitude'] = 0;
-        $values['longitude'] = 0;
-        $values['address'] = $values['place'];
-        $values['hidden'] = true;
-        return parent::onNewRecord($values);
-    }
+                $container->addText('latitude', 'Latitude');
+                $container->addText('longitude', 'Longitude');
 
-    public function createComponentExamplesGrid($name)
-    {
-        /**
-         * @var DataGrid
-         */
-        $grid = $this->createBasicGrid($name);
+                $container->addTextArea('description', 'Popis')
+                    ->setAttribute('rows', 10);
+            })
+            ->setConvertToValues(function ($concert) {
+                $concert = (object)$concert->toArray();
+                $concert->start = $concert->start->format('j. n. Y H:i');
+                return (array)$concert;
+            })->setConvertFromValues(function ($values) {
+                $values['start'] = DateTime::createFromFormat('j. n. Y H:i', $values->start);
+                return $values;
+            });
 
-        /**
-         * Columns
-         */
-        $grid->addColumnNumber('id', 'Id');
+        $grid->addTextColumn('id', '#');
+        $grid->addTextColumn('name', 'Jméno');
+        $grid->addDateColumn('start', 'Datum')
+            ->setFormat('j. n. Y H:i');
+        $grid->addTextColumn('place', 'Místo');
 
-        $grid->addColumnText('name', 'Jméno')
-            ->setSortable()
-            ->setEditableCallback($this->onPropertyChange('name'))
-            ->addAttributes(['class' => 'text-center']);
+        $grid->addSelectColumn('hidden', 'Viditelnost', [
+            0 => [
+                'class' => 'btn-success',
+                'label' => 'Viditelný',
+            ],
+            1 => [
+                'class' => 'btn-danger',
+                'label' => 'Schovaný',
+            ],
+        ])->setDataCallback(function ($id, $value) {
+            $this->redrawControl('flashes');
+            return $this->concerts->update($id, [
+                'hidden' => $value
+            ]);
+        });
 
+        $grid->setEditable();
+        $grid->setConfirmDelete('Opravdu chcete smazat tento záznam?');
 
-        $grid->addColumnText('start', 'Datum')
-            ->setEditableCallback($this->onPropertyChange('start'))
-            ->setSortable();
-
-        $grid->addColumnText('place', 'Místo')
-            ->setEditableCallback($this->onPropertyChange('place'))
-            ->setSortable();
-
-        $grid->addColumnStatus('hidden', 'Viditelnost')
-            ->addOption(0, 'Viditelné')
-            ->setClass('btn-success')
-            ->endOption()
-            ->addOption(1, 'Schované')
-            ->setClass('btn-danger')
-            ->endOption()
-            ->onChange[] = $this->onPropertyChange('hidden');
-
-        $this->addGridItemDetail(
-            $grid,
-            __DIR__ . '/templates/Concert/detail.latte',
-            function (Container $container) use ($grid) {
-                $container->addHidden('id');
-
-                $container->addText('place', 'Místo')
-                    ->setAttribute('class', 'form-control');
-                $container->addText('address', 'Adresa')
-                    ->setAttribute('class', 'form-control');
-
-                $container->addText('latitude', 'Latitude')
-                    ->setAttribute('class', 'form-control');
-                $container->addText('longitude', 'Longitude')
-                    ->setAttribute('class', 'form-control');
-
-                $container->addTextArea('description', 'Popis', 100, 10)
-                    ->setAttribute('class', 'form-control');
-
-                $container->addSubmit('save', 'Uložit')
-                    ->setAttribute('class', 'ajax btn-primary form-control')
-                    ->onClick[] = function ($button) use ($grid) {
-                    $values = $button->getParent()->getValues();
-                    $this->onUpdateRecord($values->id, $values);
-                };
-            }
-        );
-
-        /**
-         * Filters
-         */
-        $grid->addFilterText('name', 'Filtrovat', ['name'])
-            ->setPlaceholder('Hledej ...');
+        return $grid;
     }
 }

@@ -25,15 +25,23 @@ $(function() {
 	if(jQuery.nette && window.history && window.history.pushState) {
 		jQuery.nette.ext('paginator', {
 			success: function (x, y, z, settings) {
-				if(settings &&
-				   settings.url &&
-				   settings.url.startsWith(window.location.protocol + '//' + window.location.hostname) && // local
-				   settings.nette &&
-				   settings.nette.e &&
-				   settings.nette.el &&
-				   settings.nette.e.type === 'click' && // click event
-				   settings.nette.el.is('a.ajax')) { // preferable on an anchor
-						window.history.pushState({}, "", settings.url)
+				if (settings &&
+					settings.url &&
+					settings.url.startsWith(window.location.protocol + '//' + window.location.hostname) && // local
+					settings.nette &&
+					settings.nette.e &&
+					settings.nette.el &&
+					settings.nette.e.type === 'click' && // click event
+					settings.nette.el.is('a.ajax') && (
+						settings.nette.el.attr('rel') === 'next' ||
+						settings.nette.el.attr('rel') === 'prev' ||
+						(
+							Number.parseInt(settings.nette.el.text()) !== NaN &&
+							Number.parseInt(settings.nette.el.text()) > 0
+						)
+					)
+				) { // preferable on an anchor
+					window.history.pushState({}, "", settings.url)
 				}
 			}
 		});
@@ -273,7 +281,7 @@ $(function() {
 				nojsoncallback: '1',
 			};
 
-			var url = baseUrl + '?' + Object.keys(params).map(key => key + '=' + params[key]).join('&');
+			var url = baseUrl + '?' + Object.keys(params).map(function(key) { return key + '=' + params[key]}).join('&');
 
 			promises.push(
 				$.nette.ajax({
