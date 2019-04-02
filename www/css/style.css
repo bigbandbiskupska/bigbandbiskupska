@@ -176,7 +176,7 @@ body {
 .img-gradient-bottom {
     position: absolute;
     z-index: 0;
-    right: 0; 
+    right: 0;
     left: 0;
     bottom: 0;
     height: 10%;
@@ -193,7 +193,7 @@ body {
 .img-gradient-top {
     position: absolute;
     z-index: 0;
-    right: 0; 
+    right: 0;
     left: 0;
     height: 10%;
     background: none;
@@ -247,24 +247,24 @@ body {
 
 /* ---------------------------------------- */
 
-img.alignright { 
-	padding: 4px; 
-	margin: 0 0 2px 7px; 
-	display: inline; 
+img.alignright {
+	padding: 4px;
+	margin: 0 0 2px 7px;
+	display: inline;
 }
 
-img.alignleft { 
-	padding: 4px; 
-	margin: 0 7px 2px 0; 
-	display: inline; 
+img.alignleft {
+	padding: 4px;
+	margin: 0 7px 2px 0;
+	display: inline;
 }
 
-.alignright { 
-	float: right; 
+.alignright {
+	float: right;
 }
 
-.alignleft { 
-	float: left; 
+.alignleft {
+	float: left;
 }
 
 .main-logo {
@@ -272,7 +272,7 @@ img.alignleft {
 }
 
 .navbar-logo {
-	max-height: 50px; 
+	max-height: 50px;
 	padding: 9px 10px;
 }
 
@@ -339,6 +339,11 @@ img.alignleft {
 
 .btn-back {
 	margin: 2%;
+}
+
+/* ----------------- administration mobile overflow -------------- */
+.container .panel-body, .container-fluid .panel-body {
+	overflow-x: auto;
 }
 
 /*
