@@ -1,66 +1,71 @@
 {
-    "name": "bigbandbiskupska/bigbandbiskupska",
-    "description": "Web presentation of Big Band Biskupská band",
-    "authors": [
-        {
-            "name": "Kryštof Tulinger"
-        }
-    ],
-    "type": "project",
-    "license": ["MIT", "BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/tulinkry/tulinkry.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/tulinkry/script.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/tulinkry/git.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/tulinkry/poll.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/tulinkry/grid.git"
-        }
-    ],
-    "require": {
-        "php": ">= 5.6",
-        "nette/application": "~2.3.0",
-        "nette/bootstrap": "~2.3.0",
-        "nette/caching": "~2.3.0",
-        "nette/database": "~2.3.0",
-        "nette/di": "~2.3.0",
-        "nette/finder": "~2.3.0",
-        "nette/forms": "~2.3.0",
-        "nette/http": "~2.3.0",
-        "nette/mail": "~2.3.0",
-        "nette/neon": "~2.3.0",
-        "nette/robot-loader": "~2.3.0",
-        "nette/safe-stream": "~2.3.0",
-        "nette/security": "~2.3.0",
-        "nette/utils": "~2.3.0",
-        "latte/latte": "~2.3.0",
-        "tracy/tracy": "~2.3.0",
-        "texy/texy": "~2.9.0",
-        "dg/adminer-custom": "~1.6",
-        "kdyby/translation": "^2.3.0",
-        "tulinkry/tulinkry": "dev-master",
-        "tulinkry/script": "dev-master",
-        "tulinkry/git": "1.0.1",
-        "tulinkry/poll": "dev-master",
-        "tulinkry/grid": "dev-master"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable" : true,
-    "require-dev": {
-        "nette/tester": "^2.0.1",
-        "kdyby/console": "^2.6"
+  "name": "bigbandbiskupska/bigbandbiskupska",
+  "description": "Web presentation of Big Band Biskupská band",
+  "authors": [
+    {
+      "name": "Kryštof Tulinger"
     }
+  ],
+  "type": "project",
+  "license": [
+    "MIT",
+    "BSD-3-Clause",
+    "GPL-2.0",
+    "GPL-3.0"
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/tulinkry/tulinkry.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/tulinkry/script.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/tulinkry/git.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/tulinkry/poll.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/tulinkry/grid.git"
+    }
+  ],
+  "require": {
+    "php": ">= 5.6",
+    "nette/application": "~2.3.0",
+    "nette/bootstrap": "~2.3.0",
+    "nette/caching": "~2.3.0",
+    "nette/database": "~2.3.0",
+    "nette/di": "~2.3.0",
+    "nette/finder": "~2.3.0",
+    "nette/forms": "~2.3.0",
+    "nette/http": "~2.3.0",
+    "nette/mail": "~2.3.0",
+    "nette/neon": "~2.3.0",
+    "nette/robot-loader": "~2.3.0",
+    "nette/safe-stream": "~2.3.0",
+    "nette/security": "~2.3.0",
+    "nette/utils": "~2.3.0",
+    "latte/latte": "~2.3.0",
+    "tracy/tracy": "~2.3.0",
+    "texy/texy": "~2.9.0",
+    "dg/adminer-custom": "~1.6",
+    "kdyby/translation": "^2.3.0",
+    "tulinkry/tulinkry": "dev-master",
+    "tulinkry/script": "dev-master",
+    "tulinkry/git": "1.0.1",
+    "tulinkry/poll": "dev-master",
+    "tulinkry/grid": "dev-master"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "nette/tester": "^2.0.1",
+    "kdyby/console": "^2.6"
+  }
 }
