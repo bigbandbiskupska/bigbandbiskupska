@@ -24,6 +24,10 @@
         {
             "type": "git",
             "url": "https://github.com/tulinkry/poll.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/tulinkry/grid.git"
         }
     ],
     "require": {
@@ -50,7 +54,8 @@
         "tulinkry/tulinkry": "dev-master",
         "tulinkry/script": "dev-master",
         "tulinkry/git": "1.0.1",
-        "tulinkry/poll": "dev-master"
+        "tulinkry/poll": "dev-master",
+        "tulinkry/grid": "dev-master"
     },
     "minimum-stability": "dev",
     "prefer-stable" : true,
