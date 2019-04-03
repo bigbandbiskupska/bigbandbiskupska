@@ -5,7 +5,17 @@ Web app for Big Band Biskupská
 [![Build Status](https://travis-ci.org/bigbandbiskupska/bigbandbiskupska.svg?branch=master)](https://travis-ci.org/bigbandbiskupska/bigbandbiskupska)
 
 
-## Install
+## Development
+
+Start the app using docker:
+
+```bash
+docker-compose up
+```
+
+The server will be ready at http://localhost:8000
+
+## Server install
 
 ```
 # change the directory to the web server's document root
