@@ -48,13 +48,17 @@ class VideoPresenter extends BasePresenter
             });
 
         $grid->addTextColumn('id', '#');
-        $grid->addTextColumn('name', 'Jméno');
+        $grid->addTextColumn('name', 'Jméno')
+            ->setSortable();
         $grid->addLinkColumn('link', 'Link')
-            ->openInNewTab();
+            ->openInNewTab()
+            ->setSortable();
         $grid->addLinkColumn('url', 'Url')
-            ->openInNewTab();
+            ->openInNewTab()
+            ->setSortable();
         $grid->addDateColumn('date', 'Datum')
-            ->setFormat('j. n. Y H:i');
+            ->setFormat('j. n. Y H:i')
+            ->setSortable();
         $grid->addSelectColumn('hidden', 'Viditelnost', [
             0 => [
                 'class' => 'btn-success',
@@ -69,7 +73,7 @@ class VideoPresenter extends BasePresenter
             return $this->videos->update($id, [
                 'hidden' => $value
             ]);
-        });
+        })->setSortable();
 
         $grid->setEditable();
         $grid->setConfirmDelete('Opravdu chcete smazat tento záznam?');

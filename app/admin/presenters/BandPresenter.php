@@ -53,10 +53,14 @@ class BandPresenter extends BasePresenter
                 return $values;
             });
 
-        $grid->addTextColumn('id', '#');
-        $grid->addTextColumn('name', 'Jméno');
-        $grid->addTextColumn('instrument', 'Instrument');
-        $grid->addTextColumn('group', 'Sekce');
+        $grid->addTextColumn('id', '#')
+            ->setSortable();
+        $grid->addTextColumn('name', 'Jméno')
+            ->setSortable();
+        $grid->addTextColumn('instrument', 'Instrument')
+            ->setSortable();
+        $grid->addTextColumn('group', 'Sekce')
+            ->setSortable();
         $grid->addSelectColumn('active', 'Aktivita', [
             1 => [
                 'class' => 'btn-success',
@@ -72,7 +76,7 @@ class BandPresenter extends BasePresenter
                 return $this->members->update($id, [
                     'active' => $value
                 ]);
-            });
+            })->setSortable();
 
         $grid->addSelectColumn('gender', 'Pohlaví', [
             'male' => [
@@ -88,7 +92,7 @@ class BandPresenter extends BasePresenter
             return $this->members->update($id, [
                 'gender' => $value
             ]);
-        });
+        })->setSortable();
 
         $grid->setEditable();
         $grid->setConfirmDelete('Opravdu chcete smazat tento záznam?');

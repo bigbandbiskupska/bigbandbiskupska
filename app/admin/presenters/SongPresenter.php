@@ -38,10 +38,13 @@ class SongPresenter extends BasePresenter
             });
 
         $grid->addTextColumn('id', '#');
-        $grid->addTextColumn('name', 'Jméno');
-        $grid->addTextColumn('author', 'Interpret');
+        $grid->addTextColumn('name', 'Jméno')
+            ->setSortable();
+        $grid->addTextColumn('author', 'Interpret')
+            ->setSortable();
         $grid->addLinkColumn('link', 'Odkaz')
-            ->openInNewTab();
+            ->openInNewTab()
+            ->setSortable();
         $grid->addSelectColumn('hidden', 'Viditelnost', [
             0 => [
                 'class' => 'btn-success',
@@ -56,7 +59,7 @@ class SongPresenter extends BasePresenter
             return $this->songs->update($id, [
                 'hidden' => $value
             ]);
-        });
+        })->setSortable();
 
         $grid->setEditable();
         $grid->setConfirmDelete('Opravdu chcete smazat tento záznam?');

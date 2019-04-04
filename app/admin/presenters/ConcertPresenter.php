@@ -56,10 +56,13 @@ class ConcertPresenter extends BasePresenter
             });
 
         $grid->addTextColumn('id', '#');
-        $grid->addTextColumn('name', 'Jméno');
+        $grid->addTextColumn('name', 'Jméno')
+            ->setSortable();
         $grid->addDateColumn('start', 'Datum')
-            ->setFormat('j. n. Y H:i');
-        $grid->addTextColumn('place', 'Místo');
+            ->setFormat('j. n. Y H:i')
+            ->setSortable();
+        $grid->addTextColumn('place', 'Místo')
+            ->setSortable();
 
         $grid->addSelectColumn('hidden', 'Viditelnost', [
             0 => [
@@ -75,7 +78,7 @@ class ConcertPresenter extends BasePresenter
             return $this->concerts->update($id, [
                 'hidden' => $value
             ]);
-        });
+        })->setSortable();
 
         $grid->setEditable();
         $grid->setConfirmDelete('Opravdu chcete smazat tento záznam?');
