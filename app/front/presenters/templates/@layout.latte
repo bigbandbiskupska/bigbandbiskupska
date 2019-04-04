@@ -285,7 +285,6 @@
 
 	{block top-content}
 	<div class="{block container-class}container{/block}">
-		<div n:foreach="$flashes as $flash" n:class="alert, alert-$flash->type">{$flash->message}</div>
 
 		<div class="row">
 			<div class="col-lg-12">
@@ -297,6 +296,7 @@
 						{/block}
 					</div>
 					<div class="panel-body">
+						<div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">{$flash->message}</div>
 						{include content}
 					</div>
 				</div>
