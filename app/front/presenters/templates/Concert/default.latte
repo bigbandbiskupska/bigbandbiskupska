@@ -21,11 +21,11 @@
     {foreach $concerts as $month}
         {continueIf count($month) === 0}
 
-        {if $iterator->isFirst() || $firstConcertInTheMonth->date->format('Y') !== $month[0]->date->format('Y')}
+        {if $iterator->isFirst() || $firstConcertInTheMonth->start->format('Y') !== $month[0]->start->format('Y')}
             <div class="row">
                 <div class="col-md-12 text-center">
                     <hr />
-                    <h2>{$month[0]->date|date: 'Y'}</h2>
+                    <h2>{$month[0]->start|date: 'Y'}</h2>
                     <hr />
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="col-md-2 text-center">
                     {first}
                         <div class="hidden-xs" style="margin-top: 40%"></div>
-                        <h3>{$concert->date|month}</h3>
+                        <h3>{$concert->start|month}</h3>
                     {else}
                         <div style="margin-top: 40%" class="glyphicon glyphicon-unchecked hidden-xs"></div>
                     {/first}
@@ -71,7 +71,7 @@
 {/block}
 
 {block concert}
-{var $diff = $_concert->date->diff(new \Nette\Utils\DateTime ())}
+{var $diff = $_concert->start->diff(new \Nette\Utils\DateTime ())}
 
 <article class="panel panel-default panel-concert {if $diff->invert}panel-concert-future{else}panel-concert-past{/if}" role="tab" itemscope itemtype="http://schema.org/MusicEvent">
     <div 
@@ -80,23 +80,23 @@
         data-target="#{$_concert->name|webalize}"
         data-parent=".band-accordion">
 
-        <div class="event-date col-md-3" title="{$_concert->date|weekday}, {$_concert->date|date: 'j. n. Y H:i'}">
-            <meta itemprop="startDate" content="{$_concert->date|date: 'Y-m-dTH:i:sP'}" />
+        <div class="event-date col-md-3" title="{$_concert->start|weekday}, {$_concert->start|date: 'j. n. Y H:i'}">
+            <meta itemprop="startDate" content="{$_concert->start|date: 'Y-m-dTH:i:sP'}" />
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
                     <span class="glyphicon glyphicon-calendar pull-left"></span>
-                    <h4>{$_concert->date|date: 'Y'}</h4>
+                    <h4>{$_concert->start|date: 'Y'}</h4>
                 </div>
                 <div class="panel-body text-center">
-                    <h3 class="text-nowrap">{$_concert->date|date: 'j. n.'}</h3>
-                    <h4>{$_concert->date|date: 'H:i'}</h4>
+                    <h3 class="text-nowrap">{$_concert->start|date: 'j. n.'}</h3>
+                    <h4>{$_concert->start|date: 'H:i'}</h4>
                 </div>
             </div>
         </div>
 
         <div class="event-spec col-md-9">
             <div class="event-name">
-                <div class="badge pull-right" n:if="$diff->invert">Již za {$_concert->date|timeLeft}</div>
+                <div class="badge pull-right" n:if="$diff->invert">Již za {$_concert->start|timeLeft}</div>
                 <h2 itemprop="name">{$_concert->name}</h2>
             </div>
             <div class="event-place">

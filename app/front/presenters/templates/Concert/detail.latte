@@ -1,4 +1,4 @@
-{block title}{$concert->name} {$concert->date|date: 'Y'}{/block}
+{block title}{$concert->name} {$concert->start|date: 'Y'}{/block}
 
 {block heading}
     <a href="{link Concert:default}" title="Zpět na výběr koncertů">
@@ -32,17 +32,17 @@
             </div>
         </div>
 
-        <div class="event-date col-md-2" title="{$concert->date|weekday}, {$concert->date|date: 'j. n. Y H:i'}">
-            <meta itemprop="startDate" content="{$concert->date|date: 'Y-m-dTH:i:sP'}" />
+        <div class="event-date col-md-2" title="{$concert->start|weekday}, {$concert->start|date: 'j. n. Y H:i'}">
+            <meta itemprop="startDate" content="{$concert->start|date: 'Y-m-dTH:i:sP'}" />
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
                     <span class="glyphicon glyphicon-calendar pull-left"></span>
-                    <h4>{$concert->date|date: 'Y'}</h4>
+                    <h4>{$concert->start|date: 'Y'}</h4>
                 </div>
                 
                 <div class="panel-body text-center">
-                    <h3 class="text-nowrap">{$concert->date|date: 'j. n.'}</h3>
-                    <h4>{$concert->date|date: 'H:i'}</h4>
+                    <h3 class="text-nowrap">{$concert->start|date: 'j. n.'}</h3>
+                    <h4>{$concert->start|date: 'H:i'}</h4>
                 </div>
             </div>
         </div>
