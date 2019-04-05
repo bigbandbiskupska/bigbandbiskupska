@@ -8,7 +8,6 @@ use Nette\Utils\Strings;
 class ConcertsModel extends BaseModel implements Hideable
 {
     protected $defaultOrder = array(
-        'date' => 'DESC',
         'start' => 'DESC',
         'end' => 'DESC',
     );
@@ -17,8 +16,8 @@ class ConcertsModel extends BaseModel implements Hideable
     {
         return $this->applyDefaultOrder(
             $this->table()
-                ->where('date > ?', new DateTime)
-                ->order('date ASC')
+                ->where('start > ?', new DateTime)
+                ->order('start ASC')
                 ->limit($limit, $offset)
         )->fetchPairs('id');
     }
@@ -35,7 +34,7 @@ class ConcertsModel extends BaseModel implements Hideable
                 continue;
             }
 
-            if ($previous->date->format('Y:n') !== $concert->date->format('Y:n')) {
+            if ($previous->start->format('Y:n') !== $concert->start->format('Y:n')) {
                 if ($actuals && count($actuals)) {
                     $concerts [] = $actuals;
                 }

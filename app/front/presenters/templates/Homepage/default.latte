@@ -46,13 +46,13 @@
 							{if count($concerts)}
 							<ul class="list-group">
 								<li class="list-group-item" n:foreach="$concerts as $id => $concert" itemscope itemtype="http://schema.org/MusicEvent">
-									<meta itemprop="startDate" content="{$concert->date|date: 'Y-m-dTH:i:sP'}" />
-									<span class="badge pull-right">{$concert->date|timeLeft}</span>
+									<meta itemprop="startDate" content="{$concert->start|date: 'Y-m-dTH:i:sP'}" />
+									<span class="badge pull-right">{$concert->start|timeLeft}</span>
 									<a 	href="{link :Front:Concert:detail id => $concert->id, concert => $concert}"
 										title="{$concert->name}">
 										<h5 itemprop="name">{$concert->name}</h5>
 									</a>
-									<small>{$concert->date|weekday}, {$concert->date|date: 'j. n. H:i'}</small>
+									<small>{$concert->start|weekday}, {$concert->start|date: 'j. n. H:i'}</small>
 					                <meta itemprop="url" content="{link //:Front:Concert:detail id => $concert->id, concert => $concert}">
 					                <div itemprop="location" itemscope="" itemtype="http://schema.org/MusicVenue">
 					                    <meta itemprop="name" n:if="isset($concert->location_text)" content="{$concert->location_text}">
