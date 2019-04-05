@@ -346,6 +346,13 @@ img.alignleft {
     overflow-x: auto;
 }
 
+/* ------------- waiting cursor for the page --------------------  */
+
+html.waiting, html.waiting * {
+    cursor: progress;
+    cursor: wait;
+}
+
 /*
 success heading
 3C763D - color

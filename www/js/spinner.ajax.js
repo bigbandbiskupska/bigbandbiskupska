@@ -1,51 +1,12 @@
 (function ($, undefined) {
-
     $.nette.ext('spinner', {
-        init: function () {
-            this.spinner = this.createSpinner();
-            this.spinner.appendTo('body');
-            this.recordOnMouseMove = this.recordOnMouseMove.bind(this)
-        },
-        before: function (xhr, settings) {
-            if (settings.nette && settings.nette.el) {
-                var positions = settings.nette.el.get(0).getBoundingClientRect()
-                this.spinner.css({
-                    top: positions.top,
-                    left: positions.left,
-                })
-            }
-
-            if (!this.spinner) {
-                return;
-            }
-
-            window.addEventListener('mousemove', this.recordOnMouseMove, false);
-
-            this.spinner.show(this.speed);
+        start: function () {
+            $('html').addClass('waiting')
         },
         complete: function () {
-            this.spinner.hide(this.speed);
-            window.removeEventListener('mousemove', this.recordOnMouseMove, false);
+            $('html').removeClass('waiting')
         }
-    }, {
-        recordOnMouseMove: function (e) {
-            this.spinner.css({top: e.pageY, left: e.pageX});
-        },
-        createSpinner: function () {
-            return $('<div>', {
-                id: 'ajax-spinner',
-                css: {
-                    display: 'none',
-                    width: '30px',
-                    height: '30px',
-                    zIndex: 10000000,
-                }
-            });
-        },
-        spinner: null,
-        speed: undefined,
     });
-
 
     $.nette.ext('loader', {
         init: function () {
