@@ -74,11 +74,12 @@ $(function () {
                     $('<div>')
                         .html(
                             $('<a>')
-                                .addClass('label label-info')
+                                .addClass('label')
+                                .addClass('label-' + (new Date() <= new Date(concert.timestamp) ? 'info' : 'default'))
                                 .attr('href', concert.link)
                                 .attr('title', concert.name)
                                 .attr('target', '_blank')
-                                .text(concert.name + ' (' + concert.id + ')')
+                                .text(concert.start + ' ' + concert.name + ' (' + concert.id + ')')
                         ).appendTo($list)
                 });
             }

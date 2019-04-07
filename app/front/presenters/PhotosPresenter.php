@@ -29,7 +29,14 @@ class PhotosPresenter extends BasePresenter
                     $acc[$concert->photo_id] = [];
                 }
 
-                array_push($acc[$concert->photo_id], array_merge($concert->toArray(), ['link' => $this->link(':Front:Concert:detail', ['concert' => $concert])]));
+                array_push($acc[$concert->photo_id], array_merge(
+                    $concert->toArray(),
+                    [
+                        'link' => $this->link(':Front:Concert:detail', ['concert' => $concert]),
+                        'start' => $concert->start->format('M-Y'),
+                        'timestamp' => $concert->start->getTimestamp() * 1000,
+                    ]
+                ));
                 return $acc;
             }, []));
     }
