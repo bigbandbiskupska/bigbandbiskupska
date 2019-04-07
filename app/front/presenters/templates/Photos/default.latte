@@ -28,8 +28,9 @@ $(function () {
         media: 'photos',
         nojsoncallback: '1',
     };
-    
-    var url = baseUrl + '?' + Object.keys(params).map(key => key + '=' + params[key]).join('&');
+
+    var assignedPhotos = JSON.parse({$assignedPhotos});
+    var url = baseUrl + '?' + Object.keys(params).map(function(key) { return key + '=' + params[key]; }).join('&');
 
     $.nette.ajax({
         url: url,
@@ -67,6 +68,21 @@ $(function () {
             $node.find('.photo-thumbnail-url').text(thumbnail)
             $node.find('.photo-url').text(image)
 
+            if(assignedPhotos[e.id] && $node.find('.photo-concerts').length > 0) {
+                var $list = $node.find('.photo-concerts')
+                $.each(assignedPhotos[e.id], function(i, concert) {
+                    $('<div>')
+                        .html(
+                            $('<a>')
+                                .addClass('label label-info')
+                                .attr('href', concert.link)
+                                .attr('title', concert.name)
+                                .attr('target', '_blank')
+                                .text(concert.name + ' (' + concert.id + ')')
+                        ).appendTo($list)
+                });
+            }
+
             $node.appendTo($linksContainer)
         }
     }).fail(function () {
@@ -103,6 +119,9 @@ $(function () {
             <dd><pre class="photo-thumbnail-url"></pre></dd>
             <dt>Url</dt>
             <dd><pre class="photo-url"></pre></dd>
+            <dt>Assigned concerts</dt>
+            <dd class="photo-concerts">
+            </dd>
         </dl>
       </div>
     </div>
