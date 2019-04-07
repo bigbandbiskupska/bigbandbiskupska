@@ -93,7 +93,11 @@ $(function() {
 
 	$('.datetimepicker').each(function() {
 		$(this).datetimepicker({
-			format: $(this).data('format') || 'YYYY-MM-DD HH:mm:ss'
+			format: $(this).data('format') || 'YYYY-MM-DD HH:mm:ss',
+			widgetPositioning: {
+				horizontal: 'auto',
+				vertical: 'bottom',
+			}
 		});
 	});
 
