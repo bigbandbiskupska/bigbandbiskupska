@@ -29,11 +29,9 @@ class ConcertPresenter extends BasePresenter
         $grid->setModel($this->concerts)
             ->setFormFactory(function (\Tulinkry\Forms\Container $container) {
                 $container->addText('name', 'Jméno');
-                $container->addText('start', 'Začátek')
-                    ->setDefaultValue((new DateTime())->format('j. n. Y H:i'))
-                    ->setAttribute('class', 'datetimepicker')
-                    // format according to moment.js
-                    ->setAttribute('data-format', 'D. M. YYYY HH:mm');
+                $container->addDateTime('start', 'Začátek')
+                    ->setFormat('j. n. Y H:i')
+                    ->setDefaultValue(new DateTime());
                 //$container->addText('end', 'Konec');
                 $container->addSelect('hidden', 'Viditelnost', [
                     0 => 'Viditelný',
@@ -53,9 +51,6 @@ class ConcertPresenter extends BasePresenter
                 $concert = (object)$concert->toArray();
                 $concert->start = $concert->start->format('j. n. Y H:i');
                 return (array)$concert;
-            })->setConvertFromValues(function ($values) {
-                $values['start'] = DateTime::createFromFormat('j. n. Y H:i', $values->start);
-                return $values;
             });
 
         $grid->addTextColumn('id', '#');

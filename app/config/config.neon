@@ -176,6 +176,7 @@ common:
         translation: Kdyby\Translation\DI\TranslationExtension
         tulinkry: Tulinkry\DI\TulinkryExtension
         scripts: Tulinkry\DI\ScriptExtension
+        datetime: Tulinkry\DI\DateTimeExtension
 
 
     translation:

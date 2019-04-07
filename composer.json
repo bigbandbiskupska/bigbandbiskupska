@@ -33,6 +33,10 @@
     {
       "type": "git",
       "url": "https://github.com/tulinkry/grid.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/tulinkry/datetimepicker.git"
     }
   ],
   "require": {
@@ -60,7 +64,8 @@
     "tulinkry/script": ">=1.0, <1.1",
     "tulinkry/git": ">=1.0, <1.1",
     "tulinkry/poll": ">=1.0, <1.1",
-    "tulinkry/grid": ">=1.0, <1.1"
+    "tulinkry/grid": ">=1.0, <1.1",
+    "tulinkry/datetimepicker": ">=1.0, <1.1"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

@@ -91,16 +91,6 @@ $(function() {
 		})
 	});
 
-	$('.datetimepicker').each(function() {
-		$(this).datetimepicker({
-			format: $(this).data('format') || 'YYYY-MM-DD HH:mm:ss',
-			widgetPositioning: {
-				horizontal: 'auto',
-				vertical: 'bottom',
-			}
-		});
-	});
-
 	// to the top button
 	$("#top-button").each(function() {
 		var $that = $(this)
