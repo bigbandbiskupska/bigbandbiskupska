@@ -30,7 +30,10 @@ class ConcertPresenter extends BasePresenter
             ->setFormFactory(function (\Tulinkry\Forms\Container $container) {
                 $container->addText('name', 'Jméno');
                 $container->addText('start', 'Začátek')
-                    ->setDefaultValue((new DateTime())->format('j. n. Y H:i'));
+                    ->setDefaultValue((new DateTime())->format('j. n. Y H:i'))
+                    ->setAttribute('class', 'datetimepicker')
+                    // format according to moment.js
+                    ->setAttribute('data-format', 'D. M. YYYY HH:mm');
                 //$container->addText('end', 'Konec');
                 $container->addSelect('hidden', 'Viditelnost', [
                     0 => 'Viditelný',

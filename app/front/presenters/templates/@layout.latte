@@ -355,19 +355,24 @@
     </div>
 
 
-	{block scripts}
-	<script src="{$basePath}/js/jquery.min.js"></script>
-	<script src="{$basePath}/js/bootstrap.min.js"></script>
+	{fileScript "{$basePath}/js/jquery.min.js"}
+	{fileScript "{$basePath}/js/bootstrap.min.js"}
+	{fileScript "{$basePath}/js/jquery.blueimp-gallery.min.js"}
+	{fileScript "{$basePath}/js/bootstrap-image-gallery.min.js"}
 
-	<script src="{$basePath}/js/jquery.blueimp-gallery.min.js"></script>
-	<script src="{$basePath}/js/bootstrap-image-gallery.min.js"></script>
-	<script src="{$basePath}/js/nette.ajax.js"></script>
-	<script src="{$basePath}/js/spinner.ajax.js"></script>
+	{fileScript 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js'}
+	{fileScript 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'}
+	{fileStyle 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'}
 
-	<script src="{$basePath}/js/main.js"></script>
-	{/block}
+	{fileScript "{$basePath}/js/nette.ajax.js"}
+	{fileScript "{$basePath}/js/spinner.ajax.js"}
+	{fileScript "{$basePath}/js/main.js"}
+
 
 	{scripts}
+
+	{block scripts}
+	{/block}
 
 	{styles}
 

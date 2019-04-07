@@ -32,7 +32,10 @@ class VideoPresenter extends BasePresenter
                 $container->addText('link', 'Odkaz');
                 $container->addText('url', 'Url');
                 $container->addText('date', 'Datum')
-                    ->setDefaultValue((new DateTime())->format('j. n. Y H:i'));
+                    ->setDefaultValue((new DateTime())->format('j. n. Y'))
+                    ->setAttribute('class', 'datetimepicker')
+                    // format according to moment.js
+                    ->setAttribute('data-format', 'D. M. YYYY');
                 $container->addSelect('hidden', 'Viditelnost', [
                     0 => 'Viditelný',
                     1 => 'Schovaný'
@@ -40,10 +43,10 @@ class VideoPresenter extends BasePresenter
             })
             ->setConvertToValues(function ($video) {
                 $video = (object)$video->toArray();
-                $video->date = $video->date->format('j. n. Y H:i');
+                $video->date = $video->date->format('j. n. Y');
                 return (array)$video;
             })->setConvertFromValues(function ($values) {
-                $values['date'] = DateTime::createFromFormat('j. n. Y H:i', $values->date);
+                $values['date'] = DateTime::createFromFormat('j. n. Y', $values->date);
                 return $values;
             });
 
@@ -57,7 +60,7 @@ class VideoPresenter extends BasePresenter
             ->openInNewTab()
             ->setSortable();
         $grid->addDateColumn('date', 'Datum')
-            ->setFormat('j. n. Y H:i')
+            ->setFormat('j. n. Y')
             ->setSortable();
         $grid->addSelectColumn('hidden', 'Viditelnost', [
             0 => [

@@ -53,7 +53,6 @@ $(function() {
 	});
 
 	// #target handling
-
 	$("a[href^='#'], map area").filter(':not(.lang)').click(function(e) {
 		if($(this.hash).length === 0) // it does not exist
 			return true
@@ -92,9 +91,13 @@ $(function() {
 		})
 	});
 
+	$('.datetimepicker').each(function() {
+		$(this).datetimepicker({
+			format: $(this).data('format') || 'YYYY-MM-DD HH:mm:ss'
+		});
+	});
 
 	// to the top button
-
 	$("#top-button").each(function() {
 		var $that = $(this)
 		var scroll = function($el, y) {
