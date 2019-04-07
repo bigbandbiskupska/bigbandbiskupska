@@ -46,6 +46,7 @@ class RouterFactory
                             /*
                              * We passed a concert directly as a route parameter, read/generate the slug from it to save db queries.
                              */
+                            $params['id'] = $params['concert']->id;
                             $params['slug'] = isset($params['concert']->slug) ? $params['concert']->slug : Strings::webalize($params['concert']->name);
                             unset($params['concert']);
                             return $params;
@@ -62,6 +63,7 @@ class RouterFactory
                             /*
                              * We passed a concert directly as a route parameter, read/generate the slug from it to save db queries.
                              */
+                            $params['id'] = $params['concert']->id;
                             $params['slug'] = isset($params['concert']->slug) ? $params['concert']->slug : Strings::webalize($params['concert']->name);
                             unset($params['concert']);
                             return $params;
