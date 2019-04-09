@@ -4,6 +4,7 @@ namespace App\AdminModule\Presenters;
 
 use App\Model\AdminSongsModel;
 use Nette\Http\Request;
+use Nette\Utils\Json;
 use Tulinkry\Components\Grid;
 
 class SongPresenter extends BasePresenter
@@ -35,6 +36,17 @@ class SongPresenter extends BasePresenter
                     0 => 'Viditelný',
                     1 => 'Schovaný'
                 ]);
+                $container->addText('tags', 'Žánry');
+            })
+            ->setConvertToValues(function ($song) {
+                $song = (object)$song->toArray();
+                $song->tags = implode(', ', Json::decode($song->tags, true));
+                return (array)$song;
+            })->setConvertFromValues(function ($values) {
+                $values['tags'] = Json::encode(array_map(function ($e) {
+                    return trim($e);
+                }, explode(',', $values->tags)));
+                return $values;
             });
 
         $grid->addTextColumn('id', '#');
