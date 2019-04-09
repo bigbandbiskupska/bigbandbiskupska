@@ -89,6 +89,7 @@ class RouterFactory
         $router[] = new Route('[<locale cs|en>/]admin/kontakt', 'Admin:Contact:default');
         $router[] = new Route('[<locale cs|en>/]admin/historie', 'Admin:History:default');
         $router[] = new Route('[<locale cs|en>/]admin/repertoar', 'Admin:Song:default');
+        $router[] = new Route('[<locale cs|en>/]admin/repertoar/import', 'Admin:Song:import');
         $router[] = new Route('[<locale cs|en>/]admin/videa', 'Admin:Video:default');
         $router[] = new Route('[<locale cs|en>/]admin/koncerty[/<paginator-page=1>]', 'Admin:Concert:default');
         #$router[] = new Route('<presenter>/<action>[/<id>]', 'Front:Homepage:default');

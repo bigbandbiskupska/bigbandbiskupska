@@ -2,7 +2,9 @@
 
 namespace App\AdminModule\Presenters;
 
+use App\AdminModule\Components\ImportControl;
 use App\Model\AdminSongsModel;
+use Nette\Application\UI\Form;
 use Nette\Http\Request;
 use Nette\Utils\Json;
 use Tulinkry\Components\Grid;
@@ -21,6 +23,12 @@ class SongPresenter extends BasePresenter
      * @inject
      */
     public $httpRequest;
+
+    public function createComponentImport($name) {
+        $control = new ImportControl();
+        $control->songs = $this->songs;
+        return $this[$name] = $control;
+    }
 
 
     public function createComponentGrid($name)
