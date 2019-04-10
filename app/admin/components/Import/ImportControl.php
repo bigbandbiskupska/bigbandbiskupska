@@ -109,7 +109,8 @@ class ImportControl extends Control
                 ->setDefaultValue($song->name);
 
             $select = $container->addSelect('action', 'Akce', [
-                'new' => 'Nová'
+                'new' => 'Nová',
+                'ignore' => 'Ignorovat',
             ])->setDefaultValue('new');
 
             foreach ($songs as $id => $d_song) {
