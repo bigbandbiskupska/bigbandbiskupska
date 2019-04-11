@@ -6,6 +6,7 @@ composer.lock
 .idea/
 .phpintel/
 
+songs
 Repertoar_BBB.csv
 extract_repertoar.php
 polls/*
