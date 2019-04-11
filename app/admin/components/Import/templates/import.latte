@@ -1,5 +1,7 @@
 {if $step == 1}
-    {control firstStepForm}
+{control step1}
 {elseif $step == 2}
-    {control secondStepForm}
+{control step2}
+{else}
+<div class="alert alert-danger">Neznámý krok, pokračujte <a href="{plink this}" title="Import repertoáru">zde</a></div>
 {/if}

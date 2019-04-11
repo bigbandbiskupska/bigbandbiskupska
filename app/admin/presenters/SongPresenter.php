@@ -3,10 +3,13 @@
 namespace App\AdminModule\Presenters;
 
 use App\AdminModule\Components\ImportControl;
+use App\AdminModule\Components\ImportControlFactory;
 use App\Model\AdminSongsModel;
 use Nette\Application\UI\Form;
 use Nette\Http\Request;
+use Nette\Http\Session;
 use Nette\Utils\Json;
+use Tracy\Debugger;
 use Tulinkry\Components\Grid;
 
 class SongPresenter extends BasePresenter
@@ -17,7 +20,6 @@ class SongPresenter extends BasePresenter
      */
     public $songs;
 
-
     /**
      * @var Request
      * @inject
@@ -25,11 +27,11 @@ class SongPresenter extends BasePresenter
     public $httpRequest;
 
     public function createComponentImport($name) {
-        $control = new ImportControl();
-        $control->songs = $this->songs;
-        return $this[$name] = $control;
+        return $this[$name] = new ImportControl(
+            $this->session,
+            $this->songs
+        );
     }
-
 
     public function createComponentGrid($name)
     {

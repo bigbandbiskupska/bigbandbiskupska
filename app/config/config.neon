@@ -174,10 +174,10 @@ common:
 
     extensions:
         translation: Kdyby\Translation\DI\TranslationExtension
+        replicator: Kdyby\Replicator\DI\ReplicatorExtension
         tulinkry: Tulinkry\DI\TulinkryExtension
         scripts: Tulinkry\DI\ScriptExtension
         datetime: Tulinkry\DI\DateTimeExtension
-
 
     translation:
         default: en
