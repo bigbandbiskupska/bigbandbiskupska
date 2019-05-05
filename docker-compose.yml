@@ -6,6 +6,9 @@ services:
       - "8000:80"
     volumes:
       - ".:/app"
+#      - "../../tulinkry/script:/app/vendor/tulinkry/script"
+#      - "../../tulinkry/grid:/app/vendor/tulinkry/grid"
+#      - "../../tulinkry/datetimepicker:/app/vendor/tulinkry/datetimepicker"
   mysql-master:
     image: mysql:5.7
     restart: always
