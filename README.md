@@ -15,6 +15,10 @@ docker-compose up
 
 The server will be ready at http://localhost:8000
 
+TODO:
+ * you need to copy the sample local config neon
+ * you need to import the sample data from tests/db/init.sql
+
 ## Server install
 
 ```
