@@ -7,12 +7,12 @@ common:
             concertAlbum: xxxx
             user: uknown_user
             APIkey: apikey
-        database:
-            host: localhost
-            dbname: bbb_bigbandbiskupska
-            user: root
-            password:
-            dsn: 'mysql:host=%database.host%;dbname=%database.dbname%'
+		database:
+			host: mysql-master
+			dbname: bbb_bigbandbiskupska
+			user: root
+			password: root
+			dsn: 'mysql:host=%database.host%;dbname=%database.dbname%'
     security:
         users:
             jamesbond: 007
