@@ -39,6 +39,7 @@ presenters:
 			france: "Nîmes a Basilej, Francie a Švýcarsko"
 			sweden: "Tranås, Švédsko"
 			austria: "Neufelden, Rakousko"
+			denmark: "Allerød, Dánsko"
 
 			hash:
 				zus-biskupska: zusbiskupska
@@ -67,6 +68,8 @@ presenters:
 					1: "Sezona 2016 přinesla další zahraniční výlet, a to do švédského Tranås. Pětidenní zájezd orámovaly tři koncerty – v centru města Jönköping, u jezera Sommen a v městském parku v Tranås u místní radnice."
 				austria:
 					1: "V říjnu 2017 se Big Band Biskupská podíval na jižní stranu Šumavy, a to konkrétně do rakouského Neufeldenu. Big band na benefičním koncertu pro Červený kříž předvedl své největší hity včetně Jazz Police, Žabáka nebo Golden Eye. Ze zájezdu se zrodila další spolupráce s neufeldenským bandem, který následně zahrál v Praze na jaře roku 2018 ve velkém sále Městské knihovny v Praze."
+				denmark:
+				    1: "Na základě spolupráce ZUŠ Biskupská s Allerød Scool of Music vyrazil Big band v květnu 2019 na týdenní zájezd do dánské Kodaně a okolí. Kromě koncertu na promenádě v Allerødu si zahrál také na hlavním podiu v zábavním parku Bakken nebo v místní základní škole, kde skvělé publikum vytvořilo přes 200 žáků všech věkových kategorií."
 				zus-biskupska:
 					1: "ZUŠ Biskupská vznikla na základech pražské hudební školy, která začala působit v hlavním městě záhy po druhé světové válce. Škola postupně vytvářela jednotlivé pobočky, z nichž později vznikaly samostatné umělecké školy. Do budovy v Biskupské ulici nedaleko Bílé Labutě, ze které se později stala dnešní ZUŠ Biskupská, se škola nastěhovala roku 1947."
 					2: "V současné době má ZUŠ Biskupská tři obory: hudební, výtvarný a literárně dramatický. Vyučuje žáky předškolního věku, základních, středních i vysokých škol a systematicky je připravuje na navazující studium na specializovaných uměleckých školách – konzervatořích, vyšších odborných i vysokých školách. Orientuje se rovněž na přípravu amatérských a poloprofesionálních umělců, pro které je umění koníčkem."

@@ -231,12 +231,12 @@
 								</div>
 								<div class="col-md-3 text-center">
 									<a href="{$basePath}/img/homepage/sweden.jpg"
-										   title="{_front.presenters.homepage.default.sweden}" 
+										   title="{_front.presenters.homepage.default.sweden}"
 										   class="album-link"
 										   data-gallery
-										>	
-										<img src="{$basePath}/img/homepage/thumbnails/sweden.jpg" 
-											 class="img img-resp img-rounded img300x150" 
+										>
+										<img src="{$basePath}/img/homepage/thumbnails/sweden.jpg"
+											 class="img img-resp img-rounded img300x150"
 											 alt="{_front.presenters.homepage.default.sweden}" />
 									</a>
 								</div>
@@ -266,6 +266,32 @@
 									</p>
 									{var $i = $i + 1}
 									{/while}
+								</div>
+							</div>
+
+							<hr class="clearfix" />
+
+							<div class="row">
+								<div class="col-md-9">
+									<h3>{_front.presenters.homepage.default.denmark}</h3>
+									{var $i = 1}
+									{while $presenter->translator->getCatalogue($presenter->locale)->has("presenters.homepage.default.text.denmark.$i", "front")}
+									<p>
+										{_front.presenters.homepage.default.text.denmark.$i}
+									</p>
+									{var $i = $i + 1}
+									{/while}
+								</div>
+								<div class="col-md-3 text-center">
+									<a href="{$basePath}/img/homepage/denmark.jpg"
+										   title="{_front.presenters.homepage.default.denmark}"
+										   class="album-link"
+										   data-gallery
+										>
+										<img src="{$basePath}/img/homepage/thumbnails/denmark.jpg"
+											 class="img img-resp img-rounded img300x150"
+											 alt="{_front.presenters.homepage.default.denmark}" />
+									</a>
 								</div>
 							</div>
 
