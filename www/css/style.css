@@ -365,3 +365,7 @@ F2DEDE - background
 EBCCD1 - border
 
  */
+
+div[data-toggle="collapse"]{
+    cursor:pointer;
+}
