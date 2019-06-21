@@ -79,7 +79,7 @@ class BasePresenter extends Presenter
                          'min.' => (object)['part' => 'i', 'next' => 's', 'ratio' => 60],
                          'sec.' => (object)['part' => 's', 'next' => NULL, 'ratio' => 100]] as $val => $type)
                 if ($diff->{$type->part}) {
-                    $r = ceil($diff->{$type->part} + ($type->next ? $diff->{$type->next} / $type->ratio : 0)) . ' ' . $val;
+                    $r = round($diff->{$type->part} + ($type->next ? $diff->{$type->next} / $type->ratio : 0)) . ' ' . $val;
                     break;
                 }
             // TODO: Handle correctly when diff is negative (invert === false)
