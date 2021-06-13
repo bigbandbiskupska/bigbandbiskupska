@@ -48,7 +48,7 @@ presenters:
 
 			text:
 				lead:
-				    1: "We're back! <a href=\"http://bigbandbiskupska.cz/en/koncerty\" title=\"Koncerty\">And we play on 22nd a 24th of June.</a>"
+					1: "We're back! <a href=\"http://bigbandbiskupska.cz/en/koncerty\" title=\"Koncerty\">And we play on 22nd a 24th of June.</a>"
 					2: "Big Band Biskupská is one of the largest student music orchestras in Prague. It has performed with František Zahradníček, Tomáš Savka, Václav Noid Bárta, David Uličník, Slava Korsak and Ondřej Ruml."
 					3: "A permanent singer soloist of the band is Kateřina Tošnarová, ZUŠ Biskupská’s absolvent and a student of Jaroslav Ježek Conservatory."
 					4: "Big band Biskupská’s frequently rearranged <a href=\"%repertoire_link%\" target=\"_blank\" title=\"Repertoire of Big Band Biskupská\">repertoire</a> contains more than 100 pieces of swing, pop, dance, jazz or rock music."
