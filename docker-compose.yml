@@ -14,3 +14,14 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+  adminer:
+    image: adminer
+    depends_on:
+      - mysql-master
+    environment:
+      ADMINER_DEFAULT_DB_DRIVER: mysql
+      ADMINER_DEFAULT_DB_HOST: mysql-master
+      ADMINER_DESIGN: nette
+      ADMINER_PLUGINS: tables-filter tinymce
+    ports:
+      - 9000:8080
