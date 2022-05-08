@@ -21,7 +21,7 @@ class BandPresenter extends BasePresenter
     public function actionDefault()
     {
         $this->template->sections = array();
-        foreach ($this->members->all() as $id => $member) {
+        foreach ($this->members->by(['active' => true]) as $id => $member) {
             if (!isset($member->group)) {
                 continue;
             }
