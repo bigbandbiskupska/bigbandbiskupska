@@ -39,6 +39,25 @@ class BandPresenter extends BasePresenter
             array_push($this->template->sections[$member->group], $member);
         }
 
+        $priority = [
+            'dirigent' => 20,
+            'zpěvačka' => 19,
+            'zpěvák' => 18,
+            'flétny' => 17,
+            'klarinety' => 16,
+            'saxofony' => 15,
+            'trumpety' => 14,
+            'lesní rohy' => 14,
+            'trombóny' => 13,
+            'klávesy' => 12,
+        ];
+
+        uksort($this->template->sections, function ($a, $b) use ($priority) {
+            $ap = $priority[$a] ?: 0;
+            $bp = $priority[$b] ?: 0;
+            return $bp - $ap;
+        });
+
         $this->template->oldmembers = $this->members->by(['active' => false]);
     }
 
