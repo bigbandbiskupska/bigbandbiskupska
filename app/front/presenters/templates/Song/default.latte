@@ -15,15 +15,12 @@
 <li>
     <a href="#autor">Podle autora</a>
 </li>
-<li>
-    <a href="#anketa">Anketa</a>
-</li>
 {/block}
 
 {block content}
 
 
-<div class="col-md-6">
+<div class="col-md-12">
     <h2 id="filtrovani" class="text-center link-target">Filtrovat písničky</h2>
     <input id="filter" type="text" class="form-control" placeholder="Název písničky nebo jméno autora" />
 
@@ -46,12 +43,6 @@
     </ul>
     <div class="clearfix"></div>
 </div>
-
-<div class="col-md-6">
-    <h2 id="anketa" class="text-center link-target">Anketa</h2>
-    {control formPollControl}
-</div>
-
 {/block}
 
 {block song}
