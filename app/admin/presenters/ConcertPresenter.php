@@ -45,7 +45,8 @@ class ConcertPresenter extends BasePresenter
                 $container->addText('longitude', 'Longitude');
 
                 $container->addText('photo_id', 'Identifikátor fotky koncert');
-                $container->addText('album_id', 'Identifikátor alba pro fotku koncertu');
+                $container->addText('album_id', 'Identifikátor alba pro fotku koncertu')
+                          ->setDefaultValue('72157689366932494');
 
                 $container->addTextArea('description', 'Popis')
                     ->setAttribute('rows', 10);
