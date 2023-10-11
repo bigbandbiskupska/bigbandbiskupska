@@ -18,7 +18,7 @@ class VideoPresenter extends BasePresenter
 
     public function actionDefault()
     {
-        $this->template->videos = $this->videos->by([], ["name" => "DESC"]);
+        $this->template->videos = $this->videos->by([], ["date" => "DESC"]);
     }
 
 }
