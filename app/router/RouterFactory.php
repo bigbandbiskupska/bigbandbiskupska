@@ -29,13 +29,13 @@ class RouterFactory
     {
         $router = new RouteList;
 
-        $router[] = new Route('[<locale cs|en>/][home]', 'Front:Homepage:default');
-        $router[] = new Route('[<locale cs|en>/]kapela', 'Front:Band:default');
-        $router[] = new Route('[<locale cs|en>/]kontakt', 'Front:Contact:default');
-        $router[] = new Route('[<locale cs|en>/]historie', 'Front:History:default');
-        $router[] = new Route('[<locale cs|en>/]repertoar', 'Front:Song:default');
-        $router[] = new Route('[<locale cs|en>/]videa', 'Front:Video:default');
-        $router[] = new Route('[<locale cs|en>/]koncerty[/<paginator-page=1>]', 'Front:Concert:default');
+        $router[] = new Route('[<locale cs|en>/][home]', 'Front:Homepage:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]kapela', 'Front:Band:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]kontakt', 'Front:Contact:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]historie', 'Front:History:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]repertoar', 'Front:Song:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]videa', 'Front:Video:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]koncerty[/<paginator-page=1>]', 'Front:Concert:default', Route::SECURED);
         $router[] = new Route('[<locale cs|en>/]koncert/<id>[/<slug>]', array(
                 'module' => 'Front',
                 'presenter' => 'Concert',
@@ -75,23 +75,23 @@ class RouterFactory
 
                         return $params;
                     }
-                ))
+                )), Route::SECURED
         );
-        $router[] = new Route('[<locale=cs cs|en>/]galerie', 'Front:Gallery:default');
-        $router[] = new Route('[<locale=cs cs|en>/]galerie/<id>', 'Front:Gallery:detail');
+        $router[] = new Route('[<locale=cs cs|en>/]galerie', 'Front:Gallery:default', Route::SECURED);
+        $router[] = new Route('[<locale=cs cs|en>/]galerie/<id>', 'Front:Gallery:detail', Route::SECURED);
 
-        $router[] = new Route('[<locale=cs cs|en>/]photos', 'Front:Photos:default');
+        $router[] = new Route('[<locale=cs cs|en>/]photos', 'Front:Photos:default', Route::SECURED);
 
-        $router[] = new Route('[<locale cs|en>/]sign', 'Admin:Sign:in');
-        $router[] = new Route('[<locale cs|en>/][admin/]signout', 'Admin:Sign:out');
-        $router[] = new Route('[<locale cs|en>/]admin/[home]', 'Admin:Homepage:default');
-        $router[] = new Route('[<locale cs|en>/]admin/kapela', 'Admin:Band:default');
-        $router[] = new Route('[<locale cs|en>/]admin/kontakt', 'Admin:Contact:default');
-        $router[] = new Route('[<locale cs|en>/]admin/historie', 'Admin:History:default');
-        $router[] = new Route('[<locale cs|en>/]admin/repertoar', 'Admin:Song:default');
-        $router[] = new Route('[<locale cs|en>/]admin/repertoar/import', 'Admin:Song:import');
-        $router[] = new Route('[<locale cs|en>/]admin/videa', 'Admin:Video:default');
-        $router[] = new Route('[<locale cs|en>/]admin/koncerty[/<paginator-page=1>]', 'Admin:Concert:default');
+        $router[] = new Route('[<locale cs|en>/]sign', 'Admin:Sign:in', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/][admin/]signout', 'Admin:Sign:out', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]admin/[home]', 'Admin:Homepage:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]admin/kapela', 'Admin:Band:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]admin/kontakt', 'Admin:Contact:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]admin/historie', 'Admin:History:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]admin/repertoar', 'Admin:Song:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]admin/repertoar/import', 'Admin:Song:import', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]admin/videa', 'Admin:Video:default', Route::SECURED);
+        $router[] = new Route('[<locale cs|en>/]admin/koncerty[/<paginator-page=1>]', 'Admin:Concert:default', Route::SECURED);
         #$router[] = new Route('<presenter>/<action>[/<id>]', 'Front:Homepage:default');
         return $router;
     }
